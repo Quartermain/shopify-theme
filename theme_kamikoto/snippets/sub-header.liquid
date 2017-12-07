@@ -1,0 +1,39 @@
+{% if enable %}
+  <!-- snippet: sub-header.liquid -->
+  <style>
+    .sub-header {
+      overflow: hidden;
+      background: {{ section.settings.plus_subheader_bg_color }};
+      font-size: calc({{ section.settings.plus_subheader_base_size }}px + {{ section.settings.plus_subheader_mobile_scale }}vh);
+    }
+
+    .sub-header p {
+      text-align: center;
+      display: block;
+      color: {{ section.settings.plus_subheader_text_color }};
+      padding: 5px 0;
+      margin-bottom: 0;
+    }
+
+    @media only screen and (min-width: 769px) {
+      .sub-header p {
+        font-size: calc({{ section.settings.plus_subheader_base_size }}px + {{ section.settings.plus_subheader_desktop_scale }}vh);
+        display: inline-block;
+      }
+
+      .sub-header p:first-of-type {
+        margin-left: 10px;
+      }
+
+      .sub-header p:last-of-type {
+        float: right;
+        margin: 0 10px;
+      }
+    }
+  </style>
+
+  <div class="sub-header">
+    <p>{{ 'plus.sub-header.left_column' | t }}</p>
+    <p>{{ 'plus.sub-header.right_column' | t }}</p>
+  </div>
+{% endif %}

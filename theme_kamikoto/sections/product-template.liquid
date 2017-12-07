@@ -1,0 +1,513 @@
+<div id="shopify-section-1487226781987" class="shopify-section index-section index-section--flush">
+    <div class="grid grid--no-gutters image-bar image-bar--small">
+
+
+        <script text="text/javascript">
+  var _learnq = _learnq || [];
+
+  var item = {
+    Name: {{ product.title|json }},
+    ProductID: {{ product.id|json }},
+    Categories: {{ product.collections|map:'title'|json }},
+    ImageURL: "https:{{ product.featured_image.src|img_url:'grande' }}",
+    URL: "{{ shop.secure_url }}{{ product.url }}",
+    Brand: {{ product.vendor|json }},
+    Price: {{ product.price|money|json }},
+    CompareAtPrice: {{ product.compare_at_price_max|money|json }}
+  };
+
+  _learnq.push(['track', 'Viewed Product', item]);
+  _learnq.push(['trackViewedItem', {
+    Title: item.Name,
+    ItemId: item.ProductID,
+    Categories: item.Categories,
+    ImageUrl: item.ImageURL,
+    Url: item.URL,
+    Metadata: {
+      Brand: item.Brand,
+      Price: item.Price,
+      CompareAtPrice: item.CompareAtPrice
+    }
+  }]);
+</script>
+
+        <div class="product-template__container page-width product-page-detail" itemscope itemtype="http://schema.org/Product"
+             id="ProductSection-{{ section.id }}" data-section-id="{{ section.id }}" data-section-type="product"
+             data-enable-history-state="true">
+            <meta itemprop="name" content="{{ product.title }}">
+            <meta itemprop="url" content="{{ shop.url }}{{ product.url }}">
+            <meta itemprop="image" content="{{ product.featured_image.src | img_url: '800x' }}">
+
+
+            {% comment %}
+            Get first variant, or deep linked one
+            {% endcomment %}
+            {%- assign current_variant = product.selected_or_first_available_variant -%}
+            {%- assign product_thumb_size = '160x' -%}
+            {%- assign product_image_zoom_size = '2024x2024' -%}
+            {%- assign enable_zoom = section.settings.enable_zoom -%}
+
+            {% case section.settings.image_size %}
+            {% when 'small' %}
+            {%- assign product_image_width = 'medium-up--one-third' -%}
+            {%- assign product_description_width = 'medium-up--two-thirds' -%}
+            {%- assign product_thumbnail_width = 'medium-up--one-third' -%}
+            {%- assign product_image_size = '345x' -%}
+            {% when 'medium' %}
+            {%- assign product_image_width = 'medium-up--three-quarters' -%}
+            {%- assign product_description_width = 'medium-up--one-quarter' -%}
+            {%- assign product_thumbnail_width = 'medium-up--one-half' -%}
+            {%- assign product_image_size = '820x' -%}
+            {% when 'large' %}
+            {%- assign product_image_width = 'medium-up--two-thirds' -%}
+            {%- assign product_description_width = 'medium-up--one-third' -%}
+            {%- assign product_thumbnail_width = 'medium-up--one-fifth' -%}
+            {%- assign product_image_size = '820x' -%}
+            {% when 'full' %}
+            {%- assign product_image_width = '' -%}
+            {%- assign product_description_width = '' -%}
+            {%- assign product_thumbnail_width = 'medium-up--one-eighth' -%}
+            {%- assign product_image_size = '1090x' -%}
+            {%- assign enable_zoom = false -%}
+            {% endcase %}
+			
+          <div class="grid header-product-detail">
+            <div class="header-product-page">
+<!--             	<p class="product-single__price product-single__price-{{ section.id }}{% unless current_variant.available %} product-price--sold-out{% endunless %}">
+                            {% if current_variant.compare_at_price > current_variant.price %}
+                            <span class="visually-hidden">{{ 'products.product.regular_price' | t }}</span>
+                            <s id="ComparePrice-{{ section.id }}">{{ current_variant.compare_at_price | money }}</s>
+                            <span class="product-price__price product-price__price-{{ section.id }} product-price__sale product-price__sale--single">
+                  <span id="ProductPrice-{{ section.id }}"
+                        itemprop="price" content="{{ current_variant.price | divided_by: 100.00 }}">
+                    {{ current_variant.price | money }}
+                  </span>
+                  <span class="product-price__sale-label product-price__sale-label-{{ section.id }}">{{ 'products.product.on_sale' | t }}</span>
+                </span>
+                            {% else %}
+                            <span class="visually-hidden">{{ 'products.product.regular_price' | t }}</span>
+                            <s id="ComparePrice-{{ section.id }}" class="hide">{{ current_variant.compare_at_price |
+                                money }}</s>
+                            <span class="product-price__price product-price__price-{{ section.id }}">
+                <span id="ProductPrice-{{ section.id }}"
+                      itemprop="price" content="{{ current_variant.price | divided_by: 100.00 }}">
+                  {{ current_variant.price | money }}
+                </span>
+                <span class="product-price__sale-label product-price__sale-label-{{ section.id }} hide">{{ 'products.product.on_sale' | t }}</span>
+              </span>
+                            {% endif %}
+                        </p> -->
+            
+            <!-- [Plus] Button to add products and takes directly to checkout skipping cart page -->
+              
+<!--         		<input type="button" class="btn btn--small" value="{{ 'plus.products.order-now' | t }}" onClick="instantBuy()" /> -->
+            </div>
+          	<h1 itemprop="name" class="product-single__title">{{ product.title }}</h1>
+            {% if product.title contains 'Santoku' or product.title contains 'Kanpeki' %}
+                    <span class="stamped-starrating stamped-badge-starrating"
+                          style="display:inline-block !important;"><i class="fa fa-star"></i><i
+                                class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i
+                                class="fa fa-star-half-o"></i></span>
+                    {% else %}
+                    <span class="stamped-starrating stamped-badge-starrating" style="display:inline-block !important;">
+                      <i class="fa fa-star"></i>
+                      <i class="fa fa-star"></i>
+                      <i class="fa fa-star"></i>
+                      <i class="fa fa-star"></i>
+                      <i class="fa fa-star"></i>
+            		</span>
+
+                    {% endif %}
+            <span class="stamped-product-reviews-badge stamped-main-badge" data-id="{{ product.id }}" data-product-sku="{{product.handle}}" style="display: inline-block;">{{ product.metafields.stamped.badge }}</span>
+          </div>
+
+            <div class="grid product-single">
+                <div class="grid__item product-single__photos {{ product_image_width }}{% if section.settings.image_size == 'full' %} product-single__photos--full{% endif %}">
+                    {%- assign featured_img_src = current_variant.featured_image.src | default:
+                    product.featured_image.src -%}
+                    {%- assign featured_img_alt = current_variant.featured_image.alt | default:
+                    product.featured_image.alt -%}
+                    <div id="FeaturedImageZoom-{{ section.id }}"
+                         class="product-single__photo{% if product.images.size > 1 %} product-single__photo--has-thumbnails{% endif %}"
+                         {% if enable_zoom %}data-zoom="{{ featured_img_src | img_url: product_image_zoom_size }}" {%
+                         endif %}>
+                        <img src="{{ featured_img_src | img_url: product_image_size }}" alt="{{ featured_img_alt }}"
+                             id="FeaturedImage-{{ section.id }}"
+                             class="product-featured-img{% if enable_zoom %} js-zoom-enabled{% endif %}">
+                    </div>
+                </div>
+                <div class="grid__item {{ product_description_width }} heightImgThum">
+                    {% if product.images.size > 1 %}
+                    {% if product.images.size > 3 %}
+                    {%- assign enable_thumbnail_slides = true -%}
+                    {% endif %}
+
+                    <div class="thumbnails-wrapper{% if enable_thumbnail_slides == true %} thumbnails-slider--active{% endif %}">
+                        {% if enable_thumbnail_slides == true %}
+                        <button type="button"
+                                class="btn btn--link medium-up--hide thumbnails-slider__btn thumbnails-slider__prev thumbnails-slider__prev--{{ section.id }}">
+                            {% include 'icon-chevron-left' %}
+                            <span class="icon__fallback-text">{{ 'sections.slideshow.previous_slide' | t }}</span>
+                        </button>
+                        {% endif %}
+                        <ul class="grid--uniform product-single__thumbnails product-single__thumbnails-{{ section.id }}">
+                            {% for image in product.images %}
+                            <li class="grid__item {{ product_thumbnail_width }} product-single__thumbnails-item">
+                                <a
+                                        href="{{ image.src | img_url: product_image_size }}"
+                                        class="text-link product-single__thumbnail product-single__thumbnail--{{ section.id }}"
+                                        {% if enable_zoom
+                                        %}data-zoom="{{ image.src | img_url: product_image_zoom_size }}" {% endif %}>
+                                    <img class="product-single__thumbnail-image" src="{{ image.src | img_url: small }}" alt="{{ image.alt | escape }}">
+                                </a>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                        {% if enable_thumbnail_slides == true %}
+                        <button type="button"
+                                class="btn btn--link medium-up--hide thumbnails-slider__btn thumbnails-slider__next thumbnails-slider__next--{{ section.id }}">
+                            {% include 'icon-chevron-right' %}
+                            <span class="icon__fallback-text">{{ 'sections.slideshow.next_slide' | t }}</span>
+                        </button>
+                        {% endif %}
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+
+            <div class="grid product-single row2-product-single">
+              
+              <div class="grid__item {{ product_description_width }} ">
+                <div class="product-single__meta">                  
+
+                    
+<!--                     <span class="stamped-product-reviews-badge stamped-main-badge" data-id="{{ product.id }}"
+                          data-product-sku="{{product.handle}}" style="display: inline-block;">{{ product.metafields.stamped.badge }}</span> -->
+
+                    <div itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+                      <div itemprop="name" class="product-single__title">{{ product.title }}</div>
+                      {% if section.settings.show_vendor %}
+                    <p itemprop="brand" class="product-single__vendor">{{ product.vendor }}</p>
+                    {% endif %}
+                        <meta itemprop="priceCurrency" content="{{ shop.currency }}">
+
+                        <link itemprop="availability"
+                              href="http://schema.org/{% if product.available %}InStock{% else %}OutOfStock{% endif %}">
+                        <p class="product-single__price product-single__price-{{ section.id }}{% unless current_variant.available %} product-price--sold-out{% endunless %}">
+                            {% if current_variant.compare_at_price > current_variant.price %}
+                            <span class="visually-hidden">{{ 'products.product.regular_price' | t }}</span>
+                            <s id="ComparePrice-{{ section.id }}">{{ current_variant.compare_at_price | money }}</s>
+                            <span class="product-price__price product-price__price-{{ section.id }} product-price__sale product-price__sale--single">
+                  <span id="ProductPrice-{{ section.id }}"
+                        itemprop="price" content="{{ current_variant.price | divided_by: 100.00 }}">
+                    {{ current_variant.price | money }}
+                  </span>
+                  <span class="product-price__sale-label product-price__sale-label-{{ section.id }}">{{ 'products.product.on_sale' | t }}</span>
+                </span>
+                            {% else %}
+                            <span class="visually-hidden">{{ 'products.product.regular_price' | t }}</span>
+                            <s id="ComparePrice-{{ section.id }}" class="hide">{{ current_variant.compare_at_price |
+                                money }}</s>
+                            <span class="product-price__price product-price__price-{{ section.id }}">
+                <span id="ProductPrice-{{ section.id }}"
+                      itemprop="price" content="{{ current_variant.price | divided_by: 100.00 }}">
+                  {{ current_variant.price | money }}
+                </span>
+                <span class="product-price__sale-label product-price__sale-label-{{ section.id }} hide">{{ 'products.product.on_sale' | t }}</span>
+              </span>
+                            {% endif %}
+                        </p>
+                      <div class="block-qty-add">
+                      
+                        <!--DEBUG
+                        
+						
+                      
+                      {% if section.settings.show_quantity_selector %}
+                        <div class="product-form__item product-form__item--quantity ">
+          <label for="Quantity-{{ section.id }}">{{ 'products.product.quantity' | t }}</label>
+                          <input type="number" id="Quantity-{{ section.id }}" name="quantity" value="1" min="1" class="product-form__input" pattern="[0-9]*">
+                        </div>
+                      {% endif %}
+                        
+                   -->     
+                      
+                        {% if current_variant.available %}
+                        
+                        <form action="/cart/add" method="post" class="variants" id="cart" enctype="multipart/form-data">
+    {% if product.options.size > 1 %}
+    <div class="form-group">
+        <select id="product-select-{{ product.id }}" name='id'>
+            {% for variant in product.variants %}
+            <option {% if variant == product.selected_or_first_available_variant %} selected="selected" {% endif %} data-sku="{{ variant.sku }}" value="{{ variant.id }}">{{ variant.title }} - {{ variant.price | money }}</option>
+            {% endfor %}
+        </select>
+    </div>
+    {% elsif product.options.size == 1 and product.variants.size > 1 %}
+    <div class=" form-group">
+        <label>{{ product.options[0] }}</label>
+      
+        <select id="product-select-{{ product.id }}" name='id'>
+            {% for variant in product.variants %}
+            <option {% if variant == product.selected_or_first_available_variant %} selected="selected" {% endif %} data-sku="{{ variant.sku }}" value="{{ variant.id }}">{{ variant.title }} - {{ variant.price | money }}</option>
+            {% endfor %}
+        </select>
+      
+      
+    </div>
+    {% else %}
+    <div class="what-is-it form-group">
+        {% if product.options.first != 'Title' %}
+        <label>{{ product.options.first }}:</label>{% for variant in product.variants %}<span class="it-is">{{ variant.option1 | escape }}</span>{% endfor %}
+        {% endif %}
+    </div>
+    <div class="product-variants"></div><!-- product variants -->
+    <input  type="hidden" id="{{ variant.id }}" name="id" data-sku="{{ variant.sku }}" value="{{ product.variants[0].id }}" />
+    {% endif %}
+
+    {% if product.available %}
+
+    {% if product.template_suffix == 'customizable' %}
+    <div>
+        <label for="monogram">{{ 'products.product.monogram' | t }}</label>
+        <input type="text" id="monogram" name="properties[Monogram]">
+    </div>
+    {% endif %}
+
+
+    <div class="product-add form-group clearfix">
+        <label class="lable" for="quantity">Qty</label>
+        <div class="js-qty">            
+            <input min="1" type="text" id="Quantity" class="js-qty__num" name="quantity" value="1" />
+        </div>
+        <div class="form-group">
+            <input type="submit" name="button" class="add btn-add btn" onClick="instantBuy()" value="{{ 'products.product.add_to_cart' | t }}" />
+            <input type="hidden" name="variantId" value="{{ product.variants[0].id }}" />
+
+        </div>
+
+    </div>
+    {% endif %}
+
+</form>
+                        {% else %}
+                        <p> Sold Out </p>
+                        {% endif %}
+                      </div>
+
+                    </div>
+                    
+                </div>
+                <div class="video-wrapper">
+
+
+        <iframe src="https://player.vimeo.com/video/215146621" width="100%" height="360" frameborder="0"
+                webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+
+
+    </div>
+                <div class="desktop-only">
+                {% if section.settings.show_share_buttons %}
+                    {% include 'social-sharing', share_title: product.title, share_permalink: product.url, share_image:
+                    product %}
+                    {% endif %}
+                </div>
+            </div>
+        
+              <div class="grid__item {{ product_image_width }}">
+                <div class="product-single__description rte" itemprop="description">
+                  {{ product.description }}
+                </div>                    
+              </div>
+          	</div>
+            <div class="grid product-single">
+              <div class="row-detail block-limited">
+                <h2>limited lifetime guarantee</h2>                
+                <img class="icon-detail" src="{{ 'icon1.png' | asset_url }}" alt="{{ image.alt | escape }}" />
+                <div class="txt-content">
+                	<p class="text-des">A limited warranty for the lifetime of the original owner</p>
+                </div>
+              </div>
+              <div class="row-detail block-limited">
+                <h2>our commitment</h2>
+                <div class="grid">
+                  <div class="grid__item medium-up--one-third">
+                    <img class="icon-detail" src="{{ 'icon2.png' | asset_url }}" alt="{{ image.alt | escape }}" />
+                    <div class="txt-content">
+                      <h3>Individually inspected</h3>
+                      <p>Live customer service and lifetime warranty</p>
+                    </div>
+                  </div>
+                  <div class="grid__item medium-up--one-third">
+                    <img class="icon-detail" src="{{ 'icon3.png' | asset_url }}" alt="{{ image.alt | escape }}" />
+                    <div class="txt-content">
+                      <h3>Honsho steel</h3>
+                      <p>avaiable for Kanpeki and Santoku knives</p>
+                    </div>
+                  </div>
+                  <div class="grid__item medium-up--one-third">
+                    <img class="icon-detail" src="{{ 'icon4.png' | asset_url }}" alt="{{ image.alt | escape }}" />
+                    <div class="txt-content">
+                      <h3>FREE INTERNATIONAL SHIPPING</h3>
+                      <p>On all new orders</p>
+                    </div>
+                  </div>
+                </div>                           
+              </div>
+              <div class="row-detail">
+              <div class="video-wrapper">
+                  <iframe src="https://player.vimeo.com/video/215146621" width="100%" height="360" frameborder="0"
+                          webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+              </div>
+                </div>
+              <div class="row-detail">
+                <div id="stamped-main-widget" class="stamped-main-widget"
+		 data-product-id="{{ product.id }}"
+		 data-name="{{ product.title | escape }}"
+		 data-url="{{ shop.url }}{{ product.url }}"
+		 data-image-url="{{ product.featured_image | product_img_url: " large " |replace: '?', '%3F' | replace: '&','%26'}}"
+	data-description="{{ product.description | escape }}"
+	data-product-sku="{{product.handle}}">
+	{{ product.metafields.stamped.reviews }}
+	</div>
+            </div>
+              {% include 'faq-template' %}
+          </div>
+    </div>
+      <div class="section-block-bottom">
+        <div class="page-width">
+          <div class="block-bottom text-center">
+            <img class="icon-detail" src="{{ 'icon5.png' | asset_url }}" alt="{{ image.alt | escape }}" />
+            <div class="txt-content">
+              <h3>Spirit of service</h3>
+              <p>Live customer service and lifetime warranty</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    <br>    
+
+    {% if collection %}
+    <div class="text-center return-link-wrapper">
+        <a href="{{ collection.url }}" class="btn btn--secondary btn--has-icon-before return-link">
+            {% include 'icon-arrow-left' %}
+            {{ 'products.product.back_to_collection' | t: title: collection.title }}
+        </a>
+    </div>
+    {% endif %}
+
+
+    {% unless product == empty %}
+    <script type="application/json" id="ProductJson-{{ section.id }}">
+        {{
+            product
+            |
+            json
+        }}
+    </script>
+    {% endunless %}
+
+  
+<script>
+  // [Plus] Function to skip cart page
+  function instantBuy(){
+    var formParams = $('form[action="/cart/add"]').serialize();
+    $.ajax({
+      url: "/cart/add",
+      type: "post",
+      data: formParams,
+      success: function(){
+       window.location.href = "/checkout";
+      },
+      error: function(){
+      }
+    })
+  }
+</script>
+      
+<script type="text/javascript">
+  
+//   HeightImgThumnail
+  
+  function heightThumImg(){
+    var heightThumImg = $('.product-single .heightImgThum').outerHeight();
+  	if ($(window).width() > 750) {
+      $('.row2-product-single .medium-up--one-quarter').css('top', heightThumImg + 80);
+    } else {
+      $('.row2-product-single .medium-up--one-quarter').removeAttr('style');
+    }
+  }
+  
+	heightThumImg();
+  
+  $(window).resize(function() {
+    heightThumImg();
+  });
+  
+  
+</script>
+  
+    {% schema %}
+    {
+    "name": "Product pages",
+    "settings": [
+    {
+    "type": "select",
+    "id": "image_size",
+    "label": "Image size",
+    "options": [
+    {
+    "value": "small",
+    "label": "Small"
+    },
+    {
+    "value": "medium",
+    "label": "Medium"
+    },
+    {
+    "value": "large",
+    "label": "Large"
+    },
+    {
+    "value": "full",
+    "label": "Full-width"
+    }
+    ],
+    "default": "medium"
+    },
+    {
+    "type": "checkbox",
+    "id": "show_quantity_selector",
+    "label": "Show quantity selector",
+    "default": true
+    },
+    {
+    "type": "checkbox",
+    "id": "show_variant_labels",
+    "label": "Show variant labels",
+    "default": true
+    },
+    {
+    "type": "checkbox",
+    "id": "show_vendor",
+    "label": "Show vendor",
+    "default": false
+    },
+    {
+    "type": "checkbox",
+    "id": "enable_zoom",
+    "label": "Enable image zoom",
+    "default": true
+    },
+    {
+    "type": "checkbox",
+    "id": "show_share_buttons",
+    "label": "Show social sharing buttons",
+    "default": true
+    }
+    ]
+    }
+    {% endschema %}
+
+

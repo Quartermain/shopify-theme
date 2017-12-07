@@ -1,0 +1,17 @@
+{% comment %}
+  The contents of the cart.liquid template can be found in /sections/cart-template.liquid
+{% endcomment %}
+
+{% section 'cart-template' %}
+<script>
+  /* Put this in cart.liquid, preferably at the bottom of the file.
+   * Also, make sure your cart's "<form>" has an ID of "cartform".
+   */
+  (function() {
+    var discountCookie = document.cookie.match(/discount=(\w+)/);
+    if (discountCookie && discountCookie.length > 1) {
+      document.getElementById('cartform').action = '/cart?' + discountCookie[0];
+    }
+  })();
+</script>
+

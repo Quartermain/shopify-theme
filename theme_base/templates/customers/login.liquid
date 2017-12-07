@@ -1,0 +1,63 @@
+{% layout settings.customer_layout %}
+
+<div class="clearfix">
+
+  <!-- Customer Login -->
+  <div class="customer-login">
+    <h2>Customer Login</h2>   
+        
+    {% form 'customer_login' %}
+    {{ form.errors | default_errors }}
+    <div class="login_email">
+      <div class="form-row">
+        <label for="customer_email">Email Address</label>
+        <input type="email" value="" name="customer[email]" id="customer_email"  size="30" />
+      </div>
+      <div class="form-row">
+        <label for="customer_password">Password</label>
+        <input type="password" value="" name="customer[password]" id="customer_password" size="16" />
+      </div>
+      <div class="form-row forgot-password">
+        <a href="#" onclick="return false;">Forgot your password?</a>
+      </div>
+      <div class="form-row">
+        <input class="btn" type="submit" value="Sign In" />
+      </div>
+    </div>
+    {% endform %}
+  </div>
+  <!-- End Customer Login -->
+ 
+</div>
+
+<!-- Password reset -->
+
+<div class="recover-password">
+  <h2>Reset Password</h2>
+  We will send you an email to reset your password.
+
+  {% form 'recover_customer_password' %}
+  {{ form.errors | default_errors }}
+  
+  <div class="form-row">
+    <label for="email" class="large">Email Address</label>
+    <input type="email" value="" size="30" name="email" id="recover-email" class="large" />
+  </div>
+  <div class="form-row recover-cancel">
+    <input class="btn" type="submit" value="Submit" />
+    or <a href="#" onclick="return false;">Cancel</a>
+  </div>
+  {% endform %}
+</div>
+<!-- End Password reset -->
+
+<script type="text/javascript">
+$(document).ready(function () {
+  $(".forgot-password a").click(function() {
+      $(".customer-login, .guest-login, .recover-password").toggle();
+  });
+  $(".recover-cancel a").click(function() {
+    $(".customer-login, .guest-login, .recover-password").toggle();
+  });
+});
+</script>

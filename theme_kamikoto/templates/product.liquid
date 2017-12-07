@@ -1,0 +1,42 @@
+{% include 'bold-product' with product, hide_action: 'break', output: 'none' %}
+{% comment %}
+  The contents of the product.liquid template can be found in /sections/product-template.liquid
+{% endcomment %}
+
+{% section 'product-template' %}
+
+<script>
+  // Override default values of shop.strings for each template.
+  // Alternate product templates can change values of
+  // add to cart button, sold out, and unavailable states here.
+  theme.productStrings = {
+    addToCart: {{ 'products.product.add_to_cart' | t | json }},
+    soldOut: {{ 'products.product.sold_out' | t | json }},
+    unavailable: {{ 'products.product.unavailable' | t | json }}
+    preOrder: {{ 'products.product.pre_order' | t | json }},        
+
+  }
+</script>
+
+{% if product.title contains 'Santoku' or product.title contains 'Kanpeki' %}
+<script>
+  var changeRating = function(){
+    $('span.stamped-starrating.stamped-summary-starrating .fa-star:nth-child(5)').addClass('fa-star-half-o');
+  }
+  
+  changeRating();
+  
+  $(document).on('stamped:reviews:loaded', function(){
+    changeRating();
+  });
+</script>
+{% endif %}
+
+<style>
+  span.stamped-starrating.stamped-badge-starrating {
+    display: none;
+}
+  span.stamped-badge {
+    margin: auto !important;
+}
+</style>

@@ -1,0 +1,79 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="{{ locale }}" dir="{{ direction }}" class="{{ checkout_html_classes }}">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, height=device-height, minimum-scale=1.0, user-scalable=0">
+
+    <title>{{ shop.name }} - {{ page_title }}</title>
+
+    {{ content_for_header }}
+
+    {{ checkout_stylesheets }}
+    {{ checkout_scripts }}
+    
+    <!-- Convert Experiences-->
+    <script type="text/javascript">
+      if (typeof _conv_host == "undefined") {
+  window["_conv_prevent_bodyhide"] = true;
+  (function() {
+    var _conv_track = document.createElement("script");
+    _conv_track.src = "//cdn-3.convertexperiments.com/js/1002355_1002236.js";
+
+    document.getElementsByTagName("head")[0].appendChild(_conv_track);
+  })();
+}
+    </script>
+    <!-- / -->
+    
+  </head>
+  <body>
+    <div class="banner" data-header>
+      <div class="wrap">
+        {{ content_for_logo }}
+      </div>
+    </div>
+
+    {{ order_summary_toggle }}
+
+    <div class="content" data-content>
+      <div class="wrap">
+        <div class="sidebar" role="complementary">
+          <div class="sidebar__header">
+            {{ content_for_logo }}
+          </div>
+          <div class="sidebar__content">
+            {{ content_for_order_summary }}
+          </div>
+        </div>
+        <div class="main" role="main">
+          <div class="main__header">
+            {{ content_for_logo }}
+          {{ breadcrumb }}
+            
+            {{ alternative_payment_methods }}
+            <br>
+          </div>
+          <div class="main__content">
+            {{ content_for_layout }}
+            
+          </div>
+          <div class="main__footer">
+            {{ content_for_footer }}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    {{ tracking_code }}
+    
+    <script type="text/javascript">
+      if(typeof Checkout === 'object'){
+        if(typeof Checkout.$ === 'function'){
+          Checkout.$('button.order-summary-toggle.order-summary-toggle--show').trigger("click");
+        }
+      }
+      
+    </script>
+  </body>
+</html>

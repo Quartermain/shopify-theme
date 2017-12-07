@@ -1,0 +1,1426 @@
+@charset "UTF-8";
+
+/* Take the Risk to Reinvent */
+
+/*==============================GLOBAL VARS ==============================================
+		LEGEND: DEF == variables that come from the default tricky settings, replacing with hardcoded for avoid the breaking of the SASS
+/*
+
+/* fallback vars in case, some of the default theme settings are either missing or not set */
+/*Font family, line-height, text color */
+$fallback_font-family : initial;
+$fallback_primary-color : #000000;
+$fallback_line-height : auto;
+/* link colors */
+$fallback_href-normal-color : #000000;
+$fallback_href-hover-color : #999999;
+/*Button, normal status */
+$fallback_btn-normal-bg-color : #FFFFFF;
+$fallback_btn-normal-color : #000000;
+/* Button Hovers*/
+$fallback_btn-hover-bg-color : #333333;
+$fallback_btn-hover-color : #FFFFFF;
+/*Selection */
+$fallback_selection-bg-color : #000000;
+$fallback_selection-color : #FFFFFF;
+
+/* DEF - font-family */					{% if settings.p_font_family != blank %}
+											$tricky_var-font-stack:{{ settings.p_font_family }};
+										{% else %}
+											$tricky_var-font-stack:$fallback_font-family;
+										{% endif %}
+
+/* DEF - Primary Color, body text */ 	{% if settings.color != blank %}
+											$tricky_var-primary-color:{{ settings.color }};
+										{% else %}
+											$tricky_var-primary-color:$fallback_primary-color;
+										{% endif %}
+
+/* DEF - line height */					{% if settings.line_height != blank %}
+											$tricky_var-line-height:{{ settings.line_height }};
+										{% else %}
+											$tricky_var-line-height:$fallback_line-height;
+										{% endif %}
+
+/* DEF - href color, normal status */	{% if settings.link_color != blank %}
+											$tricky_var-href-normal-color:{{ settings.link_color }};
+										{% else %}
+											$tricky_var-href-normal-color:$fallback_href-normal-color;
+										{% endif %}
+
+/* DEF - href color, hover status */	{% if settings.link_hovercolor != blank %}
+											$tricky_var-href-hover-color:{{ settings.link_hovercolor }};
+										{% else %}
+											$tricky_var-href-hover-color:$fallback_href-hover-color;
+										{% endif %}
+
+/* DEF - selection background color */	{% if settings.selection_bgcolor != blank %}
+											$tricky_var-selection-bg-color:{{ settings.selection_bgcolor }};
+										{% else %}
+											$tricky_var-selection-bg-color:$fallback_selection-bg-color;
+										{% endif %}
+
+/* DEF - button normal-color */			{% if settings.button_font_color != blank %}
+											$tricky_var-btn-normal-color:{{ settings.button_font_color }};
+										{% else %}
+											$tricky_var-btn-normal-color:$fallback_btn-normal-color;
+										{% endif %}
+
+/* DEF - button normal-bg-color */		{% if settings.button_color != blank %}
+											$tricky_var-btn-normal-bg-color:{{ settings.button_color }};
+										{% else %}
+											$tricky_var-btn-normal-bg-color:$fallback_btn-normal-bg-color;
+										{% endif %}
+
+/* DEF - button hover */				{% if settings.button_font_hovercolor != blank %}
+											$tricky_var-btn-hover-color:{{ settings.button_font_hovercolor }};
+										{% else %}
+											$tricky_var-btn-hover-color:$fallback_btn-hover-color;
+										{% endif %}
+
+
+/* DEF - button background hover */		{% if settings.button_hovercolor != blank %}
+											$tricky_var-btn-hover-bg-color:{{ settings.button_hovercolor }};
+										{% else %}
+											$tricky_var-btn-hover-bg-color:$fallback_btn-hover-bg-color;
+										{% endif %}
+
+/* selection color, ALWAYS using the fallback value */
+										$checkout_selection-color:$fallback_selection-color;
+
+/* =================VARS DEFINED ON SETTINGS.HTML, fieldset="checkout"================= */
+/* base font-size */					$checkout_base-font-size:{{ settings.checkout_base-font-size }};
+/* heading color */						$checkout_headings-color:{{ settings.checkout_headings-color }};
+/* h1 font-size */						$checkout_h1-font-size:{{ settings.checkout_h1-font-size }};
+/* h3 font-size */						$checkout_h3-font-size:{{ settings.checkout_h3-font-size }};
+/* h1 font-size */						$checkout_h5-font-size:{{ settings.checkout_h5-font-size }};
+/* heading text transform*/				$checkout_heading-text-transform:{{ settings.checkout_heading-text-transform }};
+/* heading padding*/					$checkout_heading-padding:{{ settings.checkout_heading-padding }};
+/* shop tagline color */				$checkout_shop-desc-color:{{ settings.checkout_shop-desc-color }};
+/* shop tagline font-size */			$checkout_shop-desc-font-size:{{ settings.checkout_shop-desc-font-size }};
+/* global border radius */				$checkout_border-radius:{{ settings.checkout_border-radius }};
+/* global border style */				$checkout_border-style:{{ settings.checkout_border-style }};
+
+/*==============================FORM VARS ==============================================/*
+/* label color */						$checkout_label-color:{{ settings.checkout_label-color }};
+/* Placeholder color */					$checkout_placeholder-color:{{ settings.checkout_placeholder-color }};
+/* fieldset border color */				$checkout_fieldset-border-color:{{ settings.checkout_fieldset-border-color }};
+/* fieldset background color */			$checkout_fieldset-bg-color:{{ settings.checkout_fieldset-bg-color }};
+/* field focus color */					$checkout_field_focus-color:{{ settings.checkout_field_focus-color }};
+/* field padding */						$checkout_field-padding:{{ settings.checkout_field-padding }};
+/* field error background */			$checkout_field-error-bg-color:{{ settings.checkout_field-error-bg-color }};
+/* field error color */					$checkout_field-error-color:{{ settings.checkout_field-error-color }};
+/* field error label color */			$checkout_field-error-label-color:{{ settings.checkout_field-error-label-color }};
+/* field error placeholder color */		$checkout_field-error-placeholder-color:{{ settings.checkout_field-error-placeholder-color }};
+
+/*==============================BUTTON VARS ==============================================/*
+/* button font-size */					$checkout_btn-font-size:{{ settings.checkout_btn-font-size }};
+/* button-padding */					$checkout_btn-padding:{{ settings.checkout_btn-padding }};
+/* button focus-bg-color */				$checkout_btn-focus-bg-color:{{ settings.checkout_btn-focus-bg-color }};
+/* button focus-color */				$checkout_btn-focus-color:{{ settings.checkout_btn-focus-color }};
+/* button text transform*/				$checkout_btn-text-transform:{{ settings.checkout_btn-text-transform }};
+
+/* inset button bg-color*/				$checkout_btn-inset-bg-color:{{ settings.checkout_btn-inset-bg-color }};
+/* inset button color*/					$checkout_btn-inset-color:{{ settings.checkout_btn-inset-color }};
+/* inset button font-size*/				$checkout_btn-inset-font-size:{{ settings.checkout_btn-inset-font-size }};
+/* inset button hover-bg-color*/		$checkout_btn-inset-hover-bg-color:{{ settings.checkout_btn-inset-hover-bg-color }};
+/* inset button hover-color*/			$checkout_btn-inset-hover-color:{{ settings.checkout_btn-inset-hover-color }};
+/* inset button top-position*/			$checkout_btn-inset-top-position:{{ settings.checkout_btn-inset-top-position }};
+/* inset button padding*/				$checkout_btn-inset-padding:{{ settings.checkout_btn-inset-padding }};
+
+/*==============================PAYMENT DUE VARS ==============================================/*
+/* Price color*/						$checkout_payment-due-color:{{ settings.checkout_payment-due-color }};
+/* Price font-size*/					$checkout_payment-due-font-size:{{ settings.checkout_payment-due-font-size }};
+/* currency bg color */					$checkout_payment-due-currency-bg-color:{{ settings.checkout_payment-due-currency-bg-color }};
+/* currency color	 */					$checkout_payment-due-currency-color:{{ settings.checkout_payment-due-currency-color }};
+/* Currency Font Size */				$checkout_payment-due-currency-font-size:{{ settings.checkout_payment-due-currency-font-size }};
+/*================================== GIFT CARDS AND DISCOUNTS ==================================*/
+/* Gift Cards Font Size */				$checkout_giftcard-font-size:{{ settings.checkout_giftcard-font-size }};
+/* Gift Cards Background Color */		$checkout_giftcard-bg-color:{{ settings.checkout_giftcard-bg-color }};
+/* Gift Cards Text Color */				$checkout_giftcard-txt-color:{{ settings.checkout_giftcard-txt-color }};
+/* Gift Cards Text Transform */			$checkout_giftcard-txt-transform:{{ settings.checkout_giftcard-txt-transform }};
+/* Discount Background Color */			$checkout_discount-bg-color:{{ settings.checkout_discount-bg-color }};
+/* Discount Link Size */				$checkout_discount-link-size:{{ settings.checkout_discount-link-size }};
+/* Discount Link Color */				$checkout_discount-link-color:{{ settings.checkout_discount-link-color }};
+/* Discount link Hover Color */			$checkout_discount-link-hover-color:{{ settings.checkout_discount-link-hover-color }};
+/*==============================LAYOUT VARS ==============================================/*
+/* header background color*/			$checkout_header-background-color:{{ settings.checkout_header-background-color }};
+/* header wrap background color */		$checkout_header-wrap-background-color:{{ settings.checkout_header-wrap-background-color }};
+/* header padding */					$checkout_header-padding:{{ settings.checkout_header-padding }};
+/* header margin */						$checkout_header-margin:{{ settings.checkout_header-margin }};
+/* shop name color */					$checkout_shop-name-color:{{ settings.checkout_shop-name-color }};
+/* logo image max-width */				$checkout_shop-name-max-width:{{ settings.checkout_shop-name-max-width }};
+/* order summary background-color */	$checkout_order-summary-background-color:{{ settings.checkout_order-summary-background-color }};
+/* order summary border-color */		$checkout_order-summary-border-color:{{ settings.checkout_order-summary-border-color }};
+/* order summary color */				$checkout_order-summary-color:{{ settings.checkout_order-summary-color }};
+/* main background color */				$checkout_main-bg-color : {{ settings.checkout_main-bg-color }};
+/* section border color */				$checkout_section-border-color:{{settings.checkout_section-border-color}};
+
+/* footer background-color */			$checkout_footer-bg-color:{{ settings.checkout_footer-bg-color }};
+/* footer wrap background color */		$checkout_footer-wrap-bg-color:{{ settings.checkout_footer-wrap-bg-color }};
+/* footer padding*/						$checkout_footer-padding:{{ settings.checkout_footer-padding }};
+/* footer wrap padding */				$checkout_footer-fake-margin:{{ settings.checkout_footer-fake-margin }};
+/* footer top-border-color*/			$checkout_footer-top-border-color:{{ settings.checkout_footer-top-border-color }};
+/* footer href-color*/					$checkout_footer-href-color:{{ settings.checkout_footer-href-color }};
+/* footer href-hover-color*/			$checkout_footer-href-hover-color:{{ settings.checkout_footer-href-hover-color }};
+/* footer text-color*/					$checkout_footer-text-color:{{ settings.checkout_footer-text-color }};
+/* footer font-size*/					$checkout_footer-font-size:{{ settings.checkout_footer-font-size }};
+/* footer text transform */				$checkout_footer-text-transform:{{ settings.checkout_footer-text-transform }};
+/* footer link separator */				{% if settings.checkout_footer-link-separator != blank %}
+											$checkout_footer-link-separator:"{{ settings.checkout_footer-link-separator }}";
+										{% endif %}
+/*==============================WRAP VARS ==============================================/*
+/* desktop wrap */						$checkout_desktop-wrap:{{settings.checkout_desktop-wrap}};
+/* desktop wrap padding */				$checkout_desktop-wrap-padding:{{settings.checkout_desktop-wrap-padding}};
+/* wrap background color */				$checkout_wrap-bg-color:{{ settings.checkout_wrap-bg-color }};
+
+body, button, input, select, textarea {
+  font-family: $tricky_var-font-stack;
+  color:$tricky_var-primary-color;
+}
+
+/*========================== the temple of the soul ===============================*/
+html{font-family:$tricky_var-font-stack;font-size:$checkout_base-font-size;}
+@media all and (min-width: 600px){
+	html{font-size:$checkout_base-font-size;}
+}
+body{margin:0}
+
+/*================================= HREFS =========================================*/
+a:active,
+a:hover{outline:0}
+a{
+	color:$tricky_var-href-normal-color;
+	text-decoration:none;
+}
+a:hover,a:focus{color:$tricky_var-href-hover-color;outline:0}
+
+/*===========================general Mambo jambo===================================*/
+.money{color:#8fc243}
+.alternative-payment-methods__btn { border:0 none !important;}/* srs. fuck you Elon */
+
+/*================================ selections =====================================*/
+::-moz-selection{background:$tricky_var-selection-bg-color;color:$checkout_selection-color;}
+::selection{background:$tricky_var-selection-bg-color;color:$checkout_selection-color;}
+
+/*===================================Buttons ======================================*/
+button,input,optgroup,select,textarea{color:$tricky_var-primary-color;font:inherit;margin:0}
+button,select{text-transform:none}
+
+/* ================================== Headings ====================================*/
+h1,h2,h3,h4,h5,h6{
+	margin:0;font-weight:400;
+	text-transform:normal;
+	letter-spacing:normal;
+	color:$checkout_headings-color;
+	text-transform: $checkout_heading-text-transform;
+	padding:$checkout_heading-padding;
+}
+
+.order-summary__section.order-summary__section--header > h3 {
+    padding-bottom: 0;
+    padding-top: 0;
+}
+
+h1,h2{font-size:$checkout_h1-font-size;}
+h3,h4{font-size:$checkout_h3-font-size}
+h5,h6{font-size:$checkout_h5-font-size}
+
+/*=================================== paragraphs ==================================*/
+p{
+	color:$tricky_var-primary-color;
+	margin:0;
+	line-height:$tricky_var-line-height;
+	margin-bottom:1.5em
+}
+p:last-child{margin-bottom:0}
+strong{color:$tricky_var-primary-color;}
+
+
+/*================================= FORM related ==================================*/
+fieldset{
+	border:1px $checkout_border-style #c0c0c0;
+	margin:0 2px;
+	padding:0.35em 0.625em 0.75em
+}
+legend{border:0;padding:0}
+optgroup{font-weight:bold}
+
+label{color:$checkout_label-color;line-height:$tricky_var-line-height;}
+label small{font-size:1em;color:$checkout_label-color;}
+input,select{color:$tricky_var-primary-color;}
+input[type="text"],input[type="tel"],input[type="email"],input[type="password"],select{line-height:$tricky_var-line-height;}
+input[type="text"]:-webkit-autofill,input[type="tel"]:-webkit-autofill,input[type="email"]:-webkit-autofill,input[type="password"]:-webkit-autofill,select:-webkit-autofill{
+	-webkit-text-fill-color:$tricky_var-primary-color;
+	-webkit-box-shadow:0 0 0 50px #fff inset;
+	box-shadow:0 0 0 50px #fff inset
+}
+::-webkit-input-placeholder{color:$checkout_placeholder-color;}
+:-moz-placeholder{color:$checkout_placeholder-color;}
+::-moz-placeholder{color:$checkout_placeholder-color;}
+:-ms-input-placeholder{color:$checkout_placeholder-color;}
+
+.boxsizing select{padding-right:2em}
+
+@media all and (max-width: 599px){
+	.chrome input[type='checkbox'],.safari input[type='checkbox']{
+		width:34px;
+		height:20px;
+		border:2px $checkout_border-style #ccc;
+		border-radius:$checkout_border-radius;
+		background:#ccc;
+	}
+	.chrome input[type='checkbox']:focus,.safari input[type='checkbox']:focus{border-color:#bababa}
+	.chrome input[type='checkbox']:checked,.safari input[type='checkbox']:checked{background:#2a9dcc;border-color:#2a9dcc}
+	.chrome input[type='checkbox']:checked:after,.safari input[type='checkbox']:checked:after{left:14px}
+	.chrome input[type='checkbox']:checked:focus,.safari input[type='checkbox']:checked:focus{border-color:#2486ae}
+	.chrome input[type='checkbox']:after,.safari input[type='checkbox']:after{content:"";display:block;position:absolute;top:0;left:0;width:16px;height:16px;background:#fff;border-radius:50%;-webkit-transition:all 0.15s cubic-bezier(0, -0.5, 0, 1);transition:all 0.15s cubic-bezier(0, -0.5, 0, 1)}
+	.chrome input[type='checkbox']+label,.safari input[type='checkbox']+label{vertical-align:5px;margin-left:.5em}
+}
+
+@media all and (min-width: 600px){
+	.chrome input[type="checkbox"],.safari input[type="checkbox"]{border-radius:$checkout_border-radius;width:18px;height:18px;border:1px $checkout_border-style #d8d8d8;vertical-align:-4px;-webkit-transition:-webkit-box-shadow 0.1s cubic-bezier(0.3, 0, 0, 1.2),border-color 0.1s cubic-bezier(0.3, 0, 0, 1.2);transition:box-shadow 0.1s cubic-bezier(0.3, 0, 0, 1.2),border-color 0.1s cubic-bezier(0.3, 0, 0, 1.2)}
+	.chrome input[type="checkbox"]:hover,.safari input[type="checkbox"]:hover{border-color:#ccc}
+	.chrome input[type="checkbox"]:focus,.safari input[type="checkbox"]:focus{-webkit-box-shadow:0 0 0 2px #2a9dcc;box-shadow:0 0 0 2px #2a9dcc;border-color:transparent}
+	.chrome input[type="checkbox"]:checked:after,.safari input[type="checkbox"]:checked:after{-webkit-transform:scale(1);-ms-transform:scale(1);transform:scale(1);opacity:1;-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";filter:alpha(opacity=100);visibility:visible}
+	.chrome input[type="checkbox"]:after,.safari input[type="checkbox"]:after{content:"";display:block;position:absolute;left:-1px;top:-1px;width:18px;height:18px;-webkit-transform:scale(0.2);-ms-transform:scale(0.2);transform:scale(0.2);-webkit-transition:all 0.2s cubic-bezier(0.3, 0, 0, 1.2);transition:all 0.2s cubic-bezier(0.3, 0, 0, 1.2);background-image:url(//cdn.shopify.com/s/assets/checkout/icons/ico-check-blue.svg-475cfbaeeead1640eb8ec302b1ec6c88.png);background-image:url(//cdn.shopify.com/s/assets/checkout/icons/ico-check-blue-475cfbaeeead1640eb8ec302b1ec6c88.svg),none;background-position:center center;background-repeat:no-repeat;opacity:0;-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";filter:alpha(opacity=0);visibility:hidden}
+}
+
+.radio-group input[type="radio"]{position:absolute;top:.9em;left:1em}
+.ie .radio-group input[type="radio"]{margin-top:3px}
+.firefox .radio-group input[type="radio"]{margin-top:5px}
+.radio-group input[type="radio"]+label{padding-left:1.75em}
+.safari .radio-group input[type="radio"]+label,
+.chrome .radio-group input[type="radio"]+label{padding-left:2.25em}
+.radio-group label{width:auto !important}input[type="radio"]{float:left}
+.firefox input[type="radio"]{margin-top:3px}
+.chrome input[type="radio"],.safari input[type="radio"]{-webkit-backface-visibility:hidden;backface-visibility:hidden;-webkit-appearance:none;display:block;width:20px;height:20px;margin:0;border:1px $checkout_border-style #ccc;border-radius:50%;cursor:pointer;-webkit-box-shadow:0 0 0 0 #2a9dcc inset;box-shadow:0 0 0 0 #2a9dcc inset;-webkit-transition:-webkit-box-shadow 0.3s cubic-bezier(0.3, 0, 0, 1.2),background-color 0.3s cubic-bezier(0.3, 0, 0, 1.2),border-color 0.3s cubic-bezier(0.3, 0, 0, 1.2);transition:box-shadow 0.3s cubic-bezier(0.3, 0, 0, 1.2),background-color 0.3s cubic-bezier(0.3, 0, 0, 1.2),border-color 0.3s cubic-bezier(0.3, 0, 0, 1.2)}
+.chrome input[type="radio"]:after,.safari input[type="radio"]:after{content:"";display:block;width:20px;height:20px;margin-left:-1px;margin-top:-1px;background-position:center center;border-radius:50%;opacity:0;visibility:hidden;-webkit-transform:scale(0.2);-ms-transform:scale(0.2);transform:scale(0.2);-webkit-transition:opacity 0.2s cubic-bezier(0.3, 0, 0, 1.2) 0.1s,visibility 0.2s cubic-bezier(0.3, 0, 0, 1.2) 0.1s,-webkit-transform 0.2s cubic-bezier(0.3, 0, 0, 1.2) 0.1s;transition:opacity 0.2s cubic-bezier(0.3, 0, 0, 1.2) 0.1s,visibility 0.2s cubic-bezier(0.3, 0, 0, 1.2) 0.1s,transform 0.2s cubic-bezier(0.3, 0, 0, 1.2) 0.1s;background-image:url(//cdn.shopify.com/s/assets/checkout/icons/ico-check-white.svg-38c64285d92e39f89e95d614844967fa.png);background-image:url(//cdn.shopify.com/s/assets/checkout/icons/ico-check-white-38c64285d92e39f89e95d614844967fa.svg),none;background-position:center center;background-repeat:no-repeat}
+.chrome input[type="radio"]:hover,.safari input[type="radio"]:hover{border-color:#b3b3b3}
+.chrome input[type="radio"]:focus,.safari input[type="radio"]:focus{outline:none}
+.chrome input[type="radio"]:checked,.safari input[type="radio"]:checked{background-color:#2a9dcc;border-color:#2a9dcc;-webkit-box-shadow:0 0 0 10px #2a9dcc inset;box-shadow:0 0 0 10px #2a9dcc inset}
+.chrome input[type="radio"]:checked:after,.safari input[type="radio"]:checked:after{opacity:1;visibility:visible;-webkit-transform:scale(1);-ms-transform:scale(1);transform:scale(1)}
+.chrome input[type="radio"]:checked:hover,.safari input[type="radio"]:checked:hover{border-color:#2a9dcc}
+@media all and (min-width: 600px){
+	.radio-group input[type="radio"]{
+		top:1.125em;
+		left:$checkout_field-padding
+	}
+}
+
+
+/*==================================== Fieldsets ==================================*/
+.fieldset{
+	border:1px $checkout_border-style $checkout_fieldset-border-color;
+	border-radius:$checkout_border-radius;
+	background:$checkout_fieldset-bg-color;
+	margin-bottom:1.5em
+}
+.fieldset:last-child{margin-bottom:0}
+.field{
+	background: $checkout_fieldset-bg-color;
+	border-top:1px $checkout_border-style $checkout_fieldset-border-color;
+}
+
+.field, .fieldset > .field:last-child, .fieldset > .field-group:last-child, .fieldset > .field-group:last-child > .field:last-child, .fieldset > .field-group:last-child > .field-group:last-child > .field:last-child{
+	border-radius:$checkout_border-radius !important;
+}
+
+@media all and (min-width: 600px){
+	.field{
+		padding-left:$checkout_field-padding;
+		padding-right:0
+	}
+}
+
+.field__icon{position:absolute;top:50%;right:1em}
+@media all and (min-width: 600px){
+	.field__icon{right:$checkout_field-padding}
+}
+
+.field--has-inset-btn input[type="text"],.field--has-inset-btn input[type="tel"],.field--has-inset-btn input[type="email"],.field--has-inset-btn input[type="password"],.field--has-inset-btn select{
+	width:22%;
+	padding-right:4.5em
+}
+.boxsizing .field--has-inset-btn input[type="text"],.boxsizing .field--has-inset-btn input[type="tel"],.boxsizing .field--has-inset-btn input[type="email"],.boxsizing .field--has-inset-btn input[type="password"],.boxsizing .field--has-inset-btn select{
+	width:65%
+}
+.field--has-inset-btn .field__error-message{padding-right:5em}
+.field--has-radio-button{padding-left:3.125em}
+@media all and (min-width: 600px){
+	.field--has-radio-button{padding-left:3.375em}
+}
+.field--has-radio-button input[type="radio"]{position:absolute;top:1em;left:1em}
+@media all and (min-width: 600px){
+	.field--has-radio-button input[type="radio"]{top:$checkout_field-padding}
+}
+@media all and (min-width: 600px){
+	.field--has-radio-button input[type="radio"]{left:$checkout_field-padding}
+}
+
+.field__inner--horizontal-padding,.field label,.field input[type="text"],.field input[type="tel"],.field input[type="email"],.field input[type="password"],.field select{
+	padding-top:$checkout_field-padding;
+	padding-bottom:$checkout_field-padding;
+}
+@media all and (min-width: 600px){
+	.field__inner--horizontal-padding,.field label,.field input[type="text"],.field input[type="tel"],.field input[type="email"],.field input[type="password"],.field select{
+		padding-top:$checkout_field-padding;
+	}
+}
+@media all and (min-width: 600px){
+	.field__inner--horizontal-padding,.field label,.field input[type="text"],.field input[type="tel"],.field input[type="email"],.field input[type="password"],.field select{
+		padding-bottom:$checkout_field-padding;
+	}
+}
+.field label{
+	width:35%;
+	float:left;
+	color: $checkout_label-color;
+}
+.field label .icon{margin-left:.5em}
+.field .label--full-width{width:100%}
+
+input[type="text"],input[type="tel"],input[type="email"],input[type="password"],select,.select-group{
+	width:65%;
+	float:left
+}
+.select-group{position:relative}
+.select-group:after{
+	content:"";display:block;
+	background:#e5e5e5;
+	position:absolute;top:50%;
+	left:50%;
+	width:1px;
+	height:24px;
+	margin-top:-12px;
+	margin-left:-0.5px
+}
+.select-group select{width:44%;float:right}
+.select-group select:first-child{float:left}
+.field-group--has-subfields{background-color:$checkout_fieldset-bg-color;}
+.field--blank-slate{text-align:center;padding:2em}
+@media all and (min-width: 600px){
+	.field--blank-slate{padding:2.5em}
+}
+
+.field--blank-slate .icon{display:block;margin:0 auto 1.5em}
+.field--error{
+	background:$checkout_field-error-bg-color;
+	border-radius:$checkout_border-radius !important;
+}
+.boxshadow .field--error{
+	border:none;
+	-webkit-box-shadow:0 0 0 0;
+	box-shadow:0 0 0 0;
+}
+
+.field--error input, .field--error select {
+	color: $checkout_field-error-color;
+}
+.field--error label {color: $checkout_field-error-label-color;}
+.field--error ::-webkit-input-placeholder{color:$checkout_field-error-placeholder-color;}
+.field--error :-moz-placeholder{color:$checkout_field-error-placeholder-color;}
+.field--error ::-moz-placeholder{color:$checkout_field-error-placeholder-color;}
+.field--error :-ms-input-placeholder{color:$checkout_field-error-placeholder-color;}
+.field--error label,.field--error input[type="text"],.field--error input[type="tel"],.field--error input[type="email"],.field--error input[type="password"],.field--error select,.field--error .applied-gift-card{padding-bottom:0.5em}
+@media all and (min-width: 600px){
+	.field--error label,.field--error input[type="text"],.field--error input[type="tel"],.field--error input[type="email"],.field--error input[type="password"],.field--error select,.field--error .applied-gift-card{padding-bottom:0.625em}
+}
+
+.field--error .field__error-message{display:block}
+.field__error-message{color:$checkout_field-error-color;}
+@media all and (min-width: 600px){
+	.field__error-message{padding-bottom:$checkout_field-padding}
+}
+
+.boxshadow .field--focus{
+	z-index:99;
+	-webkit-box-shadow:0 0 0 2px $checkout_field_focus-color;
+			box-shadow:0 0 0 2px $checkout_field_focus-color;
+	border-color:transparent;
+	border-radius:$checkout_border-radius !important
+		}
+@media all and (min-width: 600px){
+	.field--error:after{
+		content:">";
+		display:inline-block;
+		font-family:'Checkout Symbols';
+		font-size:$checkout_field-padding;
+		color:$checkout_field-error-bg-color;
+		position:absolute;
+		top:10px;
+		left:-2em;
+		padding:0 .25em;
+	}
+}
+
+
+/* ==================================== Tables ====================================*/
+table{border-collapse:collapse;border-spacing:0}
+table{width:100%;border-collapse:collapse;border-spacing:0;border-bottom:1px $checkout_border-style #ededed}
+td,th{padding:0}.js [data-hidden-if-js]{display:none}.no-js [data-shown-if-js]{display:none}
+th{color:#555;text-align:center;font-weight:500;padding-bottom:1em;border-bottom:1px $checkout_border-style #ededed}
+th:first-child{text-align:left}
+th:last-child{text-align:right}
+tr:first-child td{border-top:none}
+tr td{border-top:1px $checkout_border-style #ededed}
+td{color:#999;text-align:center;padding:1.5em 0}
+td:first-child{text-align:left}td:last-child{text-align:right}
+td small{color:#ccc;display:block;font-size:11px;font-size:0.875rem}
+td strong{font-weight:500;color:#777}
+
+@media all and (min-width: 600px){
+	td{padding:2em 0}
+}
+
+/*=============================== Inventory Issues ================================*/
+.inventory-issues-table .cell--quantity{text-align:right}
+.inventory-issues-table .cell--quantity .quantity{display:inline-block;margin-bottom:.2em}
+.inventory-issues-table .product__info{margin:.4em 0}
+.status-label{padding-left:20px;background-position:center left !important}
+.status-label--soldout{color:#ee7272;background-image:url(//cdn.shopify.com/s/assets/checkout/icons/status-sold-out.svg-50a91adf0f7b1558ed4c01b30acbacf8.png);background-image:url(//cdn.shopify.com/s/assets/checkout/icons/status-sold-out-50a91adf0f7b1558ed4c01b30acbacf8.svg),none;background-position:center center;background-repeat:no-repeat}
+.status-label--reduced{color:#e7a321;background-image:url(//cdn.shopify.com/s/assets/checkout/icons/status-reduced.svg-03c1006c9e82dcc718d5761f3a4ea638.png);background-image:url(//cdn.shopify.com/s/assets/checkout/icons/status-reduced-03c1006c9e82dcc718d5761f3a4ea638.svg),none;background-position:center center;background-repeat:no-repeat}
+
+@media all and (min-width: 600px){
+	.inventory-issues-table .cell--status{position:relative}
+	.inventory-issues-table .cell--status .btn--delete{float:none;position:absolute;right:-45px;top:50%;margin-top:-8px}
+	.inventory-issues-table .cell--quantity{text-align:center}
+	.inventory-issues-table .cell--status{text-align:right}
+}
+
+@media all and (max-width: 599px){
+	.inventory-issues-table .cell--status{display:none}
+}
+
+@media screen and (max-width: 999px){
+	.inventory-issues-table .cell--price{display:none}
+}
+
+/*=============================== Thank you Section ===============================*/
+.section--thank-you{text-align:center}
+.section--thank-you p strong{display:block;margin-top:.5em}
+.section--thank-you .svg+h3{margin:1em auto .5em}
+.section--thank-you .btn+p{margin-top:1.5em}
+
+
+/*=============================== CHECKOUT STRUCTURE ===============================
+									[1.0] : Header
+									[2.0] : Main
+									[3.0] : Footer
+===================================================================================*/
+
+/*===============================Ever-present wraps================================*/
+.wrap{
+	-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;
+	background: $checkout_wrap-bg-color;
+}
+
+.footer .wrap{
+	background:$checkout_footer-wrap-bg-color;
+}
+
+.footer .wrap ul, .footer .wrap p {
+	padding:$checkout_footer-fake-margin;
+}
+
+.header .wrap {
+	{% if settings.checkout_header_bg != blank %}
+			background: none repeat scroll 0 0 transparent;
+	{% else %}
+			background:$checkout_header-wrap-background-color;
+	{% endif %}
+	position: relative;
+	z-index: 1;
+}
+
+@media all and (min-width: 600px){
+	.wrap{width:73%;padding:0 12.5%}
+}
+
+@media screen and (min-width: 800px){
+	.wrap{width:60%}
+}
+
+@media screen and (min-width: 1000px){
+	.wrap{padding:$checkout_desktop-wrap-padding;width:auto;max-width:$checkout_desktop-wrap;}
+}
+
+@media screen and (min-width: 1100px){
+	.wrap{padding:$checkout_desktop-wrap-padding;}
+}
+
+/*=========================== Header and shop ID [1.1] ============================*/
+.header{
+	padding:$checkout_header-padding;
+	position:relative;zoom:1;
+	overflow:hidden;
+	background:$checkout_header-background-color;
+}
+
+.header .wrap .shop{
+		margin:$checkout_header-margin;
+}
+
+.header__backdrop {
+	position:absolute;
+	top:0; left:0;
+	width:100%;
+	height:100%;
+}
+
+{% if settings.checkout_header_bg != blank %}
+	.header__backdrop {
+	  background-image: url( {{'checkout_header_bg.png' | asset_url }});
+	  background-position: center top;
+	  background-repeat: repeat;
+	  background-size: auto auto;
+	}
+{% else %}
+	.header__backdrop {
+		background:$checkout_header-background-color;
+	}
+{% endif %}
+
+
+
+.header .icon--lock{display: none;}
+.shop{
+	width: 100%;
+	/* center the header optional */
+	{% if settings.checkout_center_header_elems %}
+		float: none;
+  		text-align: center;
+	{% endif %}
+}
+.shop__name{
+	color:$checkout_shop-name-color;
+}
+
+.shop__desc {
+    cursor: default;
+
+    {% if settings.checkout_center_header_elems %}
+		float: none;
+		margin-top:10px;
+	{% else %}
+		float: right;
+	{% endif %}
+
+    font-size: $checkout_shop-desc-font-size;
+    text-transform: uppercase;
+}
+
+.shop__desc{color:$checkout_shop-desc-color;}
+.rgba .shop__desc{color:$checkout_shop-desc-color;}
+.shop__logo{
+
+	{% if settings.checkout_center_header_elems %}
+		 margin: 0 auto;
+  	{% else %}
+		float: left;
+	{% endif %}
+
+
+}
+.shop__logo+.shop__desc{
+	{% if settings.checkout_center_header_elems %}
+		margin-top:10px;
+	{% else %}
+		margin-top:0;
+	{% endif %}
+}
+
+@media all and (min-width: 600px){
+	.header{padding:$checkout_header-padding;}
+	.shop__logo{max-width:$checkout_shop-name-max-width;}
+	.shop__desc {
+    {% if settings.checkout_center_header_elems %}
+		float: none;
+		margin-top:10px;
+	{% else %}
+		float: right;
+	{% endif %}
+
+    font-size: $checkout_shop-desc-font-size;
+    text-transform: uppercase;
+	color:$checkout_shop-desc-color;
+	}
+}
+
+@media screen and (min-width: 1000px){
+	.header{padding:$checkout_header-padding;}
+	.shop__desc {
+    {% if settings.checkout_center_header_elems %}
+		float: none;
+		margin-top:10px;
+	{% else %}
+		float: right;
+	{% endif %}
+
+    font-size: $checkout_shop-desc-font-size;
+    text-transform: uppercase;
+	color:$checkout_shop-desc-color;
+	}
+}
+
+
+
+/*================================== Main [2.1] ===================================*/
+.main, #main{
+	background: $checkout_main-bg-color;
+}
+
+#checkout{counter-reset:checkout-step}
+@media screen and (min-width: 1000px){
+	#checkout{display:block;float:left;padding-right:30em;margin-top:1.125em;width:100%;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box}
+}
+
+@media screen and (min-width: 1100px){
+	#checkout{padding-right:36em}
+}
+
+/*================================= Footer [3.1] ==================================*/
+.footer{
+	padding:$checkout_footer-padding;
+	border-top:1px $checkout_border-style $checkout_footer-top-border-color;
+	background:$checkout_footer-bg-color;
+	text-transform: $checkout_footer-text-transform;
+}
+.boxshadow .footer {
+    box-shadow: 0 0 0;
+}
+.rgba .footer{
+	background:$checkout_footer-bg-color;
+}
+.footer a{
+	color:$checkout_footer-href-color;
+}
+.footer:hover a:hover{
+	color:$checkout_footer-href-hover-color;
+}
+.footer__copyright{
+	color:$checkout_footer-text-color;
+	font-size:$checkout_footer-font-size;
+	margin-bottom:0
+}
+.footer__nav{margin-bottom:-$checkout_footer-padding;}
+.footer__nav:after,.footer__nav:before{content:"";display:table}
+.footer__nav:after{clear:both}
+.no-generatedcontent .footer__nav{overflow:hidden}
+.footer__nav__item{float:left;margin:0 0.25em 0 0}
+.footer__nav__item:first-child{margin-left:0}
+.footer__nav__item:last-child{margin-right:0}
+
+.footer__nav__link{
+	display:block;
+	border-bottom:medium none;
+	padding:.0;
+	margin-bottom:0;
+	font-size:$checkout_footer-font-size;
+}
+
+{% if settings.checkout_footer-link-separator != blank %}
+
+.footer__nav__item:first-child:before {
+    content: "";
+    margin: 0;
+}
+.footer__nav__item:before {
+    color: white;
+    content: $checkout_footer-link-separator;;
+    display: flex;
+    font-size: 80%;
+    margin: 0 0.5em;
+}
+
+.footer__nav__item {
+	 display: flex;
+    margin: 0 !important;
+}
+
+{% endif %}
+
+.footer__nav__link.is-active{
+	color:$checkout_footer-href-hover-color;
+	border-color:transparent;
+	font-weight:normal;
+	padding-bottom:0;
+}
+.footer:hover .footer__nav__link.is-active{color:$checkout_footer-href-hover-color}
+
+@media all and (min-width: 600px){
+	.footer{padding:$checkout_footer-padding 0}
+	.footer__copyright{font-size:$checkout_footer-font-size;margin-bottom:.0}
+	.footer__nav__link{
+		padding:.0;
+		margin-bottom:0;
+		font-size:$checkout_footer-font-size;
+	}
+}
+@media screen and (min-width: 1000px){
+	.footer__nav{float:right}
+	.footer__copyright{float:left;margin-bottom:0}
+	.footer__nav__link{
+		margin-bottom:0
+	}
+	.footer__nav__item{margin:0 0.5em 0 0}
+	.footer__nav__item:first-child{margin-left:0}
+}
+
+/*=========================== Recap Order Summary [2.2]============================*/
+.order-summary-recap{
+	background:$checkout_order-summary-background-color;
+	border-top:1px $checkout_border-style $checkout_order-summary-border-color;
+	border-bottom:1px $checkout_border-style $checkout_order-summary-border-color;
+	color:$checkout_order-summary-color;
+}
+.order-summary-recap strong{font-weight:500;color:$checkout_order-summary-color;}
+.order-summary-recap .product-list{
+	padding-bottom:1.5em;
+	padding-top:1.5em;
+}
+.order-summary-recap .product-list .product{
+	width:18em;
+	padding-bottom:0;
+	padding-top:0;
+	border-right:1px $checkout_border-style $checkout_order-summary-border-color;
+	padding-right:1.5em;
+	margin-left:1.5em
+}
+
+@media all and (min-width: 600px){
+	.order-summary-recap .product-list{padding-left:13.5%}
+	.order-summary-recap .product-list .product:first-child{margin-left:0}
+}
+@media screen and (min-width: 800px){
+	.order-summary-recap .product-list{padding-left:20%}
+}
+@media screen and (min-width: 1000px){
+	.order-summary-recap{display:none}
+}
+
+.order-summary{background:$checkout_order-summary-background-color;border-top:1px $checkout_border-style $checkout_order-summary-border-color;color:$checkout_order-summary-color;zoom:1}
+.order-summary strong{font-weight:500;color:$checkout_order-summary-color}
+.order-summary .product-list .product{padding-right:5.5em;border-top:1px $checkout_border-style $checkout_order-summary-border-color;}
+.order-summary .product-list .product:first-child{border-top:none;margin-top:-1.125em}
+.order-summary .product-list .product:last-child{margin-bottom:-1.125em}
+.order-summary__section{padding:1.5em;border-top:1px $checkout_border-style $checkout_order-summary-border-color;}
+.order-summary__section:first-child{border-top:none}
+.summary-body{border-top:1px $checkout_border-style $checkout_order-summary-border-color;}
+
+{% if settings.checkout_show_giftcard_msg != blank %}
+/* Gift Cards Custom Messaging */
+#gift-card,.current-step-contact_information .call-to-action:before{
+	display: block;
+	text-align: center;
+	padding: 1.5rem;
+	font-size: $checkout_giftcard-font-size;
+	text-transform: $checkout_giftcard-txt-transform;
+	background: $checkout_giftcard-bg-color;
+	border: 1px $checkout_border-style $checkout_order-summary-border-color;
+    border-radius: $checkout_border-radius;
+}
+
+.current-step-contact_information .call-to-action:before{
+	margin: 1.5rem 0;
+    width: auto;
+	clear: both;
+    float: none;
+   	white-space: pre-wrap;
+    color: $checkout_giftcard-txt-color;
+    content: "{{ settings.checkout_giftcard-msg | strip }}";
+}
+
+@media all and (max-width: 599px){
+	.current-step-contact_information .call-to-action:before{
+	    margin: 1.5rem;
+	}
+}
+
+
+
+{% endif %}
+
+/*Discount Code Custom Styles */
+#discount{
+	background: $checkout_discount-bg-color;
+}
+
+#discount a{
+	font-size: $checkout_discount-link-size;
+	color: $checkout_discount-link-color;
+}
+
+#discount a:hover{
+	color: $checkout_discount-link-hover-color;
+}
+
+
+.product-list .product{padding:1.125em 0}
+.product-list .product__image{margin-left:-6em;margin-right:0}
+.product-list .product__price{float:right;margin-right:-5.5em}
+.product-list .product--has-image{padding-left:6em}
+.product-list .product--has-image .product__info,.product-list .product--has-image .product__price{margin-top:.4em}
+
+.applied-discount{zoom:1}
+.applied-discount:after,.applied-discount:before{content:"";display:table}
+.applied-discount:after{clear:both}
+.no-generatedcontent .applied-discount{overflow:hidden}
+.applied-discount .btn.btn--delete{margin-top:1px}
+.applied-discount__status{float:left;width:16px;height:14px;margin-right:.25em;margin-top:1px}
+.success .applied-discount__status{background-image:url(//cdn.shopify.com/s/assets/checkout/icons/discount-success.svg-ea1be28356b330fd046d98ff3b38e80d.png);background-image:url(//cdn.shopify.com/s/assets/checkout/icons/discount-success-ea1be28356b330fd046d98ff3b38e80d.svg),none;background-position:center center;background-repeat:no-repeat}
+.warning .applied-discount__status{background-image:url(//cdn.shopify.com/s/assets/checkout/icons/discount-warning.svg-b5aa9d4c53cd183d1d909fa594da3ca1.png);background-image:url(//cdn.shopify.com/s/assets/checkout/icons/discount-warning-b5aa9d4c53cd183d1d909fa594da3ca1.svg),none;background-position:center center;background-repeat:no-repeat;margin-right:.4em}
+.applied-discount__code{float:left;font-weight:500;margin-right:.25em}
+.success .applied-discount__code{color:#8fc243}
+.warning .applied-discount__code{color:#ff6d6d}
+.applied-discount__price{float:right}
+.warning .applied-discount__price{color:#ccc;text-decoration:line-through}.total-line{margin-top:1em;zoom:1}
+.total-line:after,.total-line:before{content:"";display:table}
+.total-line:after{clear:both}
+.no-generatedcontent .total-line{overflow:hidden}
+
+.total-line:first-child{margin-top:0}
+.total-line h3{float:left}
+.total-line__name{float:left}
+.total-line__price{float:right}
+.total-line--total{border-top:1px $checkout_border-style $checkout_order-summary-border-color;margin-top:1em;padding-top:1em}
+
+.payment-due-container{zoom:1}
+.payment-due-container:after,.payment-due-container:before{content:"";display:table}
+.payment-due-container:after{clear:both}
+.no-generatedcontent .payment-due-container{overflow:hidden}
+.payment-due{line-height:$tricky_var-line-height;}
+.payment-due:after,.payment-due:before{content:"";display:table}
+.payment-due:after{clear:both}
+.no-generatedcontent .payment-due{overflow:hidden}
+.payment-due__label{float:left;margin-top:.25em}
+.payment-due__price{
+	float:right;
+	color:$checkout_payment-due-color;
+	line-height:$tricky_var-line-height;
+	font-size:$checkout_payment-due-font-size;
+	padding: 0.25em 0 0.2em;
+}
+.payment-due__currency{
+	float:right;
+	margin-right:.75em;
+	padding:0.25em 0.3em 0.2em;
+	background:$checkout_payment-due-currency-bg-color;
+	border-radius:$checkout_border-radius;
+	color:$checkout_payment-due-currency-color;
+	text-transform:uppercase;
+	font-size:$checkout_payment-due-currency-font-size;
+}
+
+.savings{display:block;border-top:1px $checkout_border-style $checkout_order-summary-border-color;text-align:center;color:$checkout_order-summary-color;margin:2em 0 -0.5em;padding-top:1em;font-size:11px;font-size:0.875rem}
+.order-number{float:right;color:#ccc;margin-top:-$checkout_field-padding}
+
+@media all and (min-width: 600px){
+	.order-summary{border-radius:$checkout_border-radius;border:1px $checkout_border-style $checkout_order-summary-border-color;margin-bottom:2em}
+	.order-summary .product-list .product{padding-top:1.5em;padding-bottom:1.5em}
+	.order-summary .product-list .product:first-child{margin-top:-1.5em}
+	.order-summary .product-list .product:last-child{margin-bottom:-1.5em}
+	.order-summary .payment-due-container .payment-due__label{padding:.5em 0;margin:0}
+	.order-summary .payment-due-container .payment-due__currency{margin-top:0em}
+	.order-summary .payment-due-container .payment-due__price{padding: 0.25em 0 0.2em;margin-top:0em;font-size:$checkout_payment-due-font-size;}
+}
+
+@media screen and (min-width: 1000px){
+	.order-summary{position:relative;width:28em;float:left;margin:2.5em 0 2.5em -28.25em}
+}
+
+
+@media screen and (min-width: 1100px){
+	.order-summary{width:31.75em;margin-left:-32em}
+}
+
+
+
+/*=====================================Tooltip ====================================*/
+.has-tooltip{position:relative}
+.has-tooltip:hover .tooltip,.has-tooltip.tooltip--is-displayed .tooltip{visibility:visible;opacity:1;-webkit-transform:rotateX(0deg) scale(1);transform:rotateX(0deg) scale(1);pointer-events:auto}
+.tooltip{-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;position:absolute;bottom:120%;left:50%;width:180px;margin:0 0 5px -90px;padding:.75em 1em;border-radius:5px;text-indent:0;white-space:normal;font-style:normal;font-weight:normal;line-height:$tricky_var-line-height;text-align:center;color:#fff;display:block;visibility:hidden;pointer-events:none;z-index:200;opacity:0;-webkit-transition:all 0.3s cubic-bezier(0.3, 0, 0, 1.2);transition:all 0.3s cubic-bezier(0.3, 0, 0, 1.2);-webkit-transform:rotateX(20deg) scale(0.8);transform:rotateX(20deg) scale(0.8);-webkit-transform-origin:center 120%;-ms-transform-origin:center 120%;transform-origin:center 120%;font-size:11px;font-size:0.875rem;background:#424242}
+.rgba .tooltip{background:rgba(68,68,68,0.9)}
+.tooltip:after{content:"";position:absolute;top:100%;left:50%;margin-left:-7px;width:0;border:7px $checkout_border-style transparent;border-top:5px $checkout_border-style #333;border-top-color:rgba(68,68,68,0.9)}
+
+@media all and (max-width: 599px){
+	.tooltip--left-on-mobile{left:-1em;margin-left:0;-webkit-transform-origin:15% 120%;-ms-transform-origin:15% 120%;transform-origin:15% 120%}
+	.tooltip--left-on-mobile:after{left:1em;margin-left:0}
+	.tooltip--right-on-mobile{left:auto;right:-1em;margin-left:0;-webkit-transform-origin:85% 120%;-ms-transform-origin:85% 120%;transform-origin:85% 120%}
+	.tooltip--right-on-mobile:after{left:auto;right:1em;margin-left:0}
+}
+
+/*===================================== Icons =====================================*/
+.ico,.icon--twitter,.icon--facebook,.icon--print,.icon--closed-box,i{background-position:center center;background-repeat:no-repeat;text-indent:100%;white-space:nowrap;display:inline-block}
+.ico-16,.header .icon--lock,.icon--lock-light,.icon--lock-dark{width:16px;height:16px;vertical-align:sub}
+.icon--lock-light{background-image:url(//cdn.shopify.com/s/assets/checkout/icons/ico-lock-light.svg-43ae095c49b61a571fbd6dffb717af37.png);background-image:url(//cdn.shopify.com/s/assets/checkout/icons/ico-lock-light-43ae095c49b61a571fbd6dffb717af37.svg),none;background-position:center center;background-repeat:no-repeat}
+.icon--lock-dark{
+	position: absolute;
+}
+.icon--twitter{text-indent:-999999px;overflow:hidden;width:20px;height:20px;background-image:url(//cdn.shopify.com/s/assets/checkout/icons/ico-twitter.svg-a757d625f06695200efb247cd55d963b.png);background-image:url(//cdn.shopify.com/s/assets/checkout/icons/ico-twitter-a757d625f06695200efb247cd55d963b.svg),none;background-position:center center;background-repeat:no-repeat}
+.icon--facebook{text-indent:-999999px;overflow:hidden;width:20px;height:20px;background-image:url(//cdn.shopify.com/s/assets/checkout/icons/ico-facebook.svg-cd23d50c88af881b992c23b1a3f0b095.png);background-image:url(//cdn.shopify.com/s/assets/checkout/icons/ico-facebook-cd23d50c88af881b992c23b1a3f0b095.svg),none;background-position:center center;background-repeat:no-repeat}
+.icon--print{text-indent:-999999px;overflow:hidden;width:20px;height:20px;margin-bottom:-5px;margin-right:0.25em;background-image:url(//cdn.shopify.com/s/assets/checkout/icons/ico-print.svg-98a7d11ad19624c5e7548d5829795fca.png);background-image:url(//cdn.shopify.com/s/assets/checkout/icons/ico-print-98a7d11ad19624c5e7548d5829795fca.svg),none;background-position:center center;background-repeat:no-repeat}
+.icon--inventory-issues{margin-bottom:1.5em}
+.icon--inventory-issues__box .arms line{stroke-dasharray:29px, 29px;stroke-dashoffset:29px;-webkit-animation:lines .2s .6s linear both;animation:lines .2s .6s linear both}
+.icon--inventory-issues__box .rectangle{stroke-dasharray:368px, 368px;stroke-dashoffset:368px;-webkit-animation:lines .5s .3s linear both;animation:lines .5s .3s linear both}
+.icon--inventory-issues__box .trapese{stroke-dasharray:179px, 179px;stroke-dashoffset:179px;-webkit-animation:lines .3s linear both;animation:lines .3s linear both}
+.icon--inventory-issues__box .lines line{stroke-dasharray:26px, 26px;stroke-dashoffset:26px}
+.icon--inventory-issues__box .lines line:nth-child(1){-webkit-animation:lines .2s .9s ease-in-out both;animation:lines .2s .9s ease-in-out both}
+.icon--inventory-issues__box .lines line:nth-child(2){-webkit-animation:lines .2s .7s ease-in-out both;animation:lines .2s .7s ease-in-out both}
+.icon--inventory-issues__box .lines line:nth-child(3){-webkit-animation:lines .2s .5s ease-in-out both;animation:lines .2s .5s ease-in-out both}
+.icon--inventory-issues__invisible-product{overflow:hidden;padding-top:40px;height:10px}
+.icon--inventory-issues__invisible-product svg,.icon--inventory-issues__invisible-product img{margin-top:-20px;-webkit-transition:margin-top .3s ease-in-out;transition:margin-top .3s ease-in-out;-webkit-animation:fadeInUp .6s .6s ease-in-out backwards;animation:fadeInUp .6s .6s ease-in-out backwards}
+.icon--inventory-issues:hover .icon--inventory-issues__invisible-product svg,.icon--inventory-issues:hover .icon--inventory-issues__invisible-product img{margin-top:-30px}
+.icon--inventory-issues__invisible-product rect{stroke-dasharray:8px, 4px;stroke-dashoffset:-41px}
+.icon--order-success svg path{-webkit-animation:checkmark .25s ease-in-out .7s backwards;animation:checkmark .25s ease-in-out .7s backwards}
+.icon--order-success svg circle{-webkit-animation:checkmark-circle .6s ease-in-out backwards;animation:checkmark-circle .6s ease-in-out backwards}
+.icon--info{width:20px;height:21px;vertical-align:sub;margin:-2px 0;background-image:url(//cdn.shopify.com/s/assets/checkout/icons/ico-question.svg-cc7d7ef9bb6e8018b6f640809ab2f5a9.png);background-image:url(//cdn.shopify.com/s/assets/checkout/icons/ico-question-cc7d7ef9bb6e8018b6f640809ab2f5a9.svg),none;background-position:center center;background-repeat:no-repeat}
+.icon--closed-box{width:68px;height:54px;padding:1em 0;background-image:url(//cdn.shopify.com/s/assets/checkout/icons/closed-box-small.svg-ab8cdac661889d1d7210b7472f02d830.png);background-image:url(//cdn.shopify.com/s/assets/checkout/icons/closed-box-small-ab8cdac661889d1d7210b7472f02d830.svg),none;background-position:center center;background-repeat:no-repeat}
+.icon--free-tag{background-image:url(//cdn.shopify.com/s/assets/checkout/icons/free-tag-small.svg-1b977fa54b7c821f20f48298e0db86b6.png);background-image:url(//cdn.shopify.com/s/assets/checkout/icons/free-tag-small-1b977fa54b7c821f20f48298e0db86b6.svg),none;background-position:center center;background-repeat:no-repeat;width:94px;height:46px}
+.icon--offsite{background-image:url(//cdn.shopify.com/s/assets/checkout/icons/offsite-small.svg-ed6bb53080fc8ba40e12fe0070f7c511.png);background-image:url(//cdn.shopify.com/s/assets/checkout/icons/offsite-small-ed6bb53080fc8ba40e12fe0070f7c511.svg),none;background-position:center center;background-repeat:no-repeat;width:102px;height:52px}
+.icon--spinner svg{-webkit-animation:rotate .6s .5s linear infinite;animation:rotate .6s .5s linear infinite}
+.icon--spinner svg circle{stroke-dasharray:76px, 76px;stroke-dashoffset:0;-webkit-animation:spinner_intro .3s .2s linear both;animation:spinner_intro .3s .2s linear both}
+
+@media all and (min-width: 600px){
+	.icon--closed-box{width:108px;height:85px;background-image:url(//cdn.shopify.com/s/assets/checkout/icons/closed-box.svg-db04108a11d3863557592f78129105da.png);background-image:url(//cdn.shopify.com/s/assets/checkout/icons/closed-box-db04108a11d3863557592f78129105da.svg),none;background-position:center center;background-repeat:no-repeat}
+	.icon--free-tag{background-image:url(//cdn.shopify.com/s/assets/checkout/icons/free-tag.svg-9c17d128f7cb2e53d3032c6ba581e645.png);background-image:url(//cdn.shopify.com/s/assets/checkout/icons/free-tag-9c17d128f7cb2e53d3032c6ba581e645.svg),none;background-position:center center;background-repeat:no-repeat;width:152px;height:80px}
+	.icon--offsite{background-image:url(//cdn.shopify.com/s/assets/checkout/icons/offsite.svg-50fbe338f0d42662b610262440eee18f.png);background-image:url(//cdn.shopify.com/s/assets/checkout/icons/offsite-50fbe338f0d42662b610262440eee18f.svg),none;background-position:center center;background-repeat:no-repeat;width:163px;height:81px}
+}
+
+.sharing-icons{list-style-type:none;padding:0;margin:0;text-align:center}
+.sharing-icons li{display:inline-block}
+.sharing-icons li a{display:inline-block;padding:0 .5em;opacity:.6}
+.sharing-icons li a:hover{opacity:1}
+
+/*==================================== Buttons ====================================*/
+.btn{display:inline-block;
+	padding:$checkout_btn-padding;
+	border-radius:$checkout_border-radius;
+	color:$tricky_var-btn-normal-color;
+	font-size:$checkout_btn-font-size;
+	background-color:$tricky_var-btn-normal-bg-color;
+	text-transform: $checkout_btn-text-transform;
+}
+.btn:focus{
+	background-color:$checkout_btn-focus-bg-color;
+	color:$checkout_btn-focus-color;
+}
+.btn:hover{
+	background-color:$tricky_var-btn-hover-bg-color;
+	color:$tricky_var-btn-hover-color;
+}
+.boxshadow .btn:focus{
+	background-color:$checkout_btn-focus-bg-color;
+	color:$checkout_btn-focus-color;
+}
+.boxshadow .btn:focus:hover{
+	background-color:$checkout_btn-focus-bg-color;
+}
+.btn.btn--primary{
+	padding:$checkout_btn-padding;
+	*padding:$checkout_btn-padding;
+	background-color:$tricky_var-btn-normal-bg-color;
+	color:$tricky_var-btn-normal-color
+}
+.btn.btn--primary:hover,.btn.btn--primary:focus{
+	background-color:$tricky_var-btn-hover-bg-color;
+	color:$tricky_var-btn-hover-color;
+}
+.boxshadow .btn.btn--primary:focus{
+	background-color:$checkout_btn-focus-bg-color;
+	color:$checkout_btn-focus-color;
+}
+.boxshadow .btn.btn--primary:focus:hover{
+	background-color:$checkout_btn-focus-bg-color;
+	color:$checkout_btn-focus-color;
+}
+
+.btn.btn--delete{
+	display:block;
+	width:16px;
+	height:16px;
+	border-radius:50%;
+	background-color:#bbb;
+	padding:0;margin:0 .5em;
+	float:left;
+	background-image:url(//cdn.shopify.com/s/assets/checkout/icons/clear.svg-431a06340220ab904594c24e494cb6d3.png);
+	background-image:url(//cdn.shopify.com/s/assets/checkout/icons/clear-431a06340220ab904594c24e494cb6d3.svg),none;
+	background-position:center center;
+	background-repeat:no-repeat;text-indent:100%;
+	white-space:nowrap;overflow:hidden;
+	background-color:#bbbbbb;
+	color:rgba(0,0,0,0.6)
+}
+.btn.btn--delete:hover,.btn.btn--delete:focus{
+	background-color:darkgray;
+	color:rgba(0,0,0,0.7)
+}
+.boxshadow .btn.btn--delete:focus{
+	background-color:#bbbbbb;
+}
+.boxshadow .btn.btn--delete:focus:hover{
+	background-color:darkgray
+}
+
+
+
+.btn.btn--inset{
+	text-transform:$checkout_btn-text-transform;
+	padding:$checkout_btn-inset-padding;
+	top:$checkout_btn-inset-top-position;
+	font-size:$checkout_btn-inset-font-size;
+}
+.js .btn.btn--inset:not(.btn--is-active),.js .btn.btn--inset:not(.btn--is-active):hover,.js .btn.btn--inset:not(.btn--is-active):focus,.js .btn.btn--inset:not(.btn--is-active):active{
+	background-color:$checkout_btn-inset-bg-color;
+	color:$checkout_btn-inset-color;
+	border:1px $checkout_border-style $checkout_btn-inset-color;
+	margin:-1px -1px 0 0;
+}
+
+@media all and (min-width: 600px){
+	.btn{
+		padding:$checkout_btn-padding;
+		*padding:$checkout_btn-padding;
+		font-size:$checkout_btn-font-size;
+	}
+	.btn.btn--inset{
+		padding:$checkout_btn-inset-padding;
+		*padding:$checkout_btn-inset-padding;
+		font-size:$checkout_btn-inset-font-size;
+	}
+}
+
+
+
+/*================================ Call to Action =================================*/
+.call-to-action{zoom:1}
+.call-to-action label{
+	color: $tricky_var-primary-color;
+}
+
+.call-to-action:after,
+.call-to-action:before{content:"";display:table}
+.call-to-action:after{clear:both}
+.no-generatedcontent .call-to-action{overflow:hidden}
+.step--completed .call-to-action{display:none}
+table+.call-to-action,.section__blank-slate+.call-to-action{margin-top:1em}
+.call-to-action p{text-align:center}
+.call-to-action p label{padding:.75em 0;display:inline-block}
+.call-to-action .btn+p,.call-to-action p+.btn{margin-top:1em}
+.call-to-action .back{text-align:center;padding-top:1em;display:block}
+
+@media all and (max-width: 599px){
+	.call-to-action label{display:block;position:relative;border:1px $checkout_border-style #d8d8d8;border-radius:$checkout_border-radius;text-align:left;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;padding:1.125em 1em 1em 3em;margin:0 0 1em}
+	.chrome .call-to-action label,.safari .call-to-action label{padding-left:4.5em;padding-bottom:1.125em}
+	.call-to-action label input[type='checkbox']{position:absolute;left:1em;top:1em}
+}
+
+@media all and (min-width: 600px){
+	table+.call-to-action,.section__blank-slate+.call-to-action{margin-top:1.5em}
+	.call-to-action .btn{float:right}
+	.call-to-action p{padding:1em 0;text-align:left;float:left}
+	.call-to-action p label{padding:0}
+	.call-to-action .btn+p,.call-to-action p+.btn{margin-top:0}
+	.call-to-action .back{padding:1em 0;text-align:left;float:left}
+	.call-to-action label{float:left;margin:$checkout_field-padding 0 0;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}
+	.call-to-action--final label{margin:1.5em 0 0}
+}
+
+/* ================================ Payment Metods ================================*/
+.payment-method{display:block;width:38px;height:24px;-webkit-backface-visibility:hidden;backface-visibility:hidden;-webkit-transition:opacity 0.5s cubic-bezier(0.3, 0, 0, 1.2);transition:opacity 0.5s cubic-bezier(0.3, 0, 0, 1.2);text-indent:100%;white-space:nowrap;overflow:hidden}
+
+.payment-method.american-express{background-image:url(//cdn.shopify.com/s/assets/checkout/icons/payment-icon-american-express.svg-467c77d517c8ba53ab7379ff66d4effc.png);background-image:url(//cdn.shopify.com/s/assets/checkout/icons/payment-icon-american-express-467c77d517c8ba53ab7379ff66d4effc.svg),none;background-position:center center;background-repeat:no-repeat}
+.payment-method.bitcoin{background-image:url(//cdn.shopify.com/s/assets/checkout/icons/payment-icon-bitcoin.svg-b307824d3111a42a544866dd0acd9779.png);background-image:url(//cdn.shopify.com/s/assets/checkout/icons/payment-icon-bitcoin-b307824d3111a42a544866dd0acd9779.svg),none;background-position:center center;background-repeat:no-repeat}
+.payment-method.bogus{background-image:url(//cdn.shopify.com/s/assets/checkout/icons/payment-icon-bogus.svg-720b963780b28c44b2b83cf3f6486bf7.png);background-image:url(//cdn.shopify.com/s/assets/checkout/icons/payment-icon-bogus-720b963780b28c44b2b83cf3f6486bf7.svg),none;background-position:center center;background-repeat:no-repeat}
+.payment-method.cash{background-image:url(//cdn.shopify.com/s/assets/checkout/icons/payment-icon-cash.svg-f1494874913aceab4ab1b870b0c1b141.png);background-image:url(//cdn.shopify.com/s/assets/checkout/icons/payment-icon-cash-f1494874913aceab4ab1b870b0c1b141.svg),none;background-position:center center;background-repeat:no-repeat}
+.payment-method.dankort{background-image:url(//cdn.shopify.com/s/assets/checkout/icons/payment-icon-dankort.svg-0cac1cec398d4ba26560e2a6a1a854dc.png);background-image:url(//cdn.shopify.com/s/assets/checkout/icons/payment-icon-dankort-0cac1cec398d4ba26560e2a6a1a854dc.svg),none;background-position:center center;background-repeat:no-repeat}
+.payment-method.diners-club{background-image:url(//cdn.shopify.com/s/assets/checkout/icons/payment-icon-diners-club.svg-d5c8fe08d729c2db8ce8b25a9dc91d80.png);background-image:url(//cdn.shopify.com/s/assets/checkout/icons/payment-icon-diners-club-d5c8fe08d729c2db8ce8b25a9dc91d80.svg),none;background-position:center center;background-repeat:no-repeat}
+.payment-method.discover{background-image:url(//cdn.shopify.com/s/assets/checkout/icons/payment-icon-discover.svg-b65518bca795d463eaeeb4d753910585.png);background-image:url(//cdn.shopify.com/s/assets/checkout/icons/payment-icon-discover-b65518bca795d463eaeeb4d753910585.svg),none;background-position:center center;background-repeat:no-repeat}
+.payment-method.forbrugsforeningen{background-image:url(//cdn.shopify.com/s/assets/checkout/icons/payment-icon-forbrugsforeningen.svg-47201f0ce12aaca5888915044ea4cbbf.png);background-image:url(//cdn.shopify.com/s/assets/checkout/icons/payment-icon-forbrugsforeningen-47201f0ce12aaca5888915044ea4cbbf.svg),none;background-position:center center;background-repeat:no-repeat}
+.payment-method.generic{background-image:url(//cdn.shopify.com/s/assets/checkout/icons/payment-icon-generic.svg-a0bcde2bd42a3175693be44763ab6a84.png);background-image:url(//cdn.shopify.com/s/assets/checkout/icons/payment-icon-generic-a0bcde2bd42a3175693be44763ab6a84.svg),none;background-position:center center;background-repeat:no-repeat}
+.payment-method.gift-card{background-image:url(//cdn.shopify.com/s/assets/checkout/icons/payment-icon-gift-card.svg-117495c5df0e4745c3ea99195b8291aa.png);background-image:url(//cdn.shopify.com/s/assets/checkout/icons/payment-icon-gift-card-117495c5df0e4745c3ea99195b8291aa.svg),none;background-position:center center;background-repeat:no-repeat}
+.payment-method.google-wallet{background-image:url(//cdn.shopify.com/s/assets/checkout/icons/payment-icon-google-wallet.svg-e98036f45278769838f8af03239f7322.png);background-image:url(//cdn.shopify.com/s/assets/checkout/icons/payment-icon-google-wallet-e98036f45278769838f8af03239f7322.svg),none;background-position:center center;background-repeat:no-repeat}
+.payment-method.jcb{background-image:url(//cdn.shopify.com/s/assets/checkout/icons/payment-icon-jcb.svg-8a5c33852f304a19dba8eecd2babcee0.png);background-image:url(//cdn.shopify.com/s/assets/checkout/icons/payment-icon-jcb-8a5c33852f304a19dba8eecd2babcee0.svg),none;background-position:center center;background-repeat:no-repeat}
+.payment-method.laser{background-image:url(//cdn.shopify.com/s/assets/checkout/icons/payment-icon-laser.svg-e42ddf53d65af4c0da9207e93f2de065.png);background-image:url(//cdn.shopify.com/s/assets/checkout/icons/payment-icon-laser-e42ddf53d65af4c0da9207e93f2de065.svg),none;background-position:center center;background-repeat:no-repeat}
+.payment-method.maestro{background-image:url(//cdn.shopify.com/s/assets/checkout/icons/payment-icon-maestro.svg-8a030ced50cb1f96729f0ad92ab140a2.png);background-image:url(//cdn.shopify.com/s/assets/checkout/icons/payment-icon-maestro-8a030ced50cb1f96729f0ad92ab140a2.svg),none;background-position:center center;background-repeat:no-repeat}
+.payment-method.master{background-image:url(//cdn.shopify.com/s/assets/checkout/icons/payment-icon-master.svg-fc933cae13b8db2fa845dea665bc647a.png);background-image:url(//cdn.shopify.com/s/assets/checkout/icons/payment-icon-master-fc933cae13b8db2fa845dea665bc647a.svg),none;background-position:center center;background-repeat:no-repeat}
+.payment-method.paypal{background-image:url(//cdn.shopify.com/s/assets/checkout/icons/payment-icon-paypal.svg-bf38893e91b01682197785b2c5cba193.png);background-image:url(//cdn.shopify.com/s/assets/checkout/icons/payment-icon-paypal-bf38893e91b01682197785b2c5cba193.svg),none;background-position:center center;background-repeat:no-repeat}
+.payment-method.solo{background-image:url(//cdn.shopify.com/s/assets/checkout/icons/payment-icon-solo.svg-5450c61cbc543fe02d2c5f880eb20a44.png);background-image:url(//cdn.shopify.com/s/assets/checkout/icons/payment-icon-solo-5450c61cbc543fe02d2c5f880eb20a44.svg),none;background-position:center center;background-repeat:no-repeat}
+.payment-method.switch{background-image:url(//cdn.shopify.com/s/assets/checkout/icons/payment-icon-switch.svg-82527cd41ed61eb7d5cab5140e83b643.png);background-image:url(//cdn.shopify.com/s/assets/checkout/icons/payment-icon-switch-82527cd41ed61eb7d5cab5140e83b643.svg),none;background-position:center center;background-repeat:no-repeat}
+.payment-method.visa{background-image:url(//cdn.shopify.com/s/assets/checkout/icons/payment-icon-visa.svg-0c2d73a6e30d91838e5807b970aed92b.png);background-image:url(//cdn.shopify.com/s/assets/checkout/icons/payment-icon-visa-0c2d73a6e30d91838e5807b970aed92b.svg),none;background-position:center center;background-repeat:no-repeat}
+.payment-method.bit_pay{background:url(//cdn.shopify.com/s/assets/checkout/offsite-gateway-logos/bit_pay-e4de7c47d129efa1619ad093d1eca8ea.png) no-repeat center center}
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi){
+	.payment-method.world_pay{background:url(//cdn.shopify.com/s/assets/checkout/offsite-gateway-logos/world_pay@2x-336f81d81a3fca0a50d303c2f44429cd.png) no-repeat center center;-webkit-background-size:contain;background-size:contain}
+}
+
+.payment-method.airpay{width:55px}
+.payment-method.bit_pay{width:67px}
+.payment-method.cashenvoy{width:114px}
+.payment-method.citrus{width:62px}
+.payment-method.coinbase{width:105px}
+.payment-method.direc_pay{width:116px}
+.payment-method.directebanking{width:79px}
+.payment-method.doku{width:24px}
+.payment-method.dwolla{width:96px}
+.payment-method.gestpay{width:51px}
+.payment-method.hi_trust{width:58px}
+.payment-method.ipay88{width:71px}
+.payment-method.klarna{width:83px}
+.payment-method.mollie_ideal{width:28px}
+.payment-method.moneybookers{width:45px}
+.payment-method.nochex{width:112px}
+.payment-method.pag_seguro{width:112px}
+.payment-method.pay_fast{width:89px}
+.payment-method.paydollar{width:39px}
+.payment-method.paypal_payments_advanced{width:94px}
+.payment-method.paypal{width:94px}
+.payment-method.payu_in_paisa{width:45px}
+.payment-method.payu_in{width:71px}
+.payment-method.pxpay{width:94px}
+.payment-method.sage_pay{width:105px}
+.payment-method.two_checkout{width:24px}
+.payment-method.valitor{width:150px}
+.payment-method.world_pay{width:128px}
+
+.field .payment-method{float:right;margin:-2px 0}
+.field--blank-slate .payment-method{display:inline-block !important;float:none !important;margin:0 .25em}
+.payment-methods{zoom:1}
+.payment-methods:after,.payment-methods:before{content:"";display:table}
+.payment-methods:after{clear:both}
+.no-generatedcontent .payment-methods{overflow:hidden}
+.payment-methods.field__icon{margin-top:-10px;pointer-events:none}
+.field .payment-methods .payment-method{float:left}
+.field .payment-methods .payment-method+.payment-method{margin-left:.25em}
+.payment-methods .payment-method{display:none}
+.payment-methods .payment-method.selected{display:block}
+.payment-methods .payment-method.payment-method--logo{display:none}
+.field--blank-slate .payment-methods{text-align:center;margin-top:.75em;float:none}
+.payment-methods.known .payment-method{opacity:.4;display:none;-webkit-filter:grayscale(100%);filter:grayscale(100%)}
+.payment-methods.known .payment-method.selected{opacity:1;display:inline-block;-webkit-filter:none;filter:none;-webkit-animation:scale 0.5s cubic-bezier(0.3, 0, 0, 1.2);animation:scale 0.5s cubic-bezier(0.3, 0, 0, 1.2)}
+.payment-method-label{width:auto !important;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.payment-summary-lst li{zoom:1;margin-top:1.5em}
+.payment-summary-lst li:after,.payment-summary-lst li:before{content:"";display:table}
+.payment-summary-lst li:after{clear:both}
+.no-generatedcontent .payment-summary-lst li{overflow:hidden}
+.payment-summary-lst li:first-child{margin-top:.5em}
+.payment-summary-lst .payment-method{float:left;margin:.1em .75em 0 0}
+.payment-method-info{float:left;line-height:$tricky_var-line-height;}
+.payment-method-name{display:block;color:#555;font-weight:500}
+.payment-method-masked-code{display:none;font-weight:normal}
+.payment-method-additional-info{display:block;color:#777}
+.payment-method-total{display:block;float:right;font-size:1em;color:$checkout_payment-due-color;font-size:15px;font-size:1.125rem}
+.billing-address-summary{margin-top:1.5em}
+.offsite-gateway-logo{max-height:24px;margin:-2px 0}
+
+.label--full-width .payment-method{ float:left; background-position:left center;}
+
+@media all and (min-width: 600px){
+	.payment-method-masked-code{display:inline}
+	.payment-methods .payment-method{display:block}
+	.payment-methods .payment-method.payment-method--logo{display:inline-block}
+	.payment-methods .payment-method.generic{display:none}
+	.payment-methods.known .payment-method{display:inline-block}
+	.payment-methods.known .payment-method.generic{display:none}
+	.payment-methods.known .payment-method.unknown{display:none}
+}
+
+/*=================================== Main Header =================================*/
+.main__header{text-align:center;padding:1.5em;margin-bottom:1.5em;width:100%;}
+.main__header img+h2,.main__header svg+h2{margin-top:1em}
+.main__header h2{margin-bottom:.5em}
+.main__header p{color:#999}
+
+@media all and (min-width: 600px){
+	.main__header{padding:2.5em}
+	.main__header h2{margin-bottom:.25em}}
+@media screen and (min-width: 1000px){
+	.main__header p{max-width:50%;margin:0 auto}
+}
+
+
+/*===================================== Modals ====================================*/
+.modal{background:$checkout_main-bg-color;color:$tricky_var-primary-color;}
+.modal__close{position:absolute;right:0;top:0;padding:.5em .75em;color:#ccc;color:rgba(0,0,0,0.2);font-size:33px;font-size:2.5rem}
+.modal__close:hover{color:#999}.policy-header{margin-bottom:1.5em;border-bottom:1px $checkout_border-style #ededed;padding-bottom:1em}
+.policy-header .policy__print-link{display:none}
+.policy-header__shop-name{color:$checkout_shop-name-color}
+.policy-body p{color:$tricky_var-primary-color;font-size:$checkout_base-font-size;font-weight:normal;}
+
+@media all and (min-width: 600px){
+	.modal{padding-top:3em}
+	.modal .wrap{width:80%}
+	.policy-header{margin-bottom:3em;padding-bottom:2em;position:relative}
+	.policy-header .policy__print-link{display:block;position:absolute;top:1em;right:0}
+	.policy-body p{font-size:$checkout_base-font-size;line-height:$tricky_var-line-height;}
+}
+
+@media screen and (min-width: 1000px){
+	.modal{padding-top:6em;padding-bottom:4em}
+	.modal__close{position:fixed;font-weight:300;font-size:35px;font-size:2.5rem}
+	.policy__header{margin-bottom:3em;padding-bottom:2.5em}
+	.has-modal .footer{position:fixed;width:100%;bottom:0;left:0;z-index:9999}
+}
+
+@media screen and (min-width: 1100px){
+	.modal{padding-top:8.75em;padding-bottom:8.75em}
+}
+
+
+/*=========================Alternative Payment Methods ============================*/
+.alternative-payment-methods{padding:1.5em 1.5em 2em;margin-bottom:1em;border-bottom:medium none;position:relative;text-align:center}
+.alternative-payment-methods .or{
+	min-width:18px;
+	padding:0.5em;
+	margin:-14px 0 0 -14px;
+	background-color:$checkout_fieldset-bg-color;
+	border:1px $checkout_border-style $checkout_fieldset-border-color;
+	border-radius:2em;
+	font-size:11px;
+	color:$tricky_var-primary-color;
+	line-height:$tricky_var-line-height;
+	-webkit-box-shadow:0 0 0 8px $checkout_fieldset-bg-color;
+	box-shadow:0 0 0 8px $checkout_fieldset-bg-color;
+}
+.alternative-payment-methods p{display:block;text-align:center}
+.alternative-payment-methods__btn{border-radius:$checkout_border-radius;display:inline-block;border:1px $checkout_border-style #2a9dcc;padding:.6em .75em .4em;vertical-align:-0.5em;margin-left:.5em}
+.alternative-payment-methods__btn img{height:21px}
+
+@media all and (min-width: 600px){
+	.alternative-payment-methods__btn{display:inline-block}
+}
+
+/*===================================== Product ===================================*/
+.product{zoom:1;position:relative}
+.product:after,.product:before{content:"";display:table}
+.product:after{clear:both}
+.no-generatedcontent .product{overflow:hidden}
+.product__image{display:block;width:5em;border-radius:$checkout_border-radius;float:left;overflow:hidden;margin-right:1em}
+.product__info{float:left}
+.product__info__name,.product__info__description{display:block}
+.product__info__name{margin-bottom:.4em}
+.product__info__name strong{color:$checkout_order-summary-color;}
+
+
+/*================================= Shipping Options ==============================*/
+.shipping-option{padding-right:7em}
+@media all and (min-width: 600px){
+	.shipping-option{padding-right:7.25em}
+}
+
+.shipping-option__price{position:absolute;top:1em;right:1em}
+@media all and (min-width: 600px){
+	.shipping-option__price{top:$checkout_field-padding}
+}
+@media all and (min-width: 600px){
+	.shipping-option__price{right:$checkout_field-padding}
+}
+
+/*================================= Applied Gift Cards ============================*/
+.applied-gift-card{zoom:1}
+.applied-gift-card:after,.applied-gift-card:before{content:"";display:table}
+.applied-gift-card:after{clear:both}
+.no-generatedcontent .applied-gift-card{overflow:hidden}
+.applied-gift-card .payment-method{float:left;position:relative;top:auto;right:auto;margin-right:.75em}
+.applied-gift-card .btn--delete{position:absolute;right:1em;top:$checkout_field-padding;margin:0}
+.applied-gift-card .error-message{padding-left:0}
+.applied-gift-card__masked-code{display:block;margin-top:-0.5em;font-weight:500;color:#555}
+.applied-gift-card__balance{display:block;color:#999}
+
+@media all and (min-width: 600px){
+	.applied-gift-card .btn--delete{position:absolute;right:$checkout_field-padding;top:1.35em;margin:0}
+	.applied-gift-card__masked-code{float:left;margin-top:.1em}
+	.applied-gift-card__balance{float:right;margin:.1em 2.25em 0 0}
+}
+
+/*========================================Sections ================================*/
+
+.section{
+	padding:1.5em;
+	border-top:1px $checkout_border-style $checkout_section-border-color;
+	zoom:1
+}
+.section:after,.section:before{content:"";display:table}
+.section:after{clear:both}
+.no-generatedcontent .section{overflow:hidden}
+.section:first-child{border-top:none}
+.section.step--blank{display:none}
+
+@media all and (max-width: 599px){
+	#checkout:not(.current-step-review) .step--completed .section__header{margin-bottom:0}
+	#checkout:not(.current-step-review) .step--completed .section__summary{display:none}
+}
+
+@media all and (min-width: 600px){
+	.section{padding:0 0 3em 0}.section--additional-mobile-cta{display:none}
+}
+
+
+/*===================================Section Header ===============================*/
+.section__header{
+	margin:0 0 1.5em;
+	line-height:$tricky_var-line-height;
+	}
+.step--blank .section__header h3{color:$checkout_headings-color;}
+.section__header .section__edit-link{
+	font-size:$checkout_base-font-size;
+}
+@media all and (min-width: 600px){
+	.step--current .section__header{margin:0}
+}
+@media screen and (min-width: 1000px){
+	.section__header .payment-due{display:none}
+}
+
+.section__form+.section__form,.section__form+form{margin-top:1em}
+@media all and (min-width: 600px){
+	.section__form+.section__form,.section__form+form{margin-top:1.5em}
+}
+
+.section__blank-slate{
+	border-radius:$checkout_border-radius;
+}
+.section__blank-slate i,.section__blank-slate .svg{margin-bottom:.75em}
+@media screen and (min-width: 1000px){
+	.section__blank-slate{padding:1.5em 1.125em}
+}
+/*=====================================Section Notice ================================*/
+.section__notice{padding:1em;line-height:$tricky_var-line-height;border-radius:$checkout_border-radius;}
+.section__notice:after,.section__notice:before{content:"";display:table}
+.section__notice:after{clear:both}
+.no-generatedcontent .section__notice{overflow:hidden}
+.section__notice--error{background-color:$checkout_field-error-bg-color;}
+.section__notice--error h4{color:$checkout_field-error-label-color}
+.section__notice--error p{color:$checkout_field-error-color;margin: 0 3rem 1rem 0rem;}
+.section__notice--warning{background:$checkout_field-error-bg-color;}
+.section__notice--warning h4{color:$checkout_field-error-label-color}
+.section__notice--warning p{color:$checkout_field-error-color}
+
+
+/*================================Logged In Customer ==============================*/
+.logged-in-customer{overflow:hidden;margin-bottom:1.5em}
+.logged-in-customer__avatar{width:3.25em;border-radius:$checkout_border-radius;float:left;margin-right:.75em}
+.logged-in-customer__information{float:left;margin-top:.125em}
+@media all and (min-width: 600px){
+	.logged-in-customer__avatar{margin-right:1em}
+}
+
+/*====================================Subsection ==================================*/
+.subsection{padding:0 1.5em 1.5em}
+.subsection:first-child{padding-top:1em}
+@media all and (min-width: 600px){
+	.subsection{padding:0 0 2.5em}
+	.subsection:first-child{padding-top:2.5em}
+}
+
+/*========================== overriding with custom CSS ==========================*/
+{% if settings.checkout_custom_css %}{{ settings.checkout_custom_css }}{% endif %}
+
+/*==================================Print Styles ==================================*/
+@media print{
+	*{-webkit-print-color-adjust:exact;print-color-adjust:exact}@page{margin:1cm 0 2cm}
+	.section--thank-you .icon--order-success,.section--thank-you .btn,.section--thank-you [data-trigger-print]{display:none}
+	.section,.order-summary{page-break-inside:avoid}
+	.has-modal{overflow:auto}
+	.has-modal .header,.has-modal #main,.has-modal .footer,.has-modal .policy__print-link,.has-modal .modal__close{display:none}
+	.has-modal .modal{position:relative;top:auto;left:auto;bottom:auto;right:auto}
+	.has-modal .policy-body p{font-size:.875em}
+}

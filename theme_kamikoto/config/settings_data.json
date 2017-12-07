@@ -1,0 +1,487 @@
+{
+  "current": {
+    "color_text": "#3d4246",
+    "color_body_text": "#788188",
+    "color_sale_text": "#191a1b",
+    "color_borders": "#e8e9eb",
+    "color_button": "#1e1e1e",
+    "color_button_text": "#fff",
+    "color_small_button": "#fff",
+    "color_small_button_text": "#3d4246",
+    "color_text_field": "#ffffff",
+    "color_text_field_text": "#000",
+    "color_image_overlay_text": "#fff",
+    "color_image_overlay": "#3d4246",
+    "image_overlay_opacity": "0.25",
+    "color_body_bg": "#ffffff",
+    "type_header_family": "'Avant Garde', Avantgarde, 'Century Gothic', CenturyGothic, 'AppleGothic', sans-serif",
+    "type_header_base_size": "22px",
+    "type_base_family": "Google_Open+Sans_400_sans",
+    "type_base_size": "16px",
+    "type_bold_product_titles": false,
+    "share_facebook": true,
+    "share_twitter": true,
+    "share_pinterest": true,
+    "social_twitter_link": "https:\/\/twitter.com\/kamikoto",
+    "social_facebook_link": "https:\/\/www.facebook.com\/Kamikoto",
+    "social_pinterest_link": "",
+    "social_instagram_link": "https:\/\/www.instagram.com\/kamikoto",
+    "social_tumblr_link": "",
+    "social_snapchat_link": "",
+    "social_youtube_link": "https:\/\/www.youtube.com\/kamikoto",
+    "social_vimeo_link": "",
+    "favicon": "",
+    "show_multiple_currencies": true,
+    "show_decimal_places": true,
+    "hide_decimal_places": false,
+    "currency_format": "money_with_currency_format",
+    "supported_currencies": "INR GBP CAD USD AUD EUR JPY",
+    "default_currency": "USD",
+    "checkout_header_image": "",
+    "checkout_logo_image": "",
+    "checkout_logo_position": "left",
+    "checkout_logo_size": "medium",
+    "checkout_body_background_image": "",
+    "checkout_body_background_color": "#fff",
+    "checkout_input_background_color_mode": "white",
+    "checkout_sidebar_background_image": "",
+    "checkout_sidebar_background_color": "#fafafa",
+    "checkout_heading_font": "Helvetica Neue",
+    "checkout_body_font": "Helvetica Neue",
+    "checkout_accent_color": "#1990c6",
+    "checkout_button_color": "#1990c6",
+    "checkout_error_color": "#ff6d6d",
+    "sections": {
+      "header": {
+        "type": "header",
+        "settings": {
+          "align_logo": "left",
+          "logo": "shopify:\/\/shop_images\/V2-Kamikoto_logo.png",
+          "logo_max_width": "180",
+          "main_linklist": "main-menu",
+          "message": false,
+          "message_text": "",
+          "message_link": "",
+          "color_bg": "#000000",
+          "color_text": "#ffffff",
+          "plus_enable_subheader": false,
+          "plus_subheader_bg_color": "#000000",
+          "plus_subheader_text_color": "#ffffff",
+          "plus_subheader_base_size": 10,
+          "plus_subheader_mobile_scale": 0,
+          "plus_subheader_desktop_scale": 0.3
+        }
+      },
+      "footer": {
+        "type": "footer",
+        "settings": {
+          "footer_linklist": "footer",
+          "footer_linklist_two": "",
+          "footer_newsletter_enable": true,
+          "show_payment_icons": false
+        }
+      },
+      "1487225718621": {
+        "type": "custom-content",
+        "blocks": {
+          "1487225718621-0": {
+            "type": "text",
+            "settings": {
+              "title": "The Spirit of Craftsmanship",
+              "text": "<p>Kamikoto is a maker of Japanese-style knives &ndash; crafted from high-quality steel sourced from Honshu 本州, Japan. Kamikoto knives are made for a lifetime, the perfect balance of strength and aesthetic beauty. Kamikoto is headquartered in Tokyo, Japan, and stays true to Honshu&rsquo;s 本州 century-old legacy of steel-making excellence, to create knives of exceptional&nbsp;quality and beauty.<\/p>",
+              "width": "100%",
+              "alignment": "top-middle",
+              "align_text": "center"
+            }
+          },
+          "1508901771437": {
+            "type": "product",
+            "settings": {
+              "product": "3-4-sleeve-kimono-dress-coral",
+              "width": "25%",
+              "alignment": "bottom-left"
+            }
+          },
+          "1508901834859": {
+            "type": "product",
+            "settings": {
+              "product": "balan-pant-in-lines",
+              "width": "25%",
+              "alignment": "center"
+            }
+          },
+          "1509350405953": {
+            "type": "product",
+            "settings": {
+              "product": "a-line-jacket-in-black",
+              "width": "25%",
+              "alignment": "center"
+            }
+          },
+          "1509350436763": {
+            "type": "product",
+            "settings": {
+              "product": "alex-twill-pant-mariner",
+              "width": "25%",
+              "alignment": "center"
+            }
+          },
+          "1509350448259": {
+            "type": "product",
+            "settings": {
+              "product": "aliam-skirt-black",
+              "width": "25%",
+              "alignment": "center"
+            }
+          },
+          "1509350457363": {
+            "type": "product",
+            "settings": {
+              "product": "anatole-ring-amethyst",
+              "width": "25%",
+              "alignment": "center"
+            }
+          },
+          "1509350476651": {
+            "type": "product",
+            "settings": {
+              "product": "anchor-necklace-no-color",
+              "width": "25%",
+              "alignment": "center"
+            }
+          },
+          "1509350489259": {
+            "type": "product",
+            "settings": {
+              "product": "auralias-leather-top",
+              "width": "25%",
+              "alignment": "center"
+            }
+          }
+        },
+        "block_order": [
+          "1487225718621-0",
+          "1508901771437",
+          "1508901834859",
+          "1509350405953",
+          "1509350436763",
+          "1509350448259",
+          "1509350457363",
+          "1509350476651",
+          "1509350489259"
+        ],
+        "settings": {
+          "title": ""
+        }
+      },
+      "1487226781987": {
+        "type": "image-bar",
+        "blocks": {
+          "1487226781987-0": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/bright-red-leaves-with-green.jpg",
+              "alignment": "top",
+              "link": "",
+              "cta_label": "Traditional Craftsmanship"
+            }
+          },
+          "1487226781987-1": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/water-splashing-on-black-rock.jpg",
+              "alignment": "center",
+              "link": "",
+              "cta_label": "Forged Honshu 本州 Steel"
+            }
+          },
+          "1487226781987-2": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/road-through-rocky-terrain.jpg",
+              "alignment": "center",
+              "link": "",
+              "cta_label": "Made for the Connoisseur"
+            }
+          }
+        },
+        "block_order": [
+          "1487226781987-0",
+          "1487226781987-1",
+          "1487226781987-2"
+        ],
+        "settings": {
+          "section_height": "small"
+        }
+      },
+      "1487233096113": {
+        "type": "slideshow",
+        "blocks": {
+          "1487233096113-0": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/croissant-coffee.jpg",
+              "alignment": "center",
+              "title": "Kamikoto | 神箏",
+              "subheading": "Masters of Tradition",
+              "link": ""
+            }
+          },
+          "1487233289938": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/berries-granola.jpg",
+              "alignment": "center",
+              "title": "Kamikoto | 神箏",
+              "subheading": "Handmade by Master Knifesmiths",
+              "link": ""
+            }
+          },
+          "1487233096113-1": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/root-vegetable-salad.jpg",
+              "alignment": "top",
+              "title": "Kamikoto | 神箏",
+              "subheading": "Built on a Legacy of Excellence",
+              "link": ""
+            }
+          }
+        },
+        "block_order": [
+          "1487233096113-0",
+          "1487233289938",
+          "1487233096113-1"
+        ],
+        "settings": {
+          "autoplay": true,
+          "autoplay_speed": "5000",
+          "slideshow_height": "medium",
+          "text_size": "medium"
+        }
+      },
+      "collection-template": {
+        "type": "collection-template",
+        "settings": {
+          "layout": "grid",
+          "grid": "4",
+          "rows": "2",
+          "show_collection_image": false,
+          "show_vendor": false,
+          "sort_enable": false,
+          "tags_enable": false
+        }
+      },
+      "product-template": {
+        "type": "product-template",
+        "settings": {
+          "image_size": "medium",
+          "show_quantity_selector": true,
+          "show_variant_labels": false,
+          "show_vendor": false,
+          "enable_zoom": true,
+          "show_share_buttons": true
+        }
+      },
+      "1487234522989": {
+        "type": "collection",
+        "disabled": true,
+        "settings": {
+          "title": "",
+          "collection": "",
+          "grid": "4",
+          "rows": "2",
+          "show_vendor": false,
+          "show_view_all": false
+        }
+      },
+      "cart-template": {
+        "type": "cart-template",
+        "settings": {
+          "cart_notes_enable": false
+        }
+      },
+      "1487311991774": {
+        "type": "quotes",
+        "blocks": {
+          "1487311991774-0": {
+            "type": "quote",
+            "settings": {
+              "quote": "<p>The finest knives I've ever owned&hellip; well-balanced and retain their edges really well.<\/p>",
+              "author": "Kenneth B."
+            }
+          },
+          "1487311991774-1": {
+            "type": "quote",
+            "settings": {
+              "quote": "<p>Great knives, super sharp, and have a great feel to them. I use mine almost every day&hellip; highly recommended.<\/p>",
+              "author": "Thomas G."
+            }
+          },
+          "1487311991774-2": {
+            "type": "quote",
+            "settings": {
+              "quote": "<p>Beautiful knife set with gorgeous display&hellip; solid and reliable for everyday use.<\/p>",
+              "author": "Hillary H."
+            }
+          }
+        },
+        "block_order": [
+          "1487311991774-0",
+          "1487311991774-1",
+          "1487311991774-2"
+        ],
+        "settings": {
+          "title": "TESTIMONIALS"
+        }
+      },
+      "1487323352516": {
+        "type": "custom-content",
+        "blocks": {
+          "1487323374839": {
+            "type": "video",
+            "settings": {
+              "video_url": "https:\/\/player.vimeo.com\/video\/215146621\/d5f9d5175f",
+              "width": "100%",
+              "alignment": "center"
+            }
+          }
+        },
+        "block_order": [
+          "1487323374839"
+        ],
+        "settings": {
+          "title": "KAMIKOTO | 神箏 – MASTERS OF TRADITION"
+        }
+      },
+      "1499326432987": {
+        "type": "custom-content",
+        "blocks": {
+          "1499326432987-0": {
+            "type": "text",
+            "settings": {
+              "title": "",
+              "text": "<p>TOKYO. The&nbsp;journey from apprentice to master knifesmith&nbsp;is a long and difficult path that takes&nbsp;patience, determination and commitment. Kazuomi Yamamoto,&nbsp;a fourth-generation knifesmith and Chairman, Kamikoto Advisory Board,&nbsp;shares his story.&nbsp;&nbsp;&nbsp;<\/p>",
+              "width": "100%",
+              "alignment": "center",
+              "align_text": "left"
+            }
+          },
+          "1499331156782": {
+            "type": "video",
+            "settings": {
+              "video_url": "https:\/\/player.vimeo.com\/video\/222787109",
+              "width": "100%",
+              "alignment": "top-middle"
+            }
+          },
+          "1499326731511": {
+            "type": "text",
+            "settings": {
+              "title": "",
+              "text": "<p><strong>The Way of the Blade.<\/strong>&nbsp;Making blades by hand is a rare and exacting skill. As dedicated practitioners, Kamikoto&rsquo;s bladesmiths ensure the art survives and flourishes. It&rsquo;s a skill that requires great precision and care, and Kamikoto&rsquo;s apprentices can take several years to learn their trade. The simplest&nbsp;skills are usually the toughest, and learning to master the basic skills often means years of hard, patient effort.&nbsp;<\/p>",
+              "width": "100%",
+              "alignment": "center",
+              "align_text": "center"
+            }
+          }
+        },
+        "block_order": [
+          "1499326432987-0",
+          "1499331156782",
+          "1499326731511"
+        ],
+        "settings": {
+          "title": "The Art of a BLADE | IN CONVERSATION WITH A MASTER KNIFESMITH"
+        }
+      }
+    },
+    "content_for_index": [
+      "1487233096113",
+      "1487225718621",
+      "1487234522989",
+      "1487323352516",
+      "1487311991774",
+      "1499326432987",
+      "1487226781987"
+    ]
+  },
+  "presets": {
+    "Default": {
+      "color_text": "#3d4246",
+      "color_body_text": "#788188",
+      "color_sale_text": "#7796A8",
+      "color_borders": "#e8e9eb",
+      "color_button": "#7796A8",
+      "color_button_text": "#fff",
+      "color_small_button": "#fff",
+      "color_small_button_text": "#3d4246",
+      "color_text_field": "#fff",
+      "color_text_field_text": "#000",
+      "color_image_overlay_text": "#fff",
+      "color_image_overlay": "#3d4246",
+      "image_overlay_opacity": "0.25",
+      "color_body_bg": "#fff",
+      "type_header_family": "Google_Work+Sans_600_sans",
+      "type_header_base_size": "26px",
+      "type_base_family": "Google_Work+Sans_400_sans",
+      "type_base_size": "16px",
+      "type_bold_product_titles": false,
+      "share_facebook": true,
+      "share_twitter": true,
+      "share_pinterest": true,
+      "sections": {
+        "header": {
+          "type": "header",
+          "settings": {}
+        },
+        "hero": {
+          "type": "hero",
+          "settings": {
+            "text_size": "large"
+          }
+        },
+        "slideshow": {
+          "type": "slideshow",
+          "blocks": {
+            "slideshow-0": {
+              "type": "image",
+              "settings": {}
+            },
+            "slideshow-1": {
+              "type": "image",
+              "settings": {}
+            }
+          },
+          "block_order": [
+            "slideshow-0",
+            "slideshow-1"
+          ],
+          "settings": {}
+        },
+        "featured-collections": {
+          "type": "collection",
+          "settings": {
+            "collection": "frontpage"
+          }
+        },
+        "feature-row": {
+          "type": "feature-row",
+          "settings": {}
+        },
+        "footer": {
+          "type": "footer",
+          "settings": {
+            "footer_linklist_two": ""
+          }
+        }
+      },
+      "content_for_index": [
+        "hero",
+        "featured-collections",
+        "feature-row",
+        "slideshow"
+      ]
+    }
+  }
+}

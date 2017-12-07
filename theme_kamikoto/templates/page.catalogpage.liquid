@@ -1,0 +1,30 @@
+<div class="grid catalog-page-special">
+  <div class="page-width">
+
+    <div class="title-header">
+      <h1 class="text-center">Lorem Ipsum is simply dummy text of the printing and typesetting industry</h2>
+    </div>
+
+    <div class="row-detail">
+      <div class="video-wrapper">
+          <iframe src="https://player.vimeo.com/video/215146621" width="100%" height="360" frameborder="0"
+                  webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+      </div>
+    </div>
+
+    <div class="title-header text-center">
+      <h1 class="text-center" >It is a long established fact that a reader will be distracted by the readable content of </h2>
+      <p class="txt-description">It was popularised in the 1960s with the release</p>
+      <img class="img-knife" src="{{ 'knife.jpg' | asset_url }}" alt="{{ image.alt | escape }}" />
+    </div>
+
+  </div>
+
+  {% assign collection = collections.all %}
+
+  {% for product in collection.products %}      
+        {{ product.title }}    
+  {% endfor %}
+
+
+</div>

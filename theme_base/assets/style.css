@@ -1,0 +1,131 @@
+/**** global css ****/
+
+body{font-family:Arial, Helvetica, sans-serif;}
+a {text-decoration:none; color:#5fa6d8;}
+a:hover{color:#84ddf2;}
+p{line-height:1.45em;}
+
+.left{float: left;}
+.right{float: right;}
+.last{margin-right:0px !important;}
+
+.btn{background: #2c2b2b; border: none !important; display:inline-block; color:#fff; padding:9px 13px; text-transform: uppercase;font-size:0.8em; font-weight: bold;   border-radius: 8px;}
+.btn:hover{background:#585656; color:#fff;}
+
+/* Contain floats: nicolasgallagher.com/micro-clearfix-hack/ */ 
+.clearfix:before, .clearfix:after { content: ""; display: table; }
+.clearfix:after { clear: both; }
+.clearfix { zoom: 1; }
+
+
+/**** theme.liquid ****/
+
+.container{width: 960px; margin: 0 auto;}
+.header-toolbar{background:#000; color: #fff; font-size:12px; padding:10px 0;}
+.customer-links{padding:7px 0;}
+
+.logo{font-size: 60px; margin:40px 0; text-align:center;}
+.logo a{color: #000;}
+
+.main-menu{text-align: center; border-top: 1px solid #ccc; border-bottom: 1px solid #ccc;}
+.main-menu li{display: inline-block; padding:0px 20px;}
+.main-menu a{ color: #4e4e4e; font-weight:bold;}
+.main-menu a:hover, .main-menu .current a{color:#989898;}
+
+.content{padding:30px 0;}
+
+footer{text-align:center; font-size: 12px; border-top: 1px solid #ccc; margin-bottom:150px;}
+footer ul{padding:10px 0;}
+footer li{display:inline-block;}
+footer li a{padding:0 20px; color: #989898;}
+
+
+/**** product-loop.liquid ****/
+
+.product{margin:0 20px 30px 0; width:225px; text-align:center; font-weight:bold;}
+.product-thumb{border:1px solid #ccc; padding:10px;}
+.product-thumb img{max-width:100%; height: auto;}
+.product-title{ margin-top:10px;}
+.product-price{font-size:14px;}
+
+/**** collection.liquid ****/
+
+.pagination{text-align:center; border-top:1px solid #ccc; padding-top: 30px; margin-top: 30px;}
+
+
+/**** product.liquid ****/
+
+.product-images{width:406px;}
+.product-images{margin-right:30px;}
+.product-images img{max-width: 100%; height: auto;}
+.product-featured-image{border: 1px solid #ccc; padding:10px; margin-bottom:20px;}
+.product-img{border: 1px solid #ccc; text-align:center; padding:10px; margin: 0 20px 20px 0; width:100px;}
+
+.product-details{width: 524px;}
+.product-header{margin-top:0px;}
+.product-desc, .price-field, .product-form{margin-bottom:30px;}
+.price-field{font-weight:bold;}
+.product-form{text-align: right;} 
+.selector-wrapper{padding:10px 0; border-bottom:1px solid #ccc;}
+.selector-wrapper label, .selector-wrapper select{display: inline-block;}
+.selector-wrapper label{float:left;}
+.selector-wrapper select{float:right;}
+.product-variants{margin-bottom:10px;}
+
+/**** cart.liquid ****/
+
+.cart-table{width: 100%;}
+.cart-table thead{border-bottom:1px solid #ccc;}
+.cart-table th{text-align: left; padding:20px;}
+.cart-table td{padding:30px 10px 0 10px; }
+.item-thumb{border:1px solid #ccc; padding:20px; width: 100px; height:100px;}
+.item-qty{width:90px;}
+.cart-options{text-align: right;}
+.cart-info{padding:7px 25px 0 0;}
+
+
+/**** blog.liquid ****/
+
+.blog-title{margin-bottom:0px; }
+.blog-article{border-bottom:1px solid #ccc; padding-bottom:30px; margin-bottom: 30px;}
+.blog-data{font-size:13px; font-weight: bold; margin-top:5px;}
+.blog-content{margin-bottom:30px;}
+.blog-tags{width:800px; font-weight:bold; font-size:14px;}
+.blog-read-more{width:122px;}
+.no-border{border:none !important;}
+
+/**** article.liquid ****/ 
+
+.single-article{border-bottom:none; margin-bottom: 0;}
+
+.comments{border-top:1px solid #ccc; margin-bottom:30px;}
+.comment{margin-bottom: 30px;}
+.comment-author{font-weight:bold; font-size:20px;}
+
+.comment-entries label, .comment-entries input, .comment-entries textarea{ display:block;}
+.comment-entries label{font-size:14px;}
+.comment-entries input, .comment-entries textarea{border: 1px solid #ccc; padding:5px;}
+.comment-entries textarea{width:350px; height:180px;}
+
+.errors{color:#e00000;}
+.error{border: 1px solid #e00000 !important;}
+.success{color:#5BB85E;}
+
+/**** search.liquid ****/
+
+.search-form input[type='text']{border:1px solid #ccc; padding:6px;}
+.search-result{margin-bottom:20px;}
+.search-text{width:818px; padding-left:20px;}
+.highlight{color:#ff0000;}
+
+/**** Customer Accounts  ****/
+
+.customer-login, .guest-login{float:left; width:465px;}
+.customer-login{margin-right:30px;}
+.form-row{margin-bottom:10px;}
+.form-row input[type="text"],.form-row input[type="email"],.form-row input[type="password"], .form-row label, .form-row select{display:inline-block;}
+.form-row input[type="text"],.form-row input[type="email"],.form-row input[type="password"]{width:250px; border:1px solid #ccc;}
+.form-row select{width:250px;}
+.form-row label{width:120px;}
+.form-row .btn{margin-top:10px;}
+.recover-password,.reset-success{display:none;}

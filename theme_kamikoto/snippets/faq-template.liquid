@@ -1,0 +1,33 @@
+{% assign blog = blogs.faq %}
+<div class="row-accordion">
+  <h3 class="text-center">Customer Queries</h3> 
+<div class="container-accordion">              
+     <ul>
+    {% for article in blog.articles %}
+        <li class="accordion-list">
+          <div class="accordion title" id="section1">{{ article.title }}</div>
+          <ul>
+            <div class="container">
+              <div class="content">
+                <p>
+                  {% if article.excerpt != blank %}{{ article.excerpt }}{% else %}{{ article.content }}{% endif %}
+                </p>
+              </div>
+            </div>
+          </ul>
+        </li>
+    {% endfor %} 
+    </ul>
+  </div> 
+</div>
+<style>
+  li.accordion-list ul {
+    display : none;
+  }
+</style>
+<script type="text/javascript">
+  $('li.accordion-list').click(function() {
+    $('li.accordion-list').not(this).find('ul').hide();
+    $(this).find('ul').toggle();
+  });
+</script>

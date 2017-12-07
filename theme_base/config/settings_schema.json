@@ -1,0 +1,93 @@
+[
+  {
+    "name": "Text Options",
+    "settings": [
+      {
+        "type": "text",
+        "id": "shop_name",
+        "label": "Shop Name"
+      },
+      {
+        "type": "textarea",
+        "id": "shop_description",
+        "label": "Shop Description"
+      }
+    ]
+  },
+  {
+    "name": "Styling Options",
+    "settings": [
+      {
+        "type": "image",
+        "id": "shop_logo.png",
+        "label": "Shop logo"
+      },
+      {
+        "type": "color",
+        "id": "background_color",
+        "label": "Background color"
+      }
+    ]
+  },
+  {
+    "name": "Logic Options",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "use_google_fonts",
+        "label": "Use Google Fonts?"
+      },
+      {
+        "type": "radio",
+        "id": "font_weight",
+        "label": "Choose a font weight",
+        "options": [
+          {
+            "value": "regular",
+            "label": "Regular"
+          },
+          {
+            "value": "bold",
+            "label": "Bold"
+          },
+          {
+            "value": "light",
+            "label": "Thin"
+          }
+        ]
+      },
+      {
+        "type": "select",
+        "id": "font_family",
+        "options": [
+          {
+            "value": "open-sans",
+            "label": "Open Sans"
+          },
+          {
+            "value": "raleway",
+            "label": "Raleway"
+          },
+          {
+            "value": "lora",
+            "label": "Lora"
+          }
+        ],
+        "label": "Choose a font family"
+      }
+    ]
+  },
+  {
+    "name": "Misc Options",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Welcome to [Shopify](http:\/\/www.shopify.com)"
+      },
+      {
+        "type": "paragraph",
+        "content": "Customize the look and feel of your shop"
+      }
+    ]
+  }
+]

@@ -1,0 +1,17 @@
+{% if shop.metafields.geolizr.redirect_widget_enabled == 'true' %}
+<script>
+  Geolizr.init(function($) {
+    Geolizr.getGeoData(function(geoData, refreshed) {
+      var redirects = {{ shop.metafields.geolizr.redirects }};
+      var countryToRedirect = {{ shop.metafields.geolizr.country_to_redirect }};
+
+      var redirect = redirects[countryToRedirect[geoData.country.code]];
+      var regionRedirect = redirects[countryToRedirect[geoData.country.code + '-' + geoData.region]];
+      if(regionRedirect)
+          redirect = regionRedirect;
+
+      Geolizr.redirect(redirect, false);
+    }, true);
+  });
+</script>
+{% endif %}

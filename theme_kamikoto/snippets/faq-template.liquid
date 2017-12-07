@@ -5,29 +5,26 @@
      <ul>
     {% for article in blog.articles %}
         <li class="accordion-list">
-          <div class="accordion title" id="section1">{{ article.title }}</div>
-          <ul>
-            <div class="container">
-              <div class="content">
-                <p>
-                  {% if article.excerpt != blank %}{{ article.excerpt }}{% else %}{{ article.content }}{% endif %}
-                </p>
-              </div>
-            </div>
-          </ul>
+          {% comment %}<div class="accordion title" id="section1">{{ article.title }}</div>{% endcomment %}
+          {% comment %}<div class="container-description">   {% endcomment %}         
+              {% if article.excerpt != blank %}{{ article.excerpt }}{% else %}{{ article.content }}{% endif %}                
+          {% comment %}</div>{% endcomment %}
         </li>
     {% endfor %} 
     </ul>
   </div> 
 </div>
 <style>
-  li.accordion-list ul {
+  li.accordion-list .container-description {
     display : none;
+    margin-bottom: 20px;
   }
 </style>
 <script type="text/javascript">
-  $('li.accordion-list').click(function() {
-    $('li.accordion-list').not(this).find('ul').hide();
-    $(this).find('ul').toggle();
+  $('.accordion.title').click(function() {
+    console.log("11111");
+    // $('li.accordion-list').not(this).find('.container-description').hide();
+    $('div.container-description').hide();
+    $(this).next('div.container-description').show();
   });
 </script>

@@ -15,25 +15,46 @@
   Loop through each collection, except 'frontpage'
 {% endcomment %}
 
-{% for collection in collections %}
-  
+{% for collection in collections %}  
 
   {% if collection.handle == 'rawk' %}
 
     <ul>
         {% for product in collection.products limit:3 %}
       <li>
-        {{ product.title }}
-          <img src="{{ product.featured_image | product_img_url: 'medium' }}" alt="product.title">
-        {{ product.description }}
-        <form action="/cart" method="post" enctype="multilpart/form-data"  id="AddToCartForm">
-          <button type="submit" name="add" id="AddToCartForm" class="btn">
-            <span id="AddToCartText">{{ 'products.product.add_to_cart' | t }}</span>
-          </button>
-        </form>
+        <div class="txt-title">{{ product.title }}</div>
+        <div class="review-customer">
+          {% if product.title contains 'Santoku' or product.title contains 'Kanpeki' %}
+            <span class="stamped-starrating stamped-badge-starrating"
+                      style="display:inline-block !important;"><i class="fa fa-star"></i><i
+                            class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i
+                            class="fa fa-star-half-o"></i></span>
+                {% else %}
+            <span class="stamped-starrating stamped-badge-starrating" style="display:inline-block !important;">
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+            </span>
+
+          {% endif %}
+            <span class="stamped-product-reviews-badge stamped-main-badge" data-id="{{ product.id }}" data-product-sku="{{product.handle}}" style="display: inline-block;">{{ product.metafields.stamped.badge }}</span>
+        </div>
+        <img src="{{ product.featured_image | product_img_url: 'medium' }}" alt="product.title">
+        
+        <div class="txt-description">
+          {{ product.description }}
+        </div>
+        <div class="btn-addcart">
+          <form action="/cart" method="post" enctype="multilpart/form-data"  id="AddToCartForm">
+            <button type="submit" name="add" id="AddToCartForm" class="btn">
+              <span id="AddToCartText">{{ 'products.product.add_to_cart' | t }}</span>
+            </button>
+          </form>
+        </div>
       </li>
-        {% endfor %}
-          
+        {% endfor %}          
     </ul>
 
   {% endif %}

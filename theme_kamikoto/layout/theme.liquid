@@ -17,6 +17,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 {% include 'guru-additional-checkout-buttons-808913e66bb8ca34c54570ae143ad72de7405d257db279c632b910e1babef726-css' %}
 <!-- PAGESPEED GURU OPTIMIZED /7/5/2017 1:16:50 AM -->
 {% include 'guru-script-geolizr-lib_js-ec8d4d6a-5001-4fad-ba58-fa1c3007fd97' %}
+
 {{ 'theme.scss.css' | asset_url | stylesheet_tag }}  
 {{ 'collection-specail.scss.css' | asset_url | stylesheet_tag }}  
   
@@ -131,6 +132,10 @@ https://help.shopify.com/themes/development/layouts/theme-liquid#content_for_hea
   {% include 'bold-common' %}
   <script type="text/javascript" async="" src="https://upsells.boldapps.net/v2_ui/js/upsell.js?shop=kamikotoknives.myshopify.com"></script>
   {% endcomment %}
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  {{ 'owl.carousel.js' | asset_url | script_tag }}
+  {{ 'owl.carousel.min.css' | asset_url | stylesheet_tag }}  
+  
 </head>
 <meta name="p:domain_verify" content="e54816b45656478fb62423df8763149b"/>
 <body class="template-{{ template | split: '.' | first }}">

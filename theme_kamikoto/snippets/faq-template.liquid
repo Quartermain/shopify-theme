@@ -22,8 +22,6 @@
 </style>
 <script type="text/javascript">
   $('.accordion.title').click(function() {
-    console.log("11111");
-    // $('li.accordion-list').not(this).find('.container-description').hide();
     $('div.container-description').hide();
     $(this).next('div.container-description').show();
   });

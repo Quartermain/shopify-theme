@@ -15,43 +15,48 @@
   Loop through each collection, except 'frontpage'
 {% endcomment %}
 
+<div class="page-width">
 {% for collection in collections %}  
 
   {% if collection.handle == 'rawk' %}
 
-    <ul>
+    <ul class="grid block-collection1">
         {% for product in collection.products limit:3 %}
-      <li>
-        <div class="txt-title">{{ product.title }}</div>
-        <div class="review-customer">
-          {% if product.title contains 'Santoku' or product.title contains 'Kanpeki' %}
-            <span class="stamped-starrating stamped-badge-starrating"
-                      style="display:inline-block !important;"><i class="fa fa-star"></i><i
-                            class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i
-                            class="fa fa-star-half-o"></i></span>
-                {% else %}
-            <span class="stamped-starrating stamped-badge-starrating" style="display:inline-block !important;">
-              <i class="fa fa-star"></i>
-              <i class="fa fa-star"></i>
-              <i class="fa fa-star"></i>
-              <i class="fa fa-star"></i>
-              <i class="fa fa-star"></i>
-            </span>
+      <li class="grid__item medium-up--one-third clearfix">
+        <div class="container-element">
+          <h3 class="txt-title align--center">{{ product.title }}</h2>
+          <div class="review-customer align--center">
+            {% if product.title contains 'Santoku' or product.title contains 'Kanpeki' %}
+              <span class="stamped-starrating stamped-badge-starrating"
+                        style="display:inline-block !important;"><i class="fa fa-star"></i><i
+                              class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i
+                              class="fa fa-star-half-o"></i></span>
+                  {% else %}
+              <span class="stamped-starrating stamped-badge-starrating" style="display:inline-block !important;">
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+              </span>
 
-          {% endif %}
-            <span class="stamped-product-reviews-badge stamped-main-badge" data-id="{{ product.id }}" data-product-sku="{{product.handle}}" style="display: inline-block;">{{ product.metafields.stamped.badge }}</span>
-        </div>
-        <img src="{{ product.featured_image | product_img_url: 'medium' }}" alt="product.title">
-        
-        <div class="txt-description">
-          {{ product.description }}
-        </div>
-        <div class="btn-addcart">
-          <form action="/cart" method="post" enctype="multilpart/form-data"  id="AddToCartForm">
-            <button type="submit" name="add" id="AddToCartForm" class="btn">
-              <span id="AddToCartText">{{ 'products.product.add_to_cart' | t }}</span>
-            </button>
-          </form>
+            {% endif %}
+              <span class="stamped-product-reviews-badge stamped-main-badge" data-id="{{ product.id }}" data-product-sku="{{product.handle}}" style="display: inline-block;">{{ product.metafields.stamped.badge }}</span>
+          </div>
+          <div class="img-product align--center">
+            <img src="{{ product.featured_image | product_img_url: 'medium' }}" alt="product.title">
+          </div>
+          <div class="txt-description">
+            {{ product.description }}
+          </div>
+          <div class="btn-addcart align--center">
+            {% comment %}<form action="/cart" method="post" enctype="multilpart/form-data"  id="AddToCartForm">
+              <button type="submit" name="add" id="AddToCartForm" class="btn">
+                <span id="AddToCartText">{{ 'products.product.add_to_cart' | t }}</span>
+              </button>
+            </form>{% endcomment %}
+            <input type="button" class="btn btn--small" value="{{ 'plus.products.order-now' | t }}" onClick="instantBuy()" />
+          </div>
         </div>
       </li>
         {% endfor %}          
@@ -60,4 +65,22 @@
   {% endif %}
 
 {% endfor %}
+</div>
 
+
+<script>
+  // [Plus] Function to skip cart page
+  function instantBuy(){
+    var formParams = $('form[action="/cart"]').serialize();
+    $.ajax({
+      url: "/cart",
+      type: "post",
+      data: formParams,
+      success: function(){
+       window.location.href = "/checkout";
+      },
+      error: function(){
+      }
+    })
+  }
+</script>

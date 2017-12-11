@@ -1,0 +1,10 @@
+{% assign blog = blogs.static-block %}
+<div class="page-width">
+  <div class="static-block">    
+      {% for article in blog.articles %}
+        {% if article.excerpt != blank %}{{ article.excerpt }}{% else %}{{ article.content }}{% endif %}
+      {% endfor %} 
+      </ul>
+  </div> 
+</div>
+

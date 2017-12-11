@@ -21,14 +21,15 @@
 	      <p class="txt-description">It was popularised in the 1960s with the release</p>
 	      <img class="img-knife" src="{{ 'knife.jpg' | asset_url }}" alt="{{ image.alt | escape }}" />
 	    </div>
-
 	</div>
 
-<div class="collection-box-specail">
-	{% section 'collection-block1' %}
-</div>
-	<div>
-		Lifetime warranty		
+	<div class="collection-box-specail">
+		{% section 'collection-block1' %}
 	</div>
-
+	<div class="static-block-lifetime">
+		{% include 'static-block-lifetime-special-category'  %}
+	</div>
+	<div class="blog-carousel">
+		{% include 'static-block-carousel' %}
+	</div>
 </div>

@@ -8,7 +8,7 @@ assets/bold-upsell.css:
 assets/checkout.scss.liquid:
   development: 2017-11-01T22:54:22-04:00   fe55e8744a2838a18d8538f14106c066
 assets/collection-specail.scss:
-  development: 2017-12-07T00:01:57-05:00   b5d6c2daef60c34774bdb27e548e7942
+  development: 2017-12-11T02:13:33-05:00   51b204a2b53f9976b742f9df8d8d3a33
 assets/currency-flags-small.png:
   development: 2017-10-24T04:22:49-04:00   efa8d6f2c9bc0cd261e2bba466e0e2ca
 assets/currency-flags.png:
@@ -47,6 +47,10 @@ assets/ly-icon-28653.png:
   development: 2017-10-24T04:22:49-04:00   7be652ada81a4e1a9aa1525db5a85eda
 assets/match-media.min.js:
   development: 2017-10-24T04:22:49-04:00   d0bf06c458a236dcca39b3be8cf80ec5
+assets/owl.carousel.js:
+  development: 2017-12-08T06:00:09-05:00   0aa8dbbc9beca33dd418f7b2a3c966b1
+assets/owl.carousel.min.css:
+  development: 2017-12-08T05:57:07-05:00   de0dfbabe627afa1b718d848b6b58e97
 assets/password.js:
   development: 2017-10-24T04:22:49-04:00   c6b4c16234704306bbb6129d04d7e78e
 assets/text-blah.jpg:
@@ -72,7 +76,7 @@ layout/password.liquid:
 layout/theme-safe.liquid:
   development: 2017-10-24T04:22:50-04:00   1fdbba4ef616e9ec88ac61ebd6c7d81d
 layout/theme.liquid:
-  development: 2017-12-06T23:51:15-05:00   0bcf8e73814d93f529b3bb138ddc1348
+  development: 2017-12-11T02:14:42-05:00   fc36e9f56a57d207ccd732df72ee8267
 locales/de.json:
   development: 2017-10-24T04:22:53-04:00   bb0fe289cc2e4f6012d6bc4b723e2b87
 locales/en.default.json:
@@ -92,7 +96,7 @@ sections/blog-template.liquid:
 sections/cart-template.liquid:
   development: 2017-11-10T03:59:18-05:00   b8dea0acebab89a5ffee40e43dfff11b
 sections/collection-block1.liquid:
-  development: 2017-12-07T00:03:05-05:00   0f05ccb5a8fd1888428d9ae7ce569c62
+  development: 2017-12-07T06:00:42-05:00   1795bc0d0753c5d8d929894166a8fe12
 sections/collection-knives.liquid:
   development: 2017-10-24T04:22:47-04:00   191ea17f1b880e66110e9252aadd2719
 sections/collection-list.liquid:
@@ -134,7 +138,7 @@ sections/password-header.liquid:
 sections/product-pre-order-template.liquid:
   development: 2017-10-24T04:22:47-04:00   9394a2f55d44872935bfcdef53fe8553
 sections/product-template.liquid:
-  development: 2017-11-27T02:03:53-05:00   077b0dafb5050c1f11a46313f56ad36b
+  development: 2017-12-07T05:45:25-05:00   077b0dafb5050c1f11a46313f56ad36b
 sections/quotes.liquid:
   development: 2017-10-24T04:22:47-04:00   b234ffff9a061befe87a0d69a121af1c
 sections/slideshow.liquid:
@@ -150,7 +154,7 @@ snippets/collection-grid-item.liquid:
 snippets/comment.liquid:
   development: 2017-10-24T04:22:50-04:00   50406c82467014e1bbe15a62685b2536
 snippets/faq-template.liquid:
-  development: 2017-11-21T03:16:40-05:00   19102b5e16c491104b793578281c1af1
+  development: 2017-12-07T06:04:28-05:00   1998fa2c178e718c873cdf84dd6eb0ce
 snippets/geolizr-json.liquid:
   development: 2017-10-24T04:22:50-04:00   6a952d7e1e5d90624ff71842f9a12851
 snippets/geolizr-redirect.liquid:
@@ -297,6 +301,10 @@ snippets/social-meta-tags.liquid:
   development: 2017-10-24T04:22:52-04:00   af4fb21aab8094078da2ff27c8766ad5
 snippets/social-sharing.liquid:
   development: 2017-10-24T04:22:52-04:00   3ac09556b105b0120895e1d858feebec
+snippets/static-block-carousel.liquid:
+  development: 2017-12-10T23:40:56-05:00   af2f94bce0f6e3b1060757f42ae790ad
+snippets/static-block-lifetime-special-category.liquid:
+  development: 2017-12-07T23:41:55-05:00   e3182e364fee55aa38a93fde60af2f16
 snippets/sub-header.liquid:
   development: 2017-10-24T04:22:52-04:00   1016724c967ce4d70fa43a11a6ee6fa5
 templates/404.liquid:
@@ -310,7 +318,7 @@ templates/cart.liquid:
 templates/collection-safe.liquid:
   development: 2017-10-24T04:22:52-04:00   56b51b6f96394db4b17c64b43e1c0010
 templates/collection.category-special.liquid:
-  development: 2017-12-06T23:22:35-05:00   a3573b47837247034a78c9ba2b864ff9
+  development: 2017-12-11T03:38:19-05:00   0cee812c9b46f62f3a9d68012ad214c2
 templates/collection.knives.liquid:
   development: 2017-10-24T04:22:52-04:00   5db0256874fca1cc72a6f068888fe095
 templates/collection.liquid:

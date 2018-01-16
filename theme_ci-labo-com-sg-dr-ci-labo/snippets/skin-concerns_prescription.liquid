@@ -1,0 +1,15 @@
+<div class="skin-concerns-prescription">
+  <div class="skin-concerns-prescription__image">
+    <img class="desktop-bg" src="{{ section.settings.desktop_image  | img_url:'master' }}" alt="{{ section.settings.desktop_image.alt | escape }}">
+    <img class="mobile-bg" src="{{ section.settings.mobile_image  | img_url:'master' }}" alt="{{ section.settings.mobile_image.alt | escape }}">
+    <div class="container skin-concerns-prescription__content">
+      <h2 class="h2--underline skin-concerns-prescription__title">{{ section.settings.title }}</h2>
+      <div class="skin-concerns-prescription__description">
+        {{ section.settings.description }}
+        {% for block in section.blocks %}
+          <h3 class="h3 skin-concerns-prescription__benefit-value">{{ block.settings.benefit__value }}</h3>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>

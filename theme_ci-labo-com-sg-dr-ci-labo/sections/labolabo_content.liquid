@@ -1,0 +1,58 @@
+<div class="labolabo-content">
+{% for block in section.blocks %}
+  <div class="labolabo-content--{{ block.settings.modifier }}">
+    <div class="container">
+      <h2 class="h2--underline">{{ block.settings.title }}</h2>
+      <p>{{ block.settings.description }}</p>
+    </div>
+  </div>
+{% endfor %}
+</div>
+
+{% schema %}
+{
+  "name": "LaboLabo Content",
+  "settings": [{
+    "type": "text",
+    "id": "title",
+    "label": "List title",
+    "default": "Title"
+  }],
+  "blocks": [
+    {
+      "type": "text",
+      "name": "Content",
+      "settings": [
+        {
+          "type": "radio",
+          "id": "modifier",
+          "label": "Background color",
+          "options": [
+            {
+              "value": "white",
+              "label": "White"
+            },
+            {
+              "value": "jaffa",
+              "label": "Orange"
+            }
+          ],
+          "default": "white"
+        },
+        {
+          "type": "textarea",
+          "id": "title",
+          "label": "Title",
+          "default": "Title"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Text",
+          "default": "Lorem ipsum dolor sit amet"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

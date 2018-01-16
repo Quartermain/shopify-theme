@@ -1,0 +1,49 @@
+<div class="labolabo-hero">
+	<div class="labolabo-hero-bg desktop-bg" style="background-image: url('{{ section.settings.desktop_image | img_url: '1665x504', scale: 2 }}');"></div>
+  <img class="labolabo-hero-bg mobile-bg" src="{{ section.settings.mobile_image | img_url: '375x262', scale: 2 }}" alt="{{ section.settings.mobile_image.alt | escape }}">
+
+  <div class="labolabo-hero__content">
+    <h2 class="h2 labolabo-hero__title container">{{ section.settings.title }}</h2>
+    <h3 class="h3 labolabo-hero__subtitle container">{{ section.settings.subtitle }}</h3>
+    <div class="labolabo-hero__logo">
+      {% if block.settings.logo %}
+        <img class="labolabo-hero__logo-image" src="{{ section.settings.logo | img_url: '300x300', scale: 2 }}" alt="{{ section.settings.logo.alt | escape }}"/>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "LaboLabo Hero",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Title"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "Subtitle"
+    },
+    {
+      "type": "image_picker",
+      "id": "desktop_image",
+      "label": "Desktop background image"
+    },
+    {
+      "type": "image_picker",
+      "id": "mobile_image",
+      "label": "Mobile background image"
+    },
+    {
+      "type": "image_picker",
+      "id": "logo",
+      "label": "Logo"
+    }
+  ]
+}
+{% endschema %}

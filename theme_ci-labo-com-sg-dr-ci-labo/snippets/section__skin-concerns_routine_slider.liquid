@@ -1,0 +1,79 @@
+{% if routine == 'day-routine' %}
+  <img class="skin-concerns_routine_slider-icon--day-routine" src="{{ 'day-icon.svg' | asset_url }}" >
+{% else %}
+  <img class="skin-concerns_routine_slider-icon--night-routine" src="{{ 'night-icon.svg' | asset_url }}">
+{% endif %}
+
+<div
+  class="swiper-container swiper-container--{{ routine }} custom-swiper skin-concerns_routine_slider swiper-{{ section.id }}"
+  data-swiper>
+  <div class="swiper-wrapper">
+    {% for block in section.blocks %}
+      <div class="swiper-slide">
+        <img class="swiper-bg" src="{{ block.settings.bg_image | img_url: '488x350', scale: 2 }}" alt="{{ block.settings.bg_image.alt | escape }}">
+        <div class="container swiper-content" style="color: {{ block.settings.text_color }};">
+          <div class="info">
+            {% if block.settings.step != blank %}
+              <span class="step">{{ block.settings.step | escape }}</span>
+            {% endif %}
+            <div class="type-name">
+              {% if block.settings.type != blank %}
+                <span class="type"
+                      style="color: {{ block.settings.type_color }};">{{ block.settings.type | escape }}</span>
+              {% endif %}
+
+              {% if block.settings.product_name != blank %}
+                <p class="product-name">{{ block.settings.product_name | escape }}</p>
+              {% endif %}
+
+              {% assign collection = collections[block.settings.collection].products %}
+              {% if block.settings.collection != empty %}
+                {% for product in collection %}
+                  <span class="button--black button--quick-shop" data-action="open-quick-shop"
+                        data-product-id="{{ product.id }}" style="display: none">
+	                      {{ 'collection.quick_shop.open' | t }}
+	                    </span>
+                {% endfor %}
+              {% endif %}
+
+              {% assign product = all_products[block.settings.product] %}
+              {% if block.settings.product != empty and product.available %}
+                <span class="button--black button--quick-shop" data-action="open-quick-shop"
+                      data-product-id="{{ product.id }}">
+                      {{ 'collection.quick_shop.open' | t }}
+                  </span>
+
+                {% if block.settings.enable_mobile_buy_button and block.settings.link != blank %}
+                  <a class="button--black button--view-product" href="{{ block.settings.link }}">
+                    {{ 'collection.quick_shop.open' | t }}
+                  </a>
+                {% endif %}
+
+              {% endif %}
+            </div>
+          </div>
+
+          {% if block.settings.product_image %}
+            <img class="product-image" src="{{ block.settings.product_image  | img_url:'master' }}" alt="{{ block.settings.product_image.alt | escape }}">
+          {% endif %}
+        </div>
+      </div>
+      {% if block.settings.product != empty and product.available %}
+        {% include 'quick_shop', product: product, show_color_swatch: true, ajax_add_to_cart: true %}
+      {% endif %}
+      {% if block.settings.collection != empty %}
+        {% for product in collection %}
+          {% include 'quick_shop', product: product, show_color_swatch: true, ajax_add_to_cart: true %}
+        {% endfor %}
+      {% endif %}
+    {% endfor %}
+  </div>
+  <!-- Add Pagination -->
+  {% if section.settings.pagination %}
+    <div class="swiper-controler">
+      <div class="swiper-button-prev" data-swiper__prev>{% include 'icon' with 'arrow-left' %}</div>
+      <div class="swiper-pagination" data-swiper__pagination></div>
+      <div class="swiper-button-next" data-swiper__next>{% include 'icon' with 'arrow-right' %}</div>
+    </div>
+  {% endif %}
+</div>

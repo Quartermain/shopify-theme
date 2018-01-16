@@ -1,0 +1,62 @@
+@font-face {
+  font-family: 'BauerBodni BT W05 Roman';
+  src: url('https://cdn.shopify.com/s/files/1/2245/1865/t/8/assets/font--69f45a5c-d4b3-4605-b394-ac6e34909728.eot?#iefix');
+  src: url('https://cdn.shopify.com/s/files/1/2245/1865/t/8/assets/font--69f45a5c-d4b3-4605-b394-ac6e34909728.eot?#iefix') format('eot'),
+    url('https://cdn.shopify.com/s/files/1/2245/1865/t/8/assets/font--cf588bed-f4aa-4b84-b922-287fe2df1455.woff2') format('woff2'),
+    url('https://cdn.shopify.com/s/files/1/2245/1865/t/8/assets/font--0de28f7b-4cfb-4fab-8f31-13b3a7b70b9e.woff') format('woff'),
+    url('https://cdn.shopify.com/s/files/1/2245/1865/t/8/assets/font--72e56f10-25b1-404d-b63a-5e818b795124.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'MuseoSans-300';
+  src: url('https://cdn.shopify.com/s/files/1/2245/1865/t/8/assets/font--MuseoSans-300.eot?#iefix') format('embedded-opentype'),
+    url('https://cdn.shopify.com/s/files/1/2245/1865/t/8/assets/font--MuseoSans-300.otf') format('opentype'),
+    url('https://cdn.shopify.com/s/files/1/2245/1865/t/8/assets/font--MuseoSans-300.woff') format('woff'), url('https://cdn.shopify.com/s/files/1/2245/1865/t/8/assets/font--MuseoSans-300.ttf') format('truetype'), 
+    url('https://cdn.shopify.com/s/files/1/2245/1865/t/8/assets/font--MuseoSans-300.svg#MuseoSans-300') format('svg');
+}
+
+.font--bauerbodni {
+  font-family: 'BauerBodni BT W05 Roman';
+}
+
+.font--museo {
+  font-family: 'Open Sans', sans-serif;
+}
+
+body {
+   font-family: 'MuseoSans-300';
+}
+
+h1,
+h2 {
+  font-family: 'BauerBodni BT W05 Roman';
+}
+
+.button__text {
+  display: inline-block;
+  padding: 8px 12.5px;
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.4666;
+  border: 1px solid transparent;
+  border-radius: 3px;
+  text-decoration: none;
+  text-transform: none;
+  cursor: pointer;
+  transition: background-color .2s, color .2s, border .2s;
+  -webkit-font-smoothing: antialiased; // sass-lint:disable-line no-vendor-prefixes
+  -moz-osx-font-smoothing: grayscale; // sass-lint:disable-line no-vendor-prefixes
+}
+
+.color--tundorra {
+  color: #444444;
+}
+
+.row,
+.order-list__item {
+  border-color: #444444;
+}
+
+.shop-name__cell {
+  margin-bottom: 20px;
+}

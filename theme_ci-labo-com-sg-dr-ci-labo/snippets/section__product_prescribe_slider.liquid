@@ -1,0 +1,36 @@
+<div class="bg-color--white swiper-container swiper-container--prescribe custom-swiper swiper-{{ section.id }}" data-swiper>
+    <div class="swiper-wrapper">
+      {% for block in section.blocks %}
+        <div class="swiper-slide">
+					<div class="container swiper-content pt--20" style="color: {{ block.settings.prescribe__text_color }};">
+
+            {% if block.settings.prescribe__image != blank %}
+              <img style="width: 80%" src="{{ block.settings.prescribe__image  | img_url:'master' }}" alt="{{ block.settings.prescribe__image.alt | escape }}">
+            {% endif %}
+
+						{% if block.settings.prescribe__note != blank %}
+							<p class="desc color--alizarin pt--10"><i>{{ block.settings.prescribe__note }}</i></p>
+						{% endif %}
+
+						{% if block.settings.prescribe__description != blank %}
+							<p class="desc" style="width: 85%; text-align: center;">{{ block.settings.prescribe__description | escape }}</p>
+						{% endif %}
+					</div>
+	      </div>
+      {% endfor%}
+    </div>
+    <!-- Add Pagination -->
+    {% if section.settings.prescribe__pagination %}
+    <div class="swiper-controler">
+      <div class="swiper-button-prev" style="position: absolute; top: -1000%" data-swiper__prev>{% include 'icon' with 'arrow-left' %}</div>
+      <div class="swiper-pagination" data-swiper__pagination></div>
+      <div class="swiper-button-next" style="position: absolute; top: -1000%" data-swiper__next>{% include 'icon' with 'arrow-right' %}</div>
+    </div>
+    {% endif %}
+</div>
+
+<style>
+  .swiper-{{ section.id }} .swiper-content{
+    align-items: {{ section.settings.prescribe__content_position }};
+  }
+</style>

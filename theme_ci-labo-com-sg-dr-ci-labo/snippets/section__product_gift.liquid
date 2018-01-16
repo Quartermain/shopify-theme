@@ -1,0 +1,46 @@
+{% if section.settings.gift__enabled %}
+<div class="bg-color--white">
+  <div class="container pt--25 pr--40 pb--25 pl--40">
+    <h2 class="h1--underline">{{ section.settings.gift__title }}</h2>
+    <div class="grid">
+    {% for block in section.blocks %}
+      {% assign product = all_products[block.settings.gift__product] %}
+      {% for variant in product.variants %}
+        {% assign GiftVariantID = block.settings.gift__product-variant-id | times: 1 %}
+        {% assign ProductVariantID = variant.id | times: 1 %}
+
+        {% if GiftVariantID == 0 or GiftVariantID == ProductVariantID %}
+
+      <div product-type="{{ product.type }}" class="{% if template == 'product' %}related-products__item{% else %}collection__item{% endif %} range_product-item__content product-item--gift grid__cell 1/2--thumb 1/2--handheld 1/{{ section.blocks | size }}--lap-and-up">
+        <div class="product-item__content">
+          {% assign alternate_image = '' %}
+
+          {% if show_alternate_image and product.images.size > 1 %}
+            {% assign alternate_image = '' %}
+
+            {% capture alternate_image %}
+              data-alternate-src="{{ product.images[1] | img_url: image_size, scale: 2 }}"
+            {% endcapture %}
+          {% endif %}
+          {% assign featured_image = product.featured_image %}
+          <figure class="product-item__figure">
+            <a href="{{ product.url | within: collection }}">
+              <div class="product-item__image-wrapper">
+                <img class="product-item__image" src="{{ featured_image | img_url: image_size, scale: 2 }}" {{ alternate_image }} alt="{{ featured_image.alt | escape }}">
+              </div>
+            </a>
+          </figure>
+
+          <div class="product-item__details">
+            <a href="{{ product.url }}" class="product-item__title">{{ product.title }}{% unless GiftVariantID == 0 %} {{ variant.options[0] }}{% endunless %}</a>
+          </div>
+        </div>
+      </div>
+
+        {% endif %}
+      {% endfor %}
+    {% endfor %}
+    </div>
+  </div>
+</div>
+{% endif %}

@@ -1,0 +1,87 @@
+<div class="labolabo-content-and-image">
+  <div class="container">
+    <h2 class="h2--underline">{{ section.settings.title }}</h2>
+    <p class="subtitle text--center">{{ section.settings.subtitle }}</p>
+    <p class="description">{{ section.settings.description }}</p>
+    {% for block in section.blocks %}
+    <div class="{{ block.settings.visibility }}">
+      {% if block.settings.description != null %}
+        <p>{{ block.settings.description }}</p>
+      {% endif %}
+      {% if block.settings.content_image != null %}
+        {% if block.settings.visibility == 'only-showing-mobile' %}
+          <img src='{{ block.settings.content_image | img_url: '375x321', scale: 2 }}' alt="{{ block.settings.content_image.alt | escape }}"/>
+        {% else %}
+          <img src='{{ block.settings.content_image | img_url: '1200x333', scale: 2 }}' alt="{{ block.settings.content_image.alt | escape }}"/>
+        {% endif %}
+      {% endif %}
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+
+{% schema %}
+{
+  "name": "LaboLabo Content Image",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Title"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "Subtitle"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Text",
+      "default": "Lorem ipsum dolor sit amet"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "text",
+      "name": "Content",
+      "settings": [
+        {
+          "type": "select",
+          "id": "visibility",
+          "label": "visibility",
+          "options": [
+            {
+              "value": "only-showing-mobile",
+              "label": "Mobile"
+            },
+            {
+              "value": "only-showing-desktop",
+              "label": "Desktop"
+            },
+            {
+              "value": "always-showing",
+              "label": "Desktop and Mobile"
+            }
+          ],
+          "default": "always-showing"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Text",
+          "default": "Lorem ipsum dolor sit amet"
+        },
+        {
+          "type": "image_picker",
+          "id": "content_image",
+          "label": "Image"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

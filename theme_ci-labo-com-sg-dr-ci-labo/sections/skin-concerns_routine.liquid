@@ -1,0 +1,18 @@
+<div class="skin-concerns-routine">
+  <div class="container">
+    <h2 class="h2--underline skin-concerns-routine__title">{{ section.settings.title }}</h2>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Routine",
+  "settings": [
+  {
+    "type": "text",
+    "id": "title",
+    "label": "Title",
+    "default": "Skin Care Routine"
+  }]
+}
+{% endschema %}

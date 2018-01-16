@@ -1,0 +1,73 @@
+{% include 'section__product_benefits' %}
+
+{% schema %}
+{
+  "name": "Product Benefits",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "benefits",
+      "label": "Enable",
+      "default": true
+    },
+    {
+      "type": "image_picker",
+      "id": "benefits__background--desktop",
+      "label": "Image (Desktop)"
+    },
+    {
+      "type": "image_picker",
+      "id": "benefits__background--mobile",
+      "label": "Image (Mobile)"
+    },
+    {
+      "type": "select",
+      "id": "text-color",
+      "label": "Text color",
+      "options": [
+        {
+          "value": "black",
+          "label": "Black"
+        },
+        {
+          "value": "white",
+          "label": "White"
+        }
+      ],
+      "default": "black"
+    },
+    {
+      "type": "text",
+      "id": "benefits__title",
+      "label": "Title",
+      "default": "Benefits"
+    },
+    {
+      "type": "textarea",
+      "id": "benefits__description",
+      "label": "Description",
+      "default": "Add your own custom content to give more information about your store, availability details..."
+    },
+    {
+      "type": "textarea",
+      "id": "benefits__description-2",
+      "label": "Description",
+      "default": "Add your own custom content to give more information about your store, availability details..."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "text",
+      "name": "Benefit value",
+      "settings": [
+        {
+          "type": "text",
+          "id": "benefit__value",
+          "label": "Value",
+          "default": "Benefit value"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

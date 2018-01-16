@@ -1,0 +1,83 @@
+{% include 'section__product_explenation' %}
+
+{% schema %}
+{
+  "name": "Product Explenation",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "explenation",
+      "label": "Enable",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "explenation__title",
+      "label": "Title",
+      "default": "Explenation title"
+    },
+    {
+      "type": "textarea",
+      "id": "explenation__description",
+      "label": "Description",
+      "default": "Add your own custom content to give more information about your store..."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "image",
+      "name": "Content",
+      "settings": [
+        {
+          "type": "checkbox",
+          "id": "full_width",
+          "label": "Full width image",
+          "default": false
+        },
+        {
+          "type": "select",
+          "id": "visibility",
+          "label": "visibility",
+          "options": [
+            {
+              "value": "only-showing-mobile",
+              "label": "Mobile"
+            },
+            {
+              "value": "only-showing-desktop",
+              "label": "Desktop"
+            },
+            {
+              "value": "always-showing",
+              "label": "Desktop and Mobile"
+            }
+          ],
+          "default": "always-showing"
+        },
+        {
+          "type": "image_picker",
+          "id": "explenation__image",
+          "label": "Image"
+        },
+        {
+          "type": "textarea",
+          "id": "explenation__video",
+          "label": "Embedded video"
+        },
+        {
+          "type": "text",
+          "id": "explenation__image__title",
+          "label": "Title",
+          "default": "Explenation title"
+        },
+        {
+          "type": "textarea",
+          "id": "explenation__description",
+          "label": "Description",
+          "default": "Description title"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

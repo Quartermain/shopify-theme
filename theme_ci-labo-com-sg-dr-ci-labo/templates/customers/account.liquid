@@ -1,0 +1,90 @@
+<script type="text/javascript">
+  (function() {
+    'use strict';
+
+    // Redirect after registrations
+    var referrer = document.referrer;
+    var origin = window.location.origin;
+    if (referrer === origin + '/account/register' || referrer === origin + '/challenge') {
+      window.location.href = '/pages/understanding-your-skin';
+    }
+  })();
+</script>
+
+{% capture push_header %}
+  <div class="header__push bg-color--desert-storm pb--30">
+    <div class="container">
+      <div class="inner bg-color--desert-storm">
+        <div class="header__push-content">
+          <h1 class="header__push-title h1">{{ customer.name }}</h1>
+          <div class="header__push-context">
+            <a href="/account/logout">
+              <button type="button" class="button--transparent">{{ 'customer.account.logout' | t }}</button>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endcapture %}
+
+<section class="container">
+  <div class="inner pt--30">
+    <div class="account__orders grid grid--large">
+
+      <div class="grid__cell 1/2--lap-and-up mb--50">
+        <h2 class="h2--underline">{{ 'customer.address.shipping' | t }}</h2>
+
+        {% if customer.default_address %}
+          {% include 'customer_address', class: 'account__address account__address--default', address: customer.default_address %}
+        {% else %}
+          <div class="account__address account__address--default text--center mt--30">
+            <a href="account/addresses" class="address__see-all link--primary ">{{ 'customer.address.empty' | t }}</a>
+          </div>
+        {% endif %}
+      </div>
+      <div class="grid__cell 1/2--lap-and-up  mb--50">
+        <h2 class="h2--underline">{{ 'customer.orders.your_orders' | t }}</h2>
+
+        {% if customer.orders.size == 0 %}
+        <p class="text--center mt--30">
+          {{ 'customer.orders.none' | t }}
+        </p>
+        {% else %}
+          {% paginate customer.orders by 25 %}
+            <table class="orders__table table table--responsive mt--30">
+              <thead>
+                <tr>
+                  <th>{{ 'customer.orders.order_number' | t }}</th>
+                  <th>{{ 'customer.orders.date' | t }}</th>
+                  <th>{{ 'customer.orders.payment_status' | t }}</th>
+                  <th>{{ 'customer.orders.fulfillment_status' | t }}</th>
+                  <th>{{ 'customer.orders.total' | t }}</th>
+                </tr>
+              </thead>
+
+              <tbody>
+                {% for order in customer.orders %}
+                  <tr class="orders__order">
+                    <td data-label="{{ 'customer.orders.order_number' | t }}">
+                      <a href="{{ order.customer_url }}" class="link--primary">{{ order.name }}</a>
+                    </td>
+                    <td data-label="{{ 'customer.orders.date' | t }}">{{ order.created_at | date: format: 'month_day_year' }}</td>
+                    <td data-label="{{ 'customer.orders.payment_status' | t }}">{{ order.financial_status_label }}</td>
+                    <td data-label="{{ 'customer.orders.fulfillment_status' | t }}">{{ order.fulfillment_status_label }}</td>
+                    <td data-label="{{ 'customer.orders.total' | t }}">{{ order.total_price | money }}</td>
+                  </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+
+            {% capture next_pagination_label %}{{ 'customer.orders.next' | t }}{% endcapture %}
+            {% capture previous_pagination_label %}{{ 'customer.orders.previous' | t }}{% endcapture %}
+
+            {% include 'pagination', next_pagination_label: next_pagination_label, previous_pagination_label: previous_pagination_label %}
+          {% endpaginate %}
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</section>

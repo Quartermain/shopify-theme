@@ -1,0 +1,23 @@
+{% if section.settings.benefits %}
+  <div class="product-benefits pt--25 pl--40 pr--40">
+    <img class="product-benefits__background--mobile" src="{{ section.settings.benefits__background--mobile | img_url: '375x375', scale: 2 }}" alt="{{ section.settings.benefits__background--mobile.alt | escape }}" />
+    <img class="product-benefits__background--desktop" src="{{ section.settings.benefits__background--desktop | img_url: '1665x398'}}" alt="{{ section.settings.benefits__background--desktop.alt | escape }}" />
+
+    <div class="text-container product-benefits__content color--{{ section.settings.text-color }}">
+	    <h1 class="h1--underline color--{{ section.settings.text-color }}">{{ section.settings.benefits__title }}</h1>
+
+	    {% if section.settings.benefits__description %}
+	      <p style="width: 85%; margin-left: auto; margin-right: auto; font-size: 13px;">{{ section.settings.benefits__description }}</p>
+	    {% endif %}
+			<div class="product-benefits__value">
+		    {% for block in section.blocks %}
+		      <div style="font-size: 13px;" class="font-museo">{{ block.settings.benefit__value }}</div>
+		    {% endfor %}
+	    </div>
+
+	    {% if section.settings.benefits__description-2 %}
+	      <p class="pb--40" style="width: 85%; margin-left: auto; margin-right: auto; font-size: 13px;">{{ section.settings.benefits__description-2 }}</p>
+	    {% endif %}
+    </div>
+  </div>
+{% endif %}

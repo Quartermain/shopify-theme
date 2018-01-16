@@ -178,6 +178,8 @@
             <div class="grid product-single row2-product-single">
               
               <div class="grid__item {{ product_description_width }} ">
+                
+
                 <div class="product-single__meta">                  
 
                     
@@ -237,21 +239,81 @@
                         <form action="/cart/add" method="post" class="variants" id="cart" enctype="multipart/form-data">
     {% if product.options.size > 1 %}
     <div class="form-group">
-        <select id="product-select-{{ product.id }}" name='id'>
+        {% comment %}<select id="product-select-{{ product.id }}" name='id'>
             {% for variant in product.variants %}
             <option {% if variant == product.selected_or_first_available_variant %} selected="selected" {% endif %} data-sku="{{ variant.sku }}" value="{{ variant.id }}">{{ variant.title }} - {{ variant.price | money }}</option>
             {% endfor %}
-        </select>
+        </select>{% endcomment %}
+
+        <script type="text/javascript" charset="utf-8">
+      jQuery(function() { 
+        var first_variant_price = jQuery("ul li input[type='radio']:checked").attr("data-price");
+        var first_variant_compare_at_price = jQuery("ul li input[type='radio']:checked").attr("data-compare-at-price") || ''; 
+        jQuery(".price-field span").html(first_variant_price);
+        jQuery(".price-field del").html(first_variant_compare_at_price);
+        jQuery("input[type='radio']").click(function() {
+          var variant_price = jQuery(this).attr("data-price");
+          jQuery(".price-field span").html(variant_price);
+          var variant_compare_at_price = jQuery(this).attr("data-compare-at-price") || '';
+          jQuery(".price-field del").html(variant_compare_at_price);
+        });
+      });
+      </script>
+
+      <ul style="position: relative">
+        {% assign found_available_variant = false %}
+        {% for variant in product.variants %}
+        <li class="clearfix">
+          {% if variant.available %}
+            <input style="padding:10px; float: left; margin-top: 5px;" type="radio"{% if variant.compare_at_price > variant.price %} data-compare-at-price="{{ variant.compare_at_price | money_with_currency }}"{% endif %} data-price="{{ variant.price | money_with_currency }}" id="{{ variant.id }}" value="{{ variant.id }}" name="id"{% if found_available_variant == false  %}{% assign found_available_variant = true %} checked="checked"{% endif %} />
+            <label style="margin-left: 20px; display: block;" for="{{ variant.id }}"> {{variant.title }} 
+              <span class=money> {{variant.price |  money_with_currency}}</span> 
+            </label>
+          {% else %}
+            <input type="radio" class="out-of-stock" id="{{ variant.id }}" value="{{ variant.id }}" name="id" disabled="disabled" />
+            <label for="{{ variant.id }}" class="out-of-stock">{{ variant.title }}</label>
+            {% endif %}
+        </li>
+        {% endfor %}
+      </ul>
+
     </div>
     {% elsif product.options.size == 1 and product.variants.size > 1 %}
     <div class=" form-group">
-        <label>{{ product.options[0] }}</label>
+        {% comment %}<label>{{ product.options[0] }}</label>
       
         <select id="product-select-{{ product.id }}" name='id'>
             {% for variant in product.variants %}
             <option {% if variant == product.selected_or_first_available_variant %} selected="selected" {% endif %} data-sku="{{ variant.sku }}" value="{{ variant.id }}">{{ variant.title }} - {{ variant.price | money }}</option>
             {% endfor %}
-        </select>
+        </select>{% endcomment %}
+
+        <script type="text/javascript" charset="utf-8">
+      jQuery(function() { 
+        var first_variant_price = jQuery("ul li input[type='radio']:checked").attr("data-price");
+        var first_variant_compare_at_price = jQuery("ul li input[type='radio']:checked").attr("data-compare-at-price") || ''; 
+        jQuery(".price-field span").html(first_variant_price);
+        jQuery(".price-field del").html(first_variant_compare_at_price);
+        jQuery("input[type='radio']").click(function() {
+          var variant_price = jQuery(this).attr("data-price");
+          jQuery(".price-field span").html(variant_price);
+          var variant_compare_at_price = jQuery(this).attr("data-compare-at-price") || '';
+          jQuery(".price-field del").html(variant_compare_at_price);
+        });
+      });
+      </script>
+
+      <ul style="position: relative">
+        {% assign found_available_variant = false %}
+        {% for variant in product.variants %}
+        <li class="clearfix">{% if variant.available %}
+          <input style="padding:10px; float: left; margin-top: 5px;" type="radio"{% if variant.compare_at_price > variant.price %} data-compare-at-price="{{ variant.compare_at_price | money_with_currency }}"{% endif %} data-price="{{ variant.price | money_with_currency }}" id="{{ variant.id }}" value="{{ variant.id }}" name="id"{% if found_available_variant == false  %}{% assign found_available_variant = true %} checked="checked"{% endif %} />
+          <label style="margin-left: 20px; display: block;" for="{{ variant.id }}"> {{variant.title }} <span class=money> {{variant.price |  money_with_currency}}</span> </label>{% else %}
+          <input type="radio" class="out-of-stock" id="{{ variant.id }}" value="{{ variant.id }}" name="id" disabled="disabled" />
+          <label for="{{ variant.id }}" class="out-of-stock">{{ variant.title }}</label>{% endif %}
+        </li>
+        {% endfor %}
+      </ul>
       
       
     </div>
@@ -298,6 +360,8 @@
                     </div>
                     
                 </div>
+
+
                 <div class="video-wrapper">
 
 

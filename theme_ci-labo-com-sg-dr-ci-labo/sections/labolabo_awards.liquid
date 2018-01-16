@@ -1,0 +1,73 @@
+{% unless section.settings.disable_awards %}
+<div class="labolabo-awards">
+	<div class="container">
+    <h2 class="h2--underline">{{ section.settings.title }}</h2>
+    <p class="main-description">{{ section.settings.description }}</p>
+    <div class="grid grid--gallery">
+      {% for block in section.blocks %}
+        <div class="grid__cell 1/1--thumb 1/2--lap-and-up">
+          <div class="award-item">
+	          <img class="icon" src='{{ block.settings.icon  | img_url: '70x70', scale: 2 }}' alt="{{ block.settings.icon.alt | escape }}" />
+	          <div>
+	            <p class="title">{{ block.settings.title }}</p>
+	            <p class="description">{{ block.settings.description }}</p>
+	          </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+
+  </div>
+</div>
+{% endunless %}
+
+{% schema %}
+{
+  "name": "LaboLabo Awards",
+  "settings": [
+	  {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Title"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "Lorem ipsum dolor sit amet"
+    },
+    {
+      "type": "checkbox",
+      "id": "disable_awards",
+      "label": "Disable awards",
+      "default": false
+    }
+  ],
+  "blocks": [
+    {
+      "type": "text",
+      "name": "Award",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Title"
+        },
+        {
+          "type": "text",
+          "id": "description",
+          "label": "Description",
+          "default": "Description"
+        },
+        {
+          "type": "image_picker",
+          "id": "icon",
+          "label": "Icon"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

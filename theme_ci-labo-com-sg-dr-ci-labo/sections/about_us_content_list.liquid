@@ -1,0 +1,105 @@
+<div class="container about-us__content-list">
+	<div class="grid grid--gallery">
+		{% for block in section.blocks %}
+			<div class="grid__cell 1/1--thumb 1/3--lap-and-up  {{ section.settings.custom_class }}">
+				{% if block.settings.title != blank %}
+					<h2 class="h2--underline">{{ block.settings.title | escape }}</h2>
+				{% endif %}
+
+	      {% if block.settings.description != blank %}
+          {{ block.settings.description }}
+				{% endif %}
+
+	      {% if block.settings.content_image != blank %}
+	        <img src='{{ block.settings.content_image  | img_url:'master' }}' alt="{{ block.settings.content_image.alt | escape }}"/>
+				{% endif %}
+			</div>
+		{% endfor %}
+	</div>
+</div>
+
+<style>
+  .about-us__section-{{ section.id }} {
+    color: {{ section.settings.text_color }};
+  }
+
+  .about-us__section-{{ section.id }} .rte {
+    text-align: {{ section.settings.content_position }};
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Content List",
+  "settings": [
+    {
+      "type": "text",
+      "id": "custom_class",
+      "label": "Custom class",
+      "default": "customClass"
+    },
+    {
+      "type": "select",
+      "id": "content_position",
+      "label": "Text position",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text",
+      "default": "#000000"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "image",
+      "name": "Content",
+      "settings": [
+	      {
+	        "type": "text",
+          "id": "title",
+          "label": "Title"
+	      },
+	      {
+          "type": "textarea",
+          "id": "description",
+          "label": "Description",
+          "default": "<p>Add your own custom content to give more information about your store, availability details...</p>"
+        },
+	      {
+	        "type": "image_picker",
+          "id": "content_image",
+          "label": "Image"
+	      }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "category": "Text",
+      "name": "Rich text",
+      "blocks": [
+        {
+          "type": "image"
+        }
+      ]
+    }
+  ]
+}
+
+{% endschema %}

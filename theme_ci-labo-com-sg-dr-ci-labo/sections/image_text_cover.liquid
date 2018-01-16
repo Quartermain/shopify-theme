@@ -1,0 +1,49 @@
+<div class="section-image-text">
+	<img class="about-us__swiper-bg" src="{{ section.settings.bg_image  | img_url:'master' }}" alt="{{ section.settings.bg_image.alt | escape }}">
+	{% if section.settings.title != '' %}
+		<div class="copy" style="color: {{ section.settings.text_color }};">
+			<h2 style="color: {{ section.settings.text_color }};" class="h1">{{ section.settings.title | escape }}</h2>
+	    <span>{{ section.settings.description }}</span>
+		</div>
+	{% endif %}
+</div>
+{% schema %}
+{
+  "name": "Image and Text",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading"
+    },
+    {
+      "type": "text",
+      "id": "description",
+      "label": "Description"
+    },
+    {
+      "id": "bg_image",
+      "type": "image_picker",
+      "label": "Background image"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text",
+      "default": "#000000"
+    }
+  ],
+  "presets": [
+    {
+      "name": "image-text",
+      "category": "Block"
+    }
+  ]
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

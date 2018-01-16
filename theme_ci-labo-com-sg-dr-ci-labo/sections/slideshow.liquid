@@ -1,0 +1,234 @@
+{% include 'theme_features' %}
+
+<section class="index-module__section-{{ section.id }} slideshow {% if section.settings.separate_from_header
+%}slideshow--separate{% else %}slideshow--collapsed{% endif %} {% if theme_features_slider_crop %}slideshow--cropped{% else %}slideshow--uncropped{% endif %}  {{section.settings.custom_class}} "
+         data-autoplay="{{ section.settings.autoplay }}"
+         data-animation-type="{{ section.settings.animation_type }}"
+         data-cycle-speed="{{ section.settings.cycle_speed | times: 1000 }}">
+  <div class="slideshow__slides">
+    {% for block in section.blocks %}
+      <div class="slideshow__slide" {{ block.shopify_attributes }} style="{% if theme_features_slider_crop == true or settings.header_separate_from_slider == false %}background-image: url('{{ block.settings.image | img_url: '1800x' }}');{% endif %} {% unless forloop.first %}display: none;{% endunless %}" data-slide-index="{{ forloop.index0 }}">
+        {% capture current %}{% cycle 1, 2 %}{% endcapture %}
+
+        {% if block.settings.button_text == blank and block.settings.link != blank %}
+          <a href="{{ block.settings.link }}">
+        {% endif %}
+
+        {% if theme_features_slider_crop and section.settings.separate_from_header == false and block.settings.image == blank %}
+          <div class="slideshow__placeholder">
+            {{ 'lifestyle-' | append: current | placeholder_svg_tag: 'placeholder-svg' }}
+          </div>
+        {% endif %}
+
+        {% if block.settings.image %}
+          <img class="slideshow__image desktop-bg"
+               src="{{ block.settings.image | img_url: '1920x600' }}"
+               alt="{{ block.settings.image.alt }}">
+          <img class="slideshow__image mobile-bg"
+                         src="{{ block.settings.image_mobile | img_url: '375x330', scale: 2 }}"
+                         alt="{{ block.settings.image.alt }}">
+        {% else %}
+          {{ 'lifestyle-' | append: current | placeholder_svg_tag: 'placeholder-svg slideshow__image' }}
+        {% endif %}
+
+        <div class="slideshow__cover">
+          <div class="slideshow__cover-wrapper">
+            <div class="container">
+              <!--<img class="slideshow__logo" src="{{ 'dr-ci-labo--logo.svg' | asset_url }}" />-->
+
+							{% if block.settings.heading != blank %}
+                <h1 class="slideshow__heading {{ block.settings.heading_color }}">{{ block.settings.heading }}</h1>
+              {% endif %}
+
+              {% if block.settings.subheading != blank %}
+                <h2 class="slideshow__subheading {{ block.settings.subheading_color }}"><span>{{ block.settings.subheading }}</span></h2>
+              {% endif %}
+
+              {% if block.settings.button_text != blank %}
+                <a href="{{ block.settings.link }}" class="slideshow__button {{ block.settings.button_style }}">{{ block.settings.button_text }}</a>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+
+        {% if block.settings.button_text == blank and block.settings.link != blank %}
+          </a>
+        {% endif %}
+      </div>
+    {% endfor %}
+  </div>
+  <div class="slideshow-controler">
+    <a href="#" class="slideshow__arrow slideshow__prev" rel="prev">{% include 'icon' with 'arrow-left' %}</a>
+    <div class="slideshow__pagination"></div>
+    <a href="#" class="slideshow__arrow slideshow__next" rel="next">{% include 'icon' with 'arrow-right' %}</a>
+  </div>
+
+</section>
+
+{% schema %}
+{
+  "name": "Slideshow",
+  "class": "shopify-section__slideshow",
+  "max_blocks": 8,
+  "settings": [
+    {
+      "type": "text",
+      "id": "custom_class",
+      "label": "Custom class",
+      "default": "customClass"
+    },
+    {
+      "type": "checkbox",
+      "id": "separate_from_header",
+      "label": "Separate slideshow from header",
+      "info": "This only applies on home page, if the slideshow is the first section",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "autoplay",
+      "label": "Auto rotate between slides",
+      "default": true
+    },
+    {
+      "type": "select",
+      "id": "animation_type",
+      "label": "Animation type",
+      "options": [
+        {
+          "value": "fade",
+          "label": "Fade"
+        },
+        {
+          "value": "slide",
+          "label": "Slide"
+        }
+      ],
+      "default": "slide"
+    },
+    {
+      "type": "range",
+      "id": "cycle_speed",
+      "min": 3,
+      "max": 10,
+      "step": 1,
+      "unit": "sec",
+      "label": "Change slides every",
+      "default": 5
+    }
+  ],
+  "blocks": [
+    {
+      "type": "image",
+      "name": "Slide",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image_mobile",
+          "label": "Mobile Image"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Desktop Image"
+        },
+        {
+          "type": "textarea",
+          "id": "heading",
+          "label": "Heading",
+          "default": "Tell your brand's story"
+        },
+        {
+          "type": "select",
+          "id": "heading_color",
+          "label": "Heading color",
+          "options": [
+            {
+              "value": "color--black",
+              "label": "Black"
+            },
+            {
+              "value": "color--white",
+              "label": "White"
+            }
+          ],
+          "default": "color--white"
+        },
+        {
+          "type": "text",
+          "id": "subheading",
+          "label": "Subheading",
+          "default": "Your slideshow"
+        },
+        {
+          "type": "select",
+          "id": "subheading_color",
+          "label": "Subheading color",
+          "options": [
+            {
+              "value": "color--black",
+              "label": "Black"
+            },
+            {
+              "value": "color--white",
+              "label": "White"
+            }
+          ],
+          "default": "color--white"
+        },
+        {
+          "type": "text",
+          "id": "button_text",
+          "label": "Button text",
+          "default": "Button text"
+        },
+        {
+          "type": "select",
+          "id": "button_style",
+          "label": "Button style",
+          "options": [
+            {
+              "value": "button--black",
+              "label": "Black"
+            },
+            {
+              "value": "button--white",
+              "label": "White"
+            },
+            {
+              "value": "button--alizarin-crimson",
+              "label": "Red"
+            }
+          ],
+          "default": "button--black"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link",
+          "info": "If the option \"Separate slideshow from header\" is checked and that no button is present, the whole slide becomes clickable."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "category": "Image",
+      "name": "Slideshow",
+      "settings": {
+        "autoplay": true,
+        "animation_type": "slide",
+        "cycle_speed": 5
+      },
+      "blocks": [
+        {
+          "type": "image"
+        },
+        {
+          "type": "image"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

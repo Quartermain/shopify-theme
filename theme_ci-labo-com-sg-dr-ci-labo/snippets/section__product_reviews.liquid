@@ -1,0 +1,38 @@
+{% if section.settings.reviews %}
+  <div class="container bg-color--white pt--25 pl--40 pr--40">
+    <h2 class="h1--underline">{{ section.settings.reviews__title }}</h2>
+
+    {% assign blockSize = section.blocks | size %}
+    {% if blockSize > 0 %}
+      {% for block in section.blocks %}
+        <div class="container pb--25">
+          <h2 class="h2">{{ block.settings.reviews__review__title }}</h2>
+          <p style="text-align: center; font-size: 11px">
+            by <span style="color: red">{{ block.settings.reviews__review__author }}</span>,
+            <span class="dateOfToday">
+              {% unless block.settings == blank %}
+                {{'now' | date: '%D' }}
+              {% endunless %}
+            </span>
+          </p>
+          <div class="review--ratings" style="text-align: center">
+            {% assign reviewStars = block.settings.reviews__review__stars | value %}
+            <span class="{% if reviewStars >= '1' %}selected{% endif %}">☆</span>
+            <span class="{% if reviewStars >= '2' %}selected{% endif %}">☆</span>
+            <span class="{% if reviewStars >= '3' %}selected{% endif %}">☆</span>
+            <span class="{% if reviewStars >= '4' %}selected{% endif %}">☆</span>
+            <span class="{% if reviewStars == '5' %}selected{% endif %}">☆</span>
+          </div>
+          <p style="line-height: 2">{{ block.settings.reviews__review__text }}</p>
+        </div>
+      {% endfor %}
+    {% endif %}
+
+    {% if section.settings.reviews__more %}
+      <div class="pb--15" style="text-align: center">
+        <a href="{{ shop.url }}" class="button button--half button--plus button--primary">{{ section.settings.reviews__more__titles }}</a>
+      </div>
+    {% endif %}
+
+  </div>
+{% endif %}

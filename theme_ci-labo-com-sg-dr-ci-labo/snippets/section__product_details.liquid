@@ -1,0 +1,56 @@
+{% if section.settings.products_details %}
+<div class="product-details">
+  <div class="product-details__titles--mobile">
+    <h2 class="h1--underline product-details__title">{{ section.settings.products_details__title }}</h2>
+  </div>
+  <div class="product-details__titles--desktop">
+    {% if section.settings.products_details__ingredients %}
+      <h2 class="product-details__title--desktop is-active" data-toggle="product-details__content" data-toggle__group="product-details__titles--desktop">{{ section.settings.products_details__title }}</h2>
+      <h2 class="product-details__ingredients-title--desktop" data-toggle="product-details__ingredients--desktop" data-toggle__group="product-details__titles--desktop">{{ section.settings.products_details__ingredients_title }}</h2>
+    {% else %}
+      <h2 class="product-details__title--desktop is-active">{{ section.settings.products_details__title }}</h2>
+    {% endif %}
+  </div>
+
+  <div class="product-details__content is-active" data-toggle__target="product-details__content">
+    {% if section.settings.products_details__description %}
+      <p class="product-details__description">{{ section.settings.products_details__description | join: ', '  }}</p>
+    {% endif %}
+
+    {% assign blockSize = section.blocks | size %}
+    {% if blockSize > 0 %}
+      <div class="pb--20" style="display: block; text-align: center">
+        {% for block in section.blocks %}
+          <div style="display: inline-block">
+            {% if block.settings.products_details__description_image != blank %}
+              <img
+                alt="{{ block.settings.products_details__description_image_title }}"
+                style="margin: auto 7px; vertical-align: top;" src="{{ block.settings.products_details__description_image | img_url: '60x63', scale: 2 }}" width="60" height="63"/>
+              <figcaption style="font-size: 9px; text-align: center">{{ block.settings.products_details__description_image_title }}</figcaption>
+            {% endif %}
+          </div>
+        {% endfor %}
+      </div>
+    {% endif %}
+  </div>
+
+  {% if section.settings.products_details__ingredients %}
+    <div class="product-details__ingredients--desktop" data-toggle__target="product-details__ingredients--desktop">
+      {{ section.settings.products_details__ingredients_description | join: ', ' }}
+    </div>
+  {% endif %}
+
+
+  {% if section.settings.products_details__ingredients %}
+    <div class="product-details__ingredients--mobile">
+      <a class="button button--plus button--black product-details__ingredients-button" data-toggle="ingredients-content--mobile">{{ section.settings.products_details__ingredients_title }}</a>
+
+      <div class="product-details__ingredients-content--mobile" data-toggle__target="ingredients-content--mobile">
+        <p class="mt--15 mb--15" style="font-size: 12px; text-align: center">{{ section.settings.products_details__ingredients_description | join: ', '  }}</p>
+      </div>
+    </div>
+  {% endif %}
+
+</div>
+
+{% endif %}

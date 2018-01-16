@@ -1,0 +1,87 @@
+<div class="labolabo-products">
+  <div class="container">
+    <h2 class="h2--underline">{{ section.settings.title }}</h2>
+    <div class="container">
+    	<div class="grid grid--gallery grid--gallery-large">
+    		{% for block in section.blocks %}
+    			<div class="grid__cell 1/1--thumb 1/2--lap-and-up">
+    			  {% if block.settings.content_image != null%}
+              <img class="product" src='{{ block.settings.content_image  | img_url: '398x398', scale: 2 }}' alt="{{ block.settings.content_image.alt | escape }}"/>
+            {% endif %}
+            {% if block.settings.content_video != blank %}
+              <div class="labolabo-product__video-container">{{ block.settings.content_video }}</div>
+            {% endif %}
+
+
+            {% if block.settings.title != null%}
+              <p class="title">{{ block.settings.title }}</p>
+            {% endif %}
+            {% if block.settings.description != null%}
+              <p class="description">{{ block.settings.description }}</p>
+            {% endif %}
+
+            {% if block.settings.link != blank %}
+              <a href="{{ block.settings.link }}" target="_blank" class="button--black">{{ block.settings.linktext | escape }}</a>
+            {% endif %}
+    			</div>
+    		{% endfor %}
+    	</div>
+    </div>
+  </div>
+</div>
+
+
+{% schema %}
+{
+  "name": "LaboLabo Products",
+  "settings": [
+	  {
+	    "type": "text",
+	    "id": "title",
+	    "label": "Title",
+	    "default": "Title"
+	  }
+  ],
+  "blocks": [
+    {
+      "type": "text",
+      "name": "Products",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "title"
+        },
+        {
+          "type": "text",
+          "id": "description",
+          "label": "Description",
+          "default": "Description"
+        },
+        {
+          "id": "link",
+          "type": "url",
+          "label": "Button link"
+        },
+        {
+          "id": "linktext",
+          "type": "text",
+          "label": "Button text",
+          "default": "Click here"
+        },
+        {
+          "type": "image_picker",
+          "id": "content_image",
+          "label": "Image"
+        },
+        {
+          "type": "textarea",
+          "id": "content_video",
+          "label": "Embedded video"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

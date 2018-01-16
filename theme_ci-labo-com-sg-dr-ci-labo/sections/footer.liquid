@@ -1,0 +1,77 @@
+<footer id="footer" class="footer {% if remove_footer_top_margin %}footer--no-margin{% endif %}" role="contentinfo">
+  <div class="container">
+    <section class="footer__module 1/3--lap-and-up">
+      <h3 class="h2 text--nowrap">{{ section.settings.about-us__heading }}</h3>
+      {{ section.settings.about-us__description }}
+    </section>
+    <section class="footer__module 1/3--lap-and-up">
+      <h3 class="h2 text--nowrap">{{ section.settings.follow-us__heading }}</h3>
+      {% if settings.social_facebook != blank %}
+        <a href="{{ settings.social_facebook }}" target="_blank" class="icon--facebook footer__social-icon"></a>
+      {% endif %}
+      {% if settings.social_instagram != blank %}
+        <a href="{{ settings.social_instagram }}" target="_blank" class="icon--instagram footer__social-icon"></a>
+      {% endif %}
+    </section>
+		<section class="footer__module 1/3--lap-and-up">
+      <img class="footer__logo" src="{{ 'dr-ci-labo--logo-with-text.png' | asset_url }}" alt="{{ shop.name }}"/>
+      {{ section.settings.disclaimer__short }}
+    </section>
+
+    {% if section.settings.row_1 != blank %}
+      <div class="footer__row--underline">
+        {{ section.settings.row_1 }}
+      </div>
+    {% endif %}
+
+    {% if section.settings.row_2 != blank %}
+      <div class="footer__row">
+        {{ section.settings.row_2 }}
+      </div>
+    {% endif %}
+  </div>
+</footer>
+
+{% schema %}
+{
+  "name": "Footer",
+  "settings": [
+    {
+      "type": "text",
+      "id": "about-us__heading",
+      "label": "About us - heading",
+      "default": "About us"
+    },
+    {
+      "type": "textarea",
+      "id": "about-us__description",
+      "label": "Description - Column 1",
+      "default": "<p class=\"footer__about-text\">A Medical Grade Skin Care Brand For Everyday Use</p><a class=\"footer__button button--black button--plus\" href=\"/pages/about-us/\">Learn more</a>"
+    },
+    {
+      "type": "text",
+      "id": "follow-us__heading",
+      "label": "Follow us - heading",
+      "default": "Follow us"
+    },
+    {
+      "type": "textarea",
+      "id": "disclaimer__short",
+      "label": "Short disclaimer",
+      "default": "<p>© Johnson &amp; Johnson Pte. Ltd. 2017. All rights reserved.</p>"
+    },
+    {
+      "type": "textarea",
+      "id": "row_1",
+      "label": "Row 1",
+      "default": "<p class=\"mt--20\"><a href=\"/pages/terms-and-conditions/#online-shopping\">Online Shopping Terms &amp; Conditions</a> · <a href=\"/pages/terms-and-conditions/#legal-notice\">Legal Notice</a> · <a href=\"/pages/terms-and-conditions/#privacy-policy\">Privacy Policy</a> · <a href=\"/pages/terms-and-conditions/#contact-us\">Contact Us</a></p>"
+    },
+    {
+      "type": "textarea",
+      "id": "row_2",
+      "label": "Row 2",
+      "default": "<p>©Johnson & Johnson This site is published by Johnson &amp; Johnson Pte. Ltd., which is solely responsible for its content. Third party trademarks used herein are trademarks of their respective owners. It is intended for visitors from Singapore. Last Updated: 01 Jan 2017. This site contains links to websites to which our <a href=\"/pages/terms-and-conditions/#privacy-policy\">Privacy Policy</a> does not apply. We encourage you to read the privacy policy of every website you visit.</p>"
+    }
+  ]
+}
+{% endschema %}

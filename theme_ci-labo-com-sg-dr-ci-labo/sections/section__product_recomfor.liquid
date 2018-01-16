@@ -1,0 +1,25 @@
+{% if section.settings.recommended_for__enabled %}
+  <div class="bg-color--white pt--25 pb--25">
+      <h1 class="h1--underline">{{ section.settings.recommended_for__title }}</h1>
+  </div>
+{% endif %}
+
+{% schema %}
+{
+  "name": "Product Recommended For",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "recommended_for__enabled",
+      "label": "Enable",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "recommended_for__title",
+      "label": "Title",
+      "default": "Recommended for"
+    }
+  ]
+}
+{% endschema %}

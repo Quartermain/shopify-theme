@@ -1,0 +1,84 @@
+{% include 'section__product_prsl' %}
+
+{% schema %}
+{
+  "name": "Prescribe slider",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "prescribe_underline",
+      "label": "Show title underline",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "prescribe__pagination",
+      "label": "Use pagination",
+      "default": true
+    },
+    {
+      "type": "select",
+      "id": "prescribe__content_position",
+      "label": "Text position",
+      "options": [
+        {
+          "value": "flex-start",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "flex-end",
+          "label": "Right"
+        }
+      ],
+      "default": "center"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "image",
+      "name": "Content",
+      "settings": [
+        {
+          "type": "text",
+          "id": "prescribe__note",
+          "label": "Note",
+          "default": "Step 1"
+        },
+        {
+          "type": "textarea",
+          "id": "prescribe__description",
+          "label": "Description",
+          "default": "Description"
+        },
+        {
+          "type": "image_picker",
+          "id": "prescribe__image",
+          "label": "Background image",
+          "info": "[Learn more about recommended image sizes](http://support.maestrooo.com/article/103-home-page-optimal-image-sizes-for-featured-images-section)"
+        },
+        {
+          "type": "color",
+          "id": "prescribe__text_color",
+          "label": "Text",
+          "default": "#000000"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "category": "Slider",
+      "name": "Custom Slider",
+      "blocks": [
+        {
+          "type": "image"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,37 @@
+{% case section.settings.showcase_columns %}
+  {% when 'small' %}
+    {% assign product_showcase_grid_class = '3/5--lap-and-up' %}
+    {% assign product_showcase_image_size = '600x' %}
+    {% assign product_info_grid_class = '2/5--lap-and-up' %}
+
+  {% when 'normal' %}
+    {% assign product_showcase_grid_class = '3/5--lap-and-up' %}
+    {% assign product_showcase_image_size = '900x' %}
+    {% assign product_info_grid_class = '2/5--lap-and-up' %}
+
+  {% when 'big' %}
+    {% assign product_showcase_grid_class = '3/5--lap-and-up' %}
+    {% assign product_showcase_image_size = '1100x' %}
+    {% assign product_info_grid_class = '2/5--lap-and-up' %}
+{% endcase %}
+
+<div class="product__details" itemscope itemtype="//schema.org/Product">
+  <meta itemprop="url" content="{{ shop.url }}{{ product.url }}">
+  <meta itemprop="image" content="{{ product.featured_image.src | img_url: 'grande' }}">
+
+  {% include 'product_meta', for_mobile: true, context: 'product' %}
+
+  {% capture product_tabs %}
+    {% include 'product_tabs' %}
+  {% endcapture %}
+
+  <div class="grid">
+    <div class="product__info grid__cell {{ product_showcase_grid_class }}">
+      {% include 'product_slideshow' %}
+    </div>
+    <div class="product__info grid__cell {{ product_info_grid_class }}">
+      {% include 'product_meta', for_mobile: false, context: 'product' %}
+      {% include 'product_form', form_type: 'main-product' %}
+    </div>
+  </div>
+</div>

@@ -11,8 +11,7 @@ $black: #000;
       .container-element {
         background: $white;
         padding: 30px;
-        margin-top: 30px;
-        margin-bottom: 30px;
+        margin: 40px 0;
 
         .txt-title {
           margin-bottom: 10px;
@@ -71,5 +70,37 @@ $black: #000;
         }
       }
     }
+  }
+
+  .blog-made-order {
+    padding: 30px 0;
+    h1 {
+      text-align: center;
+    }
+  }
+
+  .static-our-commitment {
+    padding: 50px 0;
+    h1 {
+      margin-bottom: 40px;
+    }
+    .container-blog {
+      font-size: 14px;
+      .txt-title {
+        margin-bottom: 5px;
+      }
+    }
+  }
+
+  .static-about-spirit {
+    background: $color-bg;
+    padding: 50px 0;
+  }
+}
+
+.table-noborder {
+  border: none;
+  tr,td {
+    border: none;
   }
 }

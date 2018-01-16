@@ -1,0 +1,33 @@
+{% if section.settings.explenation %}
+<div class="pt--25 pb--20 product-detail__explenation">
+    <h1 class="h1--underline">{{ section.settings.explenation__title }}</h1>
+
+    {% if section.settings.explenation__description %}
+      <p class="container" style="font-size: 12px; width: 85%; text-align: justify">{{ section.settings.explenation__description }}</p>
+    {% endif %}
+
+    {% assign blockSize = section.blocks | size %}
+    {% if blockSize > 0 %}
+      {% for block in section.blocks %}
+        <div class="pt--20 {{ block.settings.visibility }}" style="text-align: center">
+          <h2 class="h2" style="text-align: center">{{ block.settings.explenation__image__title }}</h2>
+          {% if block.settings.explenation__image != blank %}
+            {% if block.settings.full_width %}
+              <img style="vertical-align: top; width: 100%;" src="{{ block.settings.explenation__image | img_url:'master' }}" alt="{{ block.settings.explenation__image.alt | escape }}"/>
+            {% else %}
+              <img style="vertical-align: top;" src="{{ block.settings.explenation__image | img_url:'master' }}" alt="{{ block.settings.explenation__image.alt | escape }}"/>
+            {% endif %}
+          {% endif %}
+
+          {% if block.settings.explenation__video != blank %}
+            <div class="product-detail__explenation-video-wrapper">
+              <div class="product-detail__explenation-video">{{ block.settings.explenation__video }}</div>
+            </div>
+          {% endif %}
+
+          <p style="margin-left: auto; margin-right: auto; font-size: 12px; width: 80%; text-align: center">{{ block.settings.explenation__description }}</p>
+        </div>
+      {% endfor %}
+    {% endif %}
+</div>
+{% endif %}

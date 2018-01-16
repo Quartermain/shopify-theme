@@ -1,0 +1,39 @@
+{% include 'section__product_gift' %}
+
+{% schema %}
+{
+  "name": "Product Gift Kit",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "gift__enabled",
+      "label": "Enable",
+      "default": false
+    },
+    {
+      "type": "text",
+      "id": "gift__title",
+      "label": "Title",
+      "default": "The Gift Kit Includes:"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "text",
+      "name": "Included product",
+      "settings": [
+        {
+          "type": "product",
+          "id": "gift__product",
+          "label": "Product"
+        },
+        {
+          "type": "text",
+          "id": "gift__product-variant-id",
+          "label": "Variant ID"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

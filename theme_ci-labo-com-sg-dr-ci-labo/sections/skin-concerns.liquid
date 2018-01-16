@@ -1,0 +1,54 @@
+<div>--- Slider ---</div>
+
+{{ section.blocks.prescription.settings.title }}
+{% for block in section.blocks %}
+{{ block }}<br />
+  name {{ block.type }}<br />
+  title {{ block.settings.title }}<br />
+      {{ block.settings.title }}
+      {{ block.settings.image }}
+      {{ block.settings.description }}
+{% endfor %}
+<div class="skin-concerns-prescription">
+  <div class="container">
+    <h2 class="h2--underline skin-concerns-prescription__title">{{ section.blocks.prescription.settings.title }}</h2>
+    <div class="skin-concerns-prescription__image" style="background-image: url('{{ section.blocks.prescription.settings.image | img_url }}"');">
+    </div>
+    <div class="skin-concerns__prescription__description">
+      {{ section.blocks.prescription.settings.description }}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Skin Concerns",
+  "settings": [{
+    "type": "textarea",
+    "id": "description",
+    "label": "Description",
+    "default": "Lorem ipsum dolor sit amet"
+  }],
+  "blocks": [{
+    "type": "text",
+    "name": "prescription",
+    "settings": [{
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Title"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Text",
+      "default": "Lorem ipsum dolor sit amet"
+    }]
+  }]
+}
+{% endschema %}

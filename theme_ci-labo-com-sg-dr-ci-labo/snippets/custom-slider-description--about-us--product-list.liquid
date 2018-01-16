@@ -1,0 +1,50 @@
+<ul class="about-us__product-list">
+  <li class="about-us__product-list-item">
+    {% assign product = all_products['aqua-collagen-gel-super-moisture-ex'] %}
+    {% assign featured_image = product.featured_image %}
+    <a href="{{ product.url }}">
+      <img class="about-us__product-list-image" src="{{ featured_image | img_url: '75x75', scale: 2 }}" alt="{{ featured_image.alt | escape }}" />
+    </a>
+    <span class="about-us__product-list-text">
+      Beautiful Skin Powered by Super Moisture
+    </span>
+  </li>
+  <li class="about-us__product-list-item">
+    {% assign product = all_products['aqua-collagen-gel-enrich-lift-ex'] %}
+    {% assign featured_image = product.featured_image %}
+    <a href="{{ product.url }}">
+      <img class="about-us__product-list-image" src="{{ featured_image | img_url: '75x75', scale: 2 }}" alt="{{ featured_image.alt | escape }}" />
+    </a>
+    <span class="about-us__product-list-text">
+      Give Your Skin the Power of Gold Lifting Therapy
+    </span>
+  </li>
+  <li class="about-us__product-list-item">
+    {% assign product = all_products['vc100-essence-lotion'] %}
+    {% assign featured_image = product.featured_image %}
+    <a href="{{ product.url }}">
+      <img class="about-us__product-list-image" src="{{ featured_image | img_url: '75x75', scale: 2 }}" alt="{{ featured_image.alt | escape }}" />
+    </a>
+    <span class="about-us__product-list-text">
+      Awaken Your Skin
+    </span>
+  </li>
+  <li class="about-us__product-list-item">
+    {% assign product = all_products['super100-epidermal-growth-factor'] %}
+    {% assign featured_image = product.featured_image %}
+    <a href="{{ product.url }}">
+      <img class="about-us__product-list-image" src="{{ featured_image | img_url: '75x75', scale: 2 }}" alt="{{ featured_image.alt | escape }}" />
+    </a>
+    <span class="about-us__product-list-text">
+      Help Renew and Repair Skin
+    </span>
+  </li>
+  <li class="about-us__product-list-item">
+    <a href="/pages/labo-labo">
+      <img class="about-us__product-list-image" src="{{ 'about-us--labo-labo-super-keana-lotion.png' | asset_url }}" alt="#NoPoreProblem" />
+    </a>
+    <span class="about-us__product-list-text">
+      #NoPoreProblem
+    </span>
+  </li>
+</ul>

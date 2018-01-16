@@ -1,0 +1,21 @@
+{% include 'section__product_prescribes' %}
+
+{% schema %}
+{
+  "name": "Prescribtion title",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "prescribes",
+      "label": "Enable",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "prescribes__title",
+      "label": "Title",
+      "default": "Dr.Ci:Labo Prescribes"
+    }
+  ]
+}
+{% endschema %}

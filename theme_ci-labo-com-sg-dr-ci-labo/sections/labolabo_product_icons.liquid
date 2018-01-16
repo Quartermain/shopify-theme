@@ -1,0 +1,50 @@
+<div class="labolabo-product-icons">
+	{% for block in section.blocks %}
+		<div class="icon-item">
+			<div class="icon">
+				<img src='{{ block.settings.icon | img_url: '80x80', scale: 2 }}' alt="{{ block.settings.icon.alt | escape }}" />
+			</div>
+			<p class="description">{{ block.settings.description }}</p>
+		</div>
+	{% endfor %}
+</div>
+
+<style>
+	.labolabo-product-icons .icon-item .icon{
+		background: {{ section.settings.background_color }};
+	}
+</style>
+
+
+{% schema %}
+{
+  "name": "LaboLabo Product Icons",
+  "settings": [
+	  {
+	    "type": "color",
+	    "id": "background_color",
+	    "label": "Background",
+	    "default": "#f58130"
+	  }
+  ],
+  "blocks": [
+    {
+      "type": "text",
+      "name": "Icon",
+      "settings": [
+        {
+          "type": "text",
+          "id": "description",
+          "label": "Description",
+          "default": "Description"
+        },
+        {
+          "type": "image_picker",
+          "id": "icon",
+          "label": "Icon"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,86 @@
+{% include 'section__skin-concerns_routine_slider', routine: 'day-routine' %}
+
+{% schema %}
+{
+  "name": "Skin Concerns Day Slider",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "pagination",
+      "label": "Use pagination",
+      "default": true
+    }
+  ],
+  "blocks": [
+    {
+      "type": "image",
+      "name": "Content",
+      "settings": [
+        {
+          "type": "text",
+          "id": "step",
+          "label": "Step",
+          "default": "1"
+        },
+        {
+          "type": "text",
+          "id": "type",
+          "label": "Product Type",
+          "default": "Product Type"
+        },
+        {
+          "type": "text",
+          "id": "product_name",
+          "label": "Product Name",
+          "default": "Product Name"
+        },
+        {
+          "type": "image_picker",
+          "id": "bg_image",
+          "label": "Background image"
+        },
+        {
+          "type": "image_picker",
+          "id": "product_image",
+          "label": "Product image"
+        },
+        {
+          "type": "product",
+          "id": "product",
+          "label": "Product",
+          "info": "If only one product, please use product"
+        },
+        {
+          "type": "collection",
+          "id": "collection",
+          "label": "Collection",
+          "info": "If multiple products, please use collection"
+        },
+        {
+          "type": "checkbox",
+          "id": "enable_mobile_buy_button",
+          "label": "Enable mobile buy button",
+          "default": true
+        },
+        {
+          "id": "link",
+          "type": "url",
+          "label": "link"
+        },
+        {
+          "type": "color",
+          "id": "text_color",
+          "label": "Text",
+          "default": "#000000"
+        },
+        {
+          "type": "color",
+          "id": "type_color",
+          "label": "Type Text",
+          "default": "#ae2931"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

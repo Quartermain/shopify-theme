@@ -1,0 +1,65 @@
+{% include 'section__product_details' %}
+
+{% schema %}
+{
+  "name": "Product Details",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "products_details",
+      "label": "Enable",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "products_details__title",
+      "label": "Title",
+      "default": "Product details"
+    },
+    {
+      "type": "textarea",
+      "id": "products_details__description",
+      "label": "Description",
+      "default": "Add your own custom content to give more information about your store, availability details..."
+    },
+    {
+      "type": "checkbox",
+      "id": "products_details__ingredients",
+      "label": "Enable",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "products_details__ingredients_title",
+      "label": "Title",
+      "default": "Ingredients list"
+    },
+		{
+		 "type": "textarea",
+		 "id": "products_details__ingredients_description",
+		 "label": "Description",
+		 "default": "Description"
+		}
+  ],
+  "blocks": [
+    {
+      "type": "image",
+      "name": "Content",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "products_details__description_image",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "products_details__description_image_title",
+          "label": "Title",
+          "default": "Image details",
+          "info": "Recommended a 80px by 80px max dimension"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

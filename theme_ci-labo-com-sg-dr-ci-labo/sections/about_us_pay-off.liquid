@@ -1,0 +1,28 @@
+{% assign blockSize = section.blocks | size %}
+{% if blockSize > 0 %}
+<div class="container about-us__payoff mb--40">
+	{% for block in section.blocks %}
+		<h2 class="h1 mb--5">{{ block.settings.title | escape }}</h2>
+	{% endfor %}
+</div>
+{% endif %}
+
+{% schema %}
+{
+  "name": "Pay-off",
+  "blocks": [
+    {
+      "type": "image",
+      "name": "Content",
+      "settings": [
+	      {
+	        "type": "text",
+          "id": "title",
+          "label": "Title"
+	      }
+      ]
+    }
+  ]
+}
+
+{% endschema %}

@@ -1,0 +1,11 @@
+{% assign  blog = blogs.static-our-commitment %}
+<div class="page-width">
+	<div class="container-blog">
+		{% for article in blog.articles %}
+		<h1 class="align--center title-header">
+	  		{{ article.title }}
+	  	</h1>
+        {% if article.excerpt != blank %}{{ article.excerpt }}{% else %}{{ article.content }}{% endif %}
+      {% endfor %} 
+	</div>
+</div>

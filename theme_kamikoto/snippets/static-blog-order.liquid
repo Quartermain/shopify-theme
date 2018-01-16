@@ -1,0 +1,14 @@
+{% assign blog = blogs.static-blog-order %}
+<div class="page-width">
+	{% for article in blog.articles %}
+		<h1>
+  		{{ article.title }}
+  	</h1>
+      	
+    	{% if article.excerpt != blank %}
+    		<a href="{{ article.url }}">{{ article.excerpt }}</a>
+		{% else %}
+    		{{ article.content }}
+    	{% endif %}
+	{% endfor %} 
+</div>

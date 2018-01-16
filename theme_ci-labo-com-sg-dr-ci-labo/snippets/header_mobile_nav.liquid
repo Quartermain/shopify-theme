@@ -1,0 +1,54 @@
+<nav class="header__mobile-nav">
+  <ul class="header__mobile-tabs list--unstyled">
+    <li class="header__mobile-tab">
+      <a href="/">
+        <img class="header__mobile-logo" src="{{ 'dr-ci-labo.svg' | asset_url }}" alt="Dr. Ci:Labo"  />
+      </a>
+    </li>
+
+    <li class="header__mobile-tab">
+      <a href="/search" class="header__icon header__mobile-icon" data-has-menu="true">
+        <i class="icon--search"></i>
+      </a>
+
+      <div class="header__mobile-content header__mobile-search mobile-search">
+        <form action="/search" method="get" class="mobile-search__form" role="search">
+          <input type="hidden" name="type" value="{{ settings.search_mode }}">
+          <input type="search" class="mobile-search__input" name="q" aria-label="{{ 'search.autocomplete.placeholder' | t }}" placeholder="{{ 'search.autocomplete.placeholder' | t }}" value="{{ search.terms | escape }}" autofocus="autofocus" autocorrect="off" autocomplete="off">
+        </form>
+      </div>
+    </li>
+
+    {% if customer %}
+    <li class="header__mobile-tab">
+      <a href="/account" class="header__icon header__mobile-icon" data-has-menu="false">
+        <i class="icon--profile header__icon"></i>
+      </a>
+    </li>
+    {% else %}
+    <li class="header__mobile-tab">
+      <a href="/account/login" class="header__icon header__mobile-icon" data-has-menu="false">
+        <i class="icon--profile header__icon"></i>
+      </a>
+    </li>
+    {% endif %}
+
+    <li class="header__mobile-tab">
+      <a href="/cart" class="header__icon header__mobile-icon" data-has-menu="false">
+        <i class="header__icon header__icon--cart" data-cart-count="{{ cart.item_count }}"></i>
+      </a>
+    </li>
+
+    <li class="header__mobile-tab">
+      <a href="#" class="header__icon header__mobile-icon" data-has-menu="true">
+        <div class="hamburger header__mobile-toggle">
+          <span>{{ 'layout.header.open_menu' | t }}</span>
+        </div>
+      </a>
+
+      <div class="header__mobile-content header__mobile-menu mobile-menu">
+        {% include 'menu', mobile: true %}
+      </div>
+    </li>
+  </ul>
+</nav>

@@ -1,0 +1,50 @@
+<div class="swiper-container custom-swiper swiper-{{ section.id }} skin-concerns__custom-slider" data-swiper>
+    <div class="swiper-wrapper">
+      {% for block in section.blocks %}
+	      <div class="swiper-slide">
+	        <img class="swiper-bg mobile-bg" src="{{ block.settings.bg_mobile_image  | img_url: '375x240', scale: 2 }}" alt="{{ block.settings.bg_mobile_image.alt | escape }}">
+	        <img class="swiper-bg desktop-bg" src="{{ block.settings.bg_desktop_image  | img_url: '1920', scale: 1 }}" alt="{{ block.settings.bg_desktop_image.alt | escape }}">
+					<div class="swiper-content" style="color: {{ block.settings.text_color }};">
+            <div class="container">
+  						{% if block.settings.note != blank %}
+  							<span class="note">{{ block.settings.note | escape }}</span>
+  						{% endif%}
+
+  						{% if block.settings.title != blank %}
+  							<h2 class="title h1 {% if section.settings.title_underline %} h1--underline {% endif%} ">{{ block.settings.title | escape
+  						}}</h2>
+  						{% endif%}
+  						{% if block.settings.time != blank %}
+  							<span class="time">{{ block.settings.time | escape }}</span>
+  						{% endif%}
+
+  						{% if block.settings.sub_title != blank %}
+  							<p class="sub-title">{{ block.settings.sub_title | escape }}</p>
+  						{% endif%}
+
+  						{% if block.settings.description != blank %}
+  							<p class="desc">{{ block.settings.description | escape }}</p>
+  						{% endif%}
+            </div>
+					</div>
+	      </div>
+      {% endfor%}
+    </div>
+    <!-- Add Pagination -->
+    {% if section.settings.pagination %}
+    <div class="swiper-controler">
+      <div class="swiper-button-prev" data-swiper__prev>{% include 'icon' with 'arrow-left' %}</div>
+      <div class="swiper-pagination" data-swiper__pagination></div>
+      <div class="swiper-button-next" data-swiper__next>{% include 'icon' with 'arrow-right' %}</div>
+    </div>
+    {% endif %}
+</div>
+
+<style>
+  .swiper-{{ section.id }} .swiper-content .container {
+    align-items: {{ section.settings.content_position }};
+    {% if section.settings.content_position == 'flex-end' %}
+    text-align: right;
+    {% endif %}
+  }
+</style>

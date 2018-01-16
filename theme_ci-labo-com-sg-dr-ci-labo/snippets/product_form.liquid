@@ -1,0 +1,60 @@
+{% assign selected_variant = product.selected_or_first_available_variant %}
+
+<form class="product__form form form--inline" action="/cart/add" method="POST">
+
+  <div class="product__buy">
+    <div class="product__variants" data-product="{{ product.id }}">
+      {% if product.variants.size > 0 %}
+        <select class="product__option-selector" id="product-select-{{ product.id }}" name="id" style="display:none">
+          {% for variant in product.variants %}
+            <option {% if variant == selected_variant %} selected="selected" {% endif %} value="{{ variant.id }}"
+            data-sku="{{ variant.sku }}" data-price="{{ variant.price | money }}"
+			data-compare-at-price="{{  variant.compare_at_price | money }}">{{ variant.title }}</option>
+          {% endfor %}
+        </select>
+
+        {% include 'size_chart' %}
+
+        {% if show_color_swatch %}
+          {% include 'color_swatch' %}
+        {% endif %}
+      {% else %}
+        <input type="hidden" name="id" data-sku="{{ selected_variant.sku }}" value="{{ selected_variant.id }}">
+      {% endif %}
+    </div>
+    <div class="form__control">
+      <!--<label class="form__label" for="quantity">{{ 'product.form.quantity' | t }}</label>-->
+      <select class="product__quantity"  name="quantity" value="1" id="quantity" required="required">
+        {% for i in (1..10) %}
+        <option value="{{ i }}"{% if i == line_item.quantity %} selected{% endif %}>{{ i }}</option>
+        {% endfor %}
+      </select>
+    </div>
+
+
+    {% if selected_variant.available %}
+      <button type="submit" class="button button--full button--primary product__add-to-cart" data-action="add-to-cart">{{ 'product.form.add_to_cart' | t }}</button>
+    {% else %}
+      <button type="submit" class="button button--full button--secondary product__add-to-cart" disabled="disabled">{{ 'product.form.sold_out' | t }}</button>
+    {% endif %}
+
+    {% if ajax_add_to_cart %}
+      <div class="product__form-status" style="display: none">
+        <p class="product__form-message"></p>
+
+        <a href="#" data-action="close-form-status" class="product__form-continue button button--full button--black">{{
+        'product.form.continue_to_shop' |
+         t }}</a>
+         <br>
+        <!--<span class="product__form-or">{{ 'product.form.or' | t }}</span>-->
+        <a href="/cart" class="button button--full button--black">
+          {{ 'product.form.go_to_cart' | t }}
+        </a>
+      </div>
+    {% endif %}
+
+    {% if section.settings.add_to_cart_text != blank %}
+      <p class="product__form-hint">{{ section.settings.add_to_cart_text }}</p>
+    {% endif %}
+  </div>
+</form>

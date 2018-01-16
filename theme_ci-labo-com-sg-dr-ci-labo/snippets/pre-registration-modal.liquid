@@ -1,0 +1,24 @@
+<div class="modal modal--pre-registration" style="display: none" data-pre-registration__modal>
+  <div class="modal__close-button" data-modal->x</div>
+  <div class="modal__title">
+    <img src="{{ 'ci_movement.png' | asset_url }}" alt="{{ 'customer.pre-registration.title' | t }}" />
+  </div>
+  <div class="modal__subtitle">
+    {{ 'customer.pre-registration.subtitle' | t }}
+  </div>
+
+  <p class="modal__description">{{ 'customer.pre-registration.description--modal' | t }}</p>
+
+  <div class="modal__body">
+    <!--
+    <form action="/account/register" method="GET" class="register__form form--shrink" data-pre-registration__form>
+      <div class="form__control {% if form.errors.message.email %}form__control--error{% endif %}">
+        <input type="email" id="customer__email" name="customer[email]" required="required" tabindex="1" placeholder="{{ 'customer.pre-registration.email' | t }}" />
+      </div>
+
+      <button type="submit" class="button--black" tabindex="2">{{ 'customer.pre-registration.submit--modal' | t }}</button>
+    </form>
+  -->
+    <a href="/account/register"  class="button--black">{{ 'customer.pre-registration.submit--modal' | t }}</a>
+  </div>
+</div>

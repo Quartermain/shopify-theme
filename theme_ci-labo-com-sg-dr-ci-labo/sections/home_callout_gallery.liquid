@@ -1,0 +1,238 @@
+{% capture marketing_module_item %}
+	{% for block in section.blocks %}
+	    <div
+        class="marketing-module__column callout-gallery__column"
+        style="background-image:url('{{ block.settings.image | img_url: '830x830' }}')">
+	      <div class="callout--item">
+			    <h2 class="callout-item__title h1 color--{{ block.settings.text-color }}">{{ block.settings.title | escape }}</h2>
+			    <p class="callout-item__description color--{{ block.settings.text-color }}">{{ block.settings.description | escape }}</p>
+			    {% if block.settings.link != blank %}
+		        <a href="{{ block.settings.link }}" class="button--black">{{ block.settings.linktext |
+		        escape }}</a>
+			    {% endif %}
+		    </div>
+	    </div>
+	{% endfor %}
+{% endcapture %}
+
+<section class="callout-gallery {% unless section.settings.show_on_mobile
+%}index-module--hide-mobile{% endunless %}">
+  <div class="marketing-module__wrapper marketing-module__wrapper--row-of-1 callout-gallery__wrapper callout-item__wrapper--row-of-{{section.settings.layout}}">
+    {{ marketing_module_item }}
+  </div>
+</section>
+
+<style>
+  #shopify-section-{{ section.id }} .callout--item {
+    align-items: {{ section.settings.content_position }};
+  }
+  #shopify-section-{{ section.id }} .callout--item h2{
+    text-align: {{ section.settings.text_align }};
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Featured images",
+  "class": "shopify-section__featured-images",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "show_on_mobile",
+      "label": "Show on mobile",
+      "default": true
+    },
+    {
+      "type": "select",
+      "id": "content_position",
+      "label": "Text position",
+      "options": [
+        {
+          "value": "start",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "flex-end",
+          "label": "Right"
+        }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "select",
+      "id": "text_align",
+      "label": "Text align",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "select",
+      "id": "layout",
+      "label": "Layout",
+      "options": [
+        {
+          "value": "1",
+          "label": "Row of 1"
+        },
+        {
+          "value": "2",
+          "label": "Row of 2"
+        },
+        {
+          "value": "3",
+          "label": "Row of 3"
+        },
+        {
+          "value": "6",
+          "label": "Row of 6"
+        }
+      ],
+      "default": "1"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "image",
+      "name": "Image",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Heading",
+          "default": "Your title"
+        },
+        {
+          "type": "text",
+          "id": "description",
+          "label": "Description",
+          "default": "Description"
+        },
+        {
+          "type": "select",
+          "id": "text-color",
+          "label": "Text color",
+          "options": [
+            {
+              "value": "black",
+              "label": "Black"
+            },
+            {
+              "value": "white",
+              "label": "White"
+            }
+          ],
+          "default": "black"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Background image",
+          "info": "[Learn more about recommended image sizes](http://support.maestrooo.com/article/103-home-page-optimal-image-sizes-for-featured-images-section)"
+        },
+        {
+          "id": "link",
+          "type": "url",
+          "label": "Button link"
+        },
+        {
+          "id": "linktext",
+          "type": "text",
+          "label": "Button text",
+          "default": "Click here"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "category": "Callout",
+      "name": "Row of 1",
+      "settings": {
+        "layout": "1"
+      },
+      "blocks": [
+        {
+          "type": "image"
+        }
+      ]
+    },
+    {
+      "category": "Callout",
+      "name": "Row of 2",
+      "settings": {
+        "layout": "2"
+      },
+      "blocks": [
+        {
+          "type": "image"
+        },
+        {
+          "type": "image"
+        }
+      ]
+    },
+    {
+      "category": "Callout",
+      "name": "Row of 3",
+      "settings": {
+        "layout": "3"
+      },
+      "blocks": [
+        {
+          "type": "image"
+        },
+        {
+          "type": "image"
+        },
+        {
+          "type": "image"
+        }
+      ]
+    },
+    {
+      "category": "Callout",
+      "name": "Row of 6",
+      "settings": {
+        "layout": "6"
+      },
+      "blocks": [
+        {
+          "type": "image"
+        },
+        {
+          "type": "image"
+        },
+        {
+          "type": "image"
+        },
+        {
+          "type": "image"
+        },
+        {
+          "type": "image"
+        },
+        {
+          "type": "image"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

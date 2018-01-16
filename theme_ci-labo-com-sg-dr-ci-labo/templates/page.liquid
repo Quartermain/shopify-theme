@@ -1,0 +1,23 @@
+{% capture push_header %}
+  <div class="header__push">
+    <div class="container">
+      <div class="inner">
+        {% include 'breadcrumb' %}
+
+        <div class="header__push-content">
+          <h1 class="header__push-title h1--underline">{{ page.title }}</h1>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endcapture %}
+
+<section class="page pb--40">
+  <div class="container">
+    <div class="inner">
+      <div class="page__content rte">
+        {{ page.content }}
+      </div>
+    </div>
+  </div>
+</section>

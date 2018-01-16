@@ -1,0 +1,66 @@
+{% if section.settings.explenation %}
+<div class="bg-color--white pt--25 pb--20">
+    <h1 class="h1--underline">{{ section.settings.explenation__title }}</h1>
+
+    {% if section.settings.explenation__description %}
+      <p class="container" style="font-size: 13px; width: 85%; text-align: justify">{{ section.settings.explenation__description }}</p>
+    {% endif %}
+
+    {% assign blockSize = section.blocks | size %}
+    {% if blockSize > 0 %}
+      {% for block in section.blocks %}
+        <div class="pb--20" style="text-align: center">
+          <h2 class="h2" style="text-align: center">{{ block.settings.explenation__image__title }}</h2>
+          {% if block.settings.explenation__image != blank %}
+            <img style="vertical-align: top;" src="{{ block.settings.explenation__image | img_url:'master' }}" alt="{{ block.settings.explenation__image.alt | escape }}" />
+          {% endif %}
+        </div>
+      {% endfor %}
+    {% endif %}
+</div>
+{% endif %}
+
+{% schema %}
+{
+  "name": "Product Explentaion",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "explenation",
+      "label": "Enable",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "explenation__title",
+      "label": "Title",
+      "default": "Explenation title"
+    },
+    {
+      "type": "textarea",
+      "id": "explenation__description",
+      "label": "Description",
+      "default": "Add your own custom content to give more information about your store..."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "image",
+      "name": "Content",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "explenation__image",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "explenation__image__title",
+          "label": "Title",
+          "default": "Explenation title"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

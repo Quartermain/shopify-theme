@@ -1,0 +1,89 @@
+{% assign source = collection.products %}
+
+{% case grid_items_per_row %}
+  {% when '2' or 2 %}
+    {% assign image_size = '800x' %}
+
+  {% when '3' or 3 %}
+    {% assign image_size = '650x' %}
+
+  {% when '4' or 4 %}
+    {% assign image_size = '450x' %}
+
+  {% when '5' or 5 %}
+    {% assign image_size = '350x' %}
+
+  {% when '6' or 6 %}
+    {% assign image_size = '250x' %}
+{% endcase %}
+
+{% assign category = collection.products %}
+{% capture list_of_products %}
+  {% for item in source %}
+    {% include 'range_product_item', product: item %}
+  {% endfor %}
+{% endcapture %}
+
+{% capture dropdown--product_category %}
+  {% assign options = '' | split: '' %}
+  {% assign label = 'Choose product category' %}
+
+  {% for product_type in shop.types %}
+    {% if collection.title == product_type %}
+      {% assign label = product_type %}
+    {% endif %}
+
+    {% assign _handle = product_type | handle %}
+    {% assign _url = '/collections/' | append: _handle %}
+    {% if skin_concern %}
+      {% assign _handle = skin_concern | handle %}
+      {% assign _url = _url | append: '/' | append: _handle %}
+    {% endif %}
+    {% assign _option = product_type %}
+    {% assign _optionArray = _option | split: '** mediamonk-magic **' %}
+    {% assign options = options | concat: _optionArray %}
+  {% endfor %}
+
+  {% if options.size > 0 %}
+    {% include 'dropdown' %}
+  {% endif %}
+{% endcapture %}
+
+<div class="products-overview__filter-wrap container">
+		<div class="grid grid--middle">
+			<div class="1/1--thumb 1/2--lap-and-up grid__cell products-overview__filter">
+        {{ dropdown--product_category }}
+      </div>
+		</div>
+</div>
+
+{% if template == 'collection.infinite-scroll' or template == 'search.infinite-scroll' %}
+  {{ list_of_products }}
+{% else %}
+  <div class="collection__list collection__list--infinite-scroll grid grid--gallery grid--gallery-large grid--middle
+  range-products-list">
+    {{ list_of_products }}
+  </div>
+
+
+  <div class="swiper-container" id="range-product__slider">
+    <div class="swiper-wrapper">
+
+    </div>
+  </div>
+
+  {% if paginate.pages > 1 %}
+    <a href="#" class="button--white button--full product-list__button">Load More</a>
+
+    {% if section.settings.pagination_mode == 'infinite_scrolling' %}
+      <div class="collection__loader" data-next-page="{{ paginate.next.url }}&view=infinite-scroll">
+        <div class="spinner">
+          <div class="spinner__bounce1"></div>
+          <div class="spinner__bounce2"></div>
+        </div>
+      </div>
+    {% else %}
+      {% include 'pagination' %}
+    {% endif %}
+  {% endif %}
+{% endif %}

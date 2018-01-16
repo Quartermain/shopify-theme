@@ -1,0 +1,21 @@
+{% include 'section__product_recomfor' %}
+
+{% schema %}
+{
+  "name": "Product Recommended For",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "recommended_for__enabled",
+      "label": "Enable",
+      "default": true
+    },
+    {
+      "type": "textarea",
+      "id": "recommended_for__title",
+      "label": "Title",
+      "default": "Recommended for"
+    }
+  ]
+}
+{% endschema %}

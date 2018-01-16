@@ -1,0 +1,76 @@
+<div class="{% if template == 'product' %}related-products__item{% else %}collection__item{% endif %} product-item grid__cell 1/{{ grid_items_per_row }}--thumb 1/{{ grid_items_per_row }}--handheld 1/{{ grid_items_per_row }}--lap-and-up">
+	<div class="best-seller-product-item__content">
+		{% capture product_labels %}
+      {% unless product.available %}
+        <span class="label label--sold-out product-item__label product-item__label-sold-out">{{ 'product.labels.sold_out' | t }}</span>
+      {% endunless %}
+
+      {% if product.selected_or_first_available_variant.compare_at_price > product.selected_or_first_available_variant.price %}
+        <span class="label product-item__label product-item__label-on-sale label--on-sale">{{ 'product.labels.on_sale' | t }}</span>
+      {% endif %}
+
+      {% assign has_custom_label = false %}
+      {% for tag in product.tags %}
+        {% if tag contains '__label' %}
+          <!--<span class="label label--custom">{{ tag | split: '__label:' | last }}</span>-->
+          <span class="label product-item__label product-item--product_new">
+            {{ tag | split: '__label:' | last }}
+          </span>
+          {% break %}
+        {% endif %}
+      {% endfor %}
+    {% endcapture %}
+    {% if product_labels != blank %}
+        {{ product_labels }}
+    {% endif %}
+
+	  {% assign alternate_image = '' %}
+
+	  {% if show_alternate_image and product.images.size > 1 %}
+	    {% assign alternate_image = '' %}
+
+	    {% capture alternate_image %}
+	      data-alternate-src="{{ product.images[1] | img_url: image_size, scale: 2 }}"
+	    {% endcapture %}
+	  {% endif %}
+
+	  {% assign featured_image = product.featured_image %}
+	  <figure class="product-item__figure">
+	    <a href="{{ product.url | within: collection }}">
+
+	      <div class="product-item__image-wrapper">
+	        {% assign featured_image = product.featured_image %}
+
+	        <img class="product-item__image" src="{{ featured_image | img_url: '148x148', scale: 2 }}" {{ alternate_image }} alt="{{ featured_image.alt | escape }}">
+	      </div>
+
+	      {% if show_quick_shop and product.available %}
+	        <span class="button button--small button--full button--black button--quick-shop" data-action="open-quick-shop"
+	         data-product-id="{{ product.id }}" style="display: none">
+	          {{ 'collection.quick_shop.open' | t }}
+	        </span>
+	      {% else %}
+	        <span class="button button--small button--full button--secondary button--quick-shop" disabled style="display:none">
+            {{ 'product.labels.sold_out' | t }}
+          </span>
+	      {% endif %}
+	    </a>
+	  </figure>
+
+		<a href="{{ product.url }}" class="product-item__title">{{ product.title }}</a>
+    {% if product.first_available_variant.compare_at_price > product.first_available_variant.price %}
+      <span class="best_seller_product-item__price product-item__price product-item__price--new" data-money-convertible>{{ product.first_available_variant.price | money }}</span>
+      <span class="best_seller_product-item__price product-item__price product-item__price--old" data-money-convertible>{{ product.first_available_variant.compare_at_price | money }}</span>
+    {% else %}
+      <span class="best_seller_product-item__price product-item__price" data-money-convertible>{{ product.selected_or_first_available_variant.price | money }}</span>
+    {% endif %}
+
+	  {% comment %}
+	  In order to avoid to do an additional HTTP call to get quick shop, we output them directly in the DOM
+	  {% endcomment %}
+
+	  {% if show_quick_shop and product.available %}
+	    {% include 'quick_shop', product: product, show_color_swatch: true, ajax_add_to_cart: true %}
+	  {% endif %}
+  </div>
+</div>

@@ -1,0 +1,156 @@
+{% include 'header_mobile_nav' %}
+
+<div class="header__wrapper">
+  <div class="header__container container">
+    <ul class="accessibility-skip">
+      <li class="accessibility-skip__item"><a href="#nav" class="button button--small button--primary">{{ 'general.accessibility.skip_to_nav' | t }}</a></li>
+      <li class="accessibility-skip__item"><a href="#main" class="button button--small button--primary">{{ 'general.accessibility.skip_to_content' | t }}</a></li>
+      <li class="accessibility-skip__item"><a href="#footer" class="button button--small button--primary">{{ 'general.accessibility.skip_to_footer' | t }}</a></li>
+    </ul>
+
+    <div class="header__logo">
+      <a href="{{ shop.url }}" class="header__link">
+        <img class="header__logo-image" src="{{ 'dr-ci-labo.svg' | asset_url }}" alt="{{ section.settings.logo.alt | default: shop.name }}" />
+      </a>
+    </div>
+
+    <ul class="header__actions list--unstyled">
+      <!--
+      {% if settings.currency_conversion_enabled %}
+        <li class="header__actions-item currency-selector">
+          <select class="currency-selector__select" id="currencies" name="currencies">
+            {% capture codes %}USD,EUR,GBP,CAD,ARS,AUD,BBD,BDT,BSD,BHD,BRL,BOB,BND,BGN,MMK,KYD,CLP,CNY,COP,CRC,HRK,CZK,DKK,DOP,XCD,EGP,XPF,FJD,GHS,GTQ,GYD,GEL,HKD,HUF,ISK,INR,IDR,NIS,JMD,JPY,JOD,KZT,KES,KWD,LVL,LTL,MXN,MYR,MUR,MDL,MAD,MNT,MZN,ANG,NZD,NGN,NOK,OMR,PKR,PYG,PEN,PHP,PLN,QAR,RON,RUB,SAR,RSD,SCR,SGD,SYP,ZAR,KRW,LKR,SEK,CHF,TWD,THB,TZS,TTD,TRY,UAH,AED,UYU,VEB,VND,ZMK{% endcapture %}
+            {% assign supported_codes = settings.currency_conversion_supported_currencies | upcase | split: ' ' %}
+
+            <option value="{{ shop.currency }}" selected="selected">{{ shop.currency }}</option>
+            {% for code in supported_codes %}
+              {% if code != shop.currency and codes contains code %}
+                <option value="{{ code }}">{{ code }}</option>
+              {% endif %}
+            {% endfor %}
+          </select>
+
+          {% include 'icon' with 'arrow-bottom' %}
+        </li>
+      {% endif %}
+      -->
+			<!--
+      {% if shop.customer_accounts_enabled %}
+        {% if customer %}
+          <li class="header__actions-item">
+            <a href="/account">{{ 'layout.header.account' | t }}</a>
+          </li>
+
+          <li class="header__actions-item">
+            <a href="/account/logout">{{ 'layout.header.logout' | t }}</a>
+          </li>
+        {% else %}
+          <li class="header__actions-item">
+            <a href="/account/login">{{ 'layout.header.login' | t }}</a>
+          </li>
+
+          <li class="header__actions-item">
+            <a href="/account/register">{{ 'layout.header.register' | t }}</a>
+          </li>
+        {% endif %}
+      {% endif %}
+			-->
+
+      <li class="header__actions-item">
+        <a href="/search" class="menu__link" data-action="open-mega-search" title="{{ 'search.general.title' | t }}">
+          <i class="icon--search header__icon"></i>
+        </a>
+      </li>
+
+      <li class="header__actions-item">
+        <a href="/pages/contact-us#store-locator" class="menu__link" title="{{ 'layout.header.store_locator' | t }}">
+          <i class="icon--location header__icon"></i>
+        </a>
+      </li>
+
+      {% if customer %}
+        <li class="header__actions-item">
+          <a href="/account" class="menu__link" title="{{ 'layout.header.account' | t }}">
+            <i class="icon--profile header__icon"></i>
+          </a>
+        </li>
+      {% else %}
+        <li class="header__actions-item">
+          <a href="/account/login" title="{{ 'layout.header.login' | t }}">
+            <i class="icon--profile header__icon"></i>
+          </a>
+        </li>
+      {% endif %}
+
+      <li class="header__actions-item" data-cart-view="data-cart-view">
+        <a href="/cart" class="menu__link" title="{{ 'layout.header.cart' | t }}">
+          <i class="header__icon header__icon--cart" data-cart-count="{{ cart.item_count }}"></i>
+        </a>
+      </li>
+    </ul>
+
+    {% include 'menu', mobile: false %}
+  </div>
+</div>
+
+<style>
+  .top-bar {
+    color: {{ section.settings.announcement_color }};
+    background: {{ section.settings.announcement_background }};
+  }
+
+  .top-bar__contact-item + .top-bar__contact-item::before {
+    color: {{ section.settings.announcement_color }};
+  }
+
+  .top-bar__contact-item--faded,
+  .top-bar__social a {
+    color: {{ section.settings.announcement_color | hex_to_rgba: 0.6 }};
+  }
+
+  a.top-bar__contact-item--faded:hover,
+  .top-bar__social a:hover {
+    color: {{ section.settings.announcement_color | hex_to_rgba: 1 }};
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Header",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Navigation"
+    },
+    {
+      "type": "link_list",
+      "id": "navigation_menu",
+      "label": "Menu",
+      "default": "main-menu"
+    },
+    {
+      "type": "header",
+      "content": "Mega-navigation",
+      "info": "[Learn more](http://support.maestrooo.com/article/90-navigation-enabling-and-configuring-mega-navigation)"
+    },
+    {
+      "type": "text",
+      "id": "navigation_horizontal_mega_nav",
+      "label": "Menu item",
+      "info": "Enter menu item to apply a mega menu dropdown"
+    },
+    {
+      "type": "image_picker",
+      "id": "navigation_horizontal_image",
+      "label": "Default image",
+      "info": "250 x 250px .jpg recommended"
+    },
+    {
+      "type": "checkbox",
+      "id": "navigation_horizontal_switch_image",
+      "label": "Switch image on hover",
+      "default": false
+    }
+  ]
+}
+{% endschema %}

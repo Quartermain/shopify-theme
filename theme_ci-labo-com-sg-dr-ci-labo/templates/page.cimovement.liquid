@@ -1,0 +1,39 @@
+{% capture push_header %}
+  <div class="header__push">
+    <div class="container">
+      <div class="inner">
+        <div class="header__push-content">
+	        <img src="{{ 'ci_movement.png' | asset_url }}" alt="{{ 'customer.pre-registration.title' | t }}" />
+        </div>
+      </div>
+    </div>
+  </div>
+{% endcapture %}
+
+<section class="page">
+  <div class="container">
+    <div class="inner">
+      <div class="page__content rte">
+        {{ page.content }}
+
+        <div class="h1 _title">
+          {{ 'customer.pre-registration.subtitle' | t }}
+        </div>
+        <p class="_description">{{ 'customer.pre-registration.description' | t }}</p>
+
+        <form action="/account/register" method="GET" class="mt--20 register__form form--shrink"
+              style="padding-bottom:1.875rem"
+              data-pre-registration__form>
+          <div class="form__control {% if form.errors.message.email %}form__control--error{% endif %}">
+            <input class="input--transparent" type="email" id="customer__email" name="customer[email]" required="required" tabindex="1" placeholder="{{ 'customer.pre-registration.email' | t }}" />
+          </div>
+
+          <button type="submit" class="button--black" tabindex="2">{{ 'customer.pre-registration.submit' | t }}</button>
+        </form>
+      </div>
+
+      {% assign product = all_products['vc100-essence-lotion'] %}
+      <img class="_product-image" src="{{ 'CiMovement-Header-Image-04-SG.png' | asset_url }}" alt="{{ product.title | escape }}" />
+    </div>
+  </div>
+</section>

@@ -1,0 +1,42 @@
+<div class="skin-concerns-prescription">
+  <div class="container">
+    <h2 class="h2--underline skin-concerns-prescription__title">{{ section.settings.title }}</h2>
+  </div>
+  <div class="skin-concerns-prescription__image">
+    <img class="desktop-bg" src="{{ section.settings.desktop_image  | img_url:'master' }}" alt="{{ section.settings.desktop_image.alt | escape }}">
+    <img class="mobile-bg" src="{{ section.settings.mobile_image  | img_url:'master' }}" alt="{{ section.settings.mobile_image.alt | escape }}">
+  </div>
+  <div class="container">
+    <div class="skin-concerns-prescription__description">
+      {{ section.settings.description }}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Prescription",
+  "settings": [{
+    "type": "text",
+    "id": "title",
+    "label": "Title",
+    "default": "Title"
+  },
+  {
+    "type": "image_picker",
+    "id": "desktop_image",
+    "label": "Desktop Image"
+  },
+  {
+    "type": "image_picker",
+    "id": "mobile_image",
+    "label": "Mobile Image"
+  },
+  {
+    "type": "textarea",
+    "id": "description",
+    "label": "Text",
+    "default": "Lorem ipsum dolor sit amet"
+  }]
+}
+{% endschema %}

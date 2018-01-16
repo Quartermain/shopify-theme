@@ -1,0 +1,22 @@
+<div class="container">
+  <div class="inner">
+    {% include 'list_collections', list_collections_linklist: linklists.all-collections, grid_items_per_row: section.settings.grid_items_per_row, allow_all_collections: true %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Collections list",
+  "settings": [
+    {
+      "type": "range",
+      "id": "grid_items_per_row",
+      "min": 2,
+      "max": 6,
+      "step": 1,
+      "label": "Collections per row",
+      "default": 2
+    }
+  ]
+}
+{% endschema %}

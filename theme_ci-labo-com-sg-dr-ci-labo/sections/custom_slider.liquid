@@ -1,0 +1,193 @@
+<div class="swiper-container custom-swiper swiper-{{ section.id }}" data-swiper>
+    <div class="swiper-wrapper">
+      {% for block in section.blocks %}
+	      <div class="swiper-slide">
+	        <img class="swiper-bg desktop-bg" src="{{ block.settings.desktop_image  | img_url:'master' }}" alt="{{ block.settings.desktop_image.alt | escape }}">
+	        <img class="swiper-bg mobile-bg" src="{{ block.settings.mobile_image  | img_url:'master' }}" alt="{{ block.settings.mobile_image.alt | escape }}">
+					<div class="container swiper-content" style="color: {{ block.settings.text_color }};">
+						{% if block.settings.note != blank %}
+							<span class="note">{{ block.settings.note | escape }}</span>
+						{% endif%}
+
+						{% if block.settings.title != blank %}
+							<h1 style="color: {{ block.settings.text_color }};" class="title h1 {% if section.settings.title_underline %} h1--underline {% endif%}"
+							style="margin-bottom: 0">{{ block.settings.title | escape
+						}}</h1>
+						{% endif%}
+						{% if block.settings.time != blank %}
+							<span class="time">{{ block.settings.time | escape }}</span>
+						{% endif%}
+
+						{% if block.settings.sub_title != blank %}
+							<p class="sub-title">{{ block.settings.sub_title | escape }}</p>
+						{% endif%}
+
+            {% if block.settings.description_snippet != 'none' %}
+              {% include block.settings.description_snippet %}
+            {% else if block.settings.description != blank %}
+							<p class="desc">{{ block.settings.description | escape }}</p>
+						{% endif%}
+
+            {% if block.settings.link != blank %}
+              <a href="{{ block.settings.link }}" class="mt--25 button button--black button--primary">{{ block.settings.linktext }}</a>
+            {% endif%}
+					</div>
+	      </div>
+      {% endfor%}
+    </div>
+    <!-- Add Pagination -->
+    {% if section.settings.pagination %}
+    <div class="swiper-controler">
+      <div class="swiper-button-prev" data-swiper__prev>{% include 'icon' with 'arrow-left' %}</div>
+      <div class="swiper-pagination" data-swiper__pagination></div>
+      <div class="swiper-button-next" data-swiper__next>{% include 'icon' with 'arrow-right' %}</div>
+    </div>
+    {% endif %}
+</div>
+
+<style>
+  .swiper-{{ section.id }} .swiper-content{
+    align-items: {{ section.settings.content_position }};
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Custom Slider",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "show_on_mobile",
+      "label": "Show on mobile",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "title_underline",
+      "label": "Show title underline",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "pagination",
+      "label": "Use pagination",
+      "default": true
+    },
+    {
+      "type": "select",
+      "id": "content_position",
+      "label": "Text position",
+      "options": [
+        {
+          "value": "flex-start",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "flex-end",
+          "label": "Right"
+        }
+      ],
+      "default": "center"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "image",
+      "name": "Content",
+      "settings": [
+        {
+          "type": "text",
+          "id": "note",
+          "label": "Note",
+          "default": "Note"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Heading",
+          "default": "Your title"
+        },
+        {
+          "type": "text",
+          "id": "time",
+          "label": "Time",
+          "default": "Time"
+        },
+				{
+          "type": "text",
+          "id": "sub_title",
+          "label": "Subtitle",
+          "default": "Subtitle"
+        },
+        {
+          "type": "select",
+          "id": "description_snippet",
+          "label": "Description template",
+          "options": [
+          {
+            "group": "value",
+            "value": "none",
+            "label": "- None (use description field) -"
+          },
+          {
+            "group": "value",
+            "value": "custom-slider-description--about-us--product-list",
+            "label": "About us - product list"
+          }
+          ],
+          "default": "none",
+          "info": "Choose a tailor made description template, or leave empty to use description field below"
+        },
+        {
+          "type": "text",
+          "id": "description",
+          "label": "Description",
+          "default": "Description"
+        },
+        {
+          "type": "image_picker",
+          "id": "desktop_image",
+          "label": "Desktop Image"
+        },
+        {
+          "type": "image_picker",
+          "id": "mobile_image",
+          "label": "Mobile Image"
+        },
+        {
+          "id": "link",
+          "type": "url",
+          "label": "Button link"
+        },
+        {
+          "id": "linktext",
+          "type": "text",
+          "label": "Button text",
+          "default": "Click here"
+        },
+        {
+          "type": "color",
+          "id": "text_color",
+          "label": "Text",
+          "default": "#000000"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "category": "Slider",
+      "name": "Custom Slider",
+      "blocks": [
+        {
+          "type": "image"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

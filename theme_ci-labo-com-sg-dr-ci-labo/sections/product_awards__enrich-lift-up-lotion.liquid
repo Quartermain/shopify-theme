@@ -1,0 +1,57 @@
+{% include 'section__product_awards' %}
+
+{% schema %}
+{
+  "name": "Product Awards",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Awards"
+    },
+    {
+      "type": "checkbox",
+      "id": "awards__enabled",
+      "label": "Enable",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "awards__title",
+      "label": "Title",
+      "default": "Awards"
+    },
+    {
+      "type": "textarea",
+      "id": "awards__description",
+      "label": "Description",
+      "default": "Add your own custom content to give more information about your store, availability details..."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "text",
+      "name": "Award titles",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "awards__block__image",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "awards__block__small_description",
+          "label": "Title",
+          "default": "Readers Choice, Hydrating Moisturiser"
+        },
+        {
+          "type": "text",
+          "id": "awards__block__description",
+          "label": "Title",
+          "default": "Her World Beauty Awards 2017",
+          "info": "Recommended a 80px by 80px max dimension"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

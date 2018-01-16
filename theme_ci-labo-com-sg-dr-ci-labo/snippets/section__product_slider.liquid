@@ -1,0 +1,49 @@
+<div class="swiper-container custom-swiper swiper-{{ section.id }} recommended-block" data-swiper>
+  <div class="swiper-wrapper">
+    {% for block in section.blocks %}
+      <div class="swiper-slide">
+        <img class="swiper-bg desktop-bg" src="{{ block.settings.image_desktop | img_url: '460x460', scale: 2 }}" alt="{{ block.settings.image_desktop.alt | escape }}">
+        <img class="swiper-bg mobile-bg" src="{{ block.settings.image_mobile  | img_url: '375x375', scale: 2 }}" alt="{{ block.settings.image_mobile.alt | escape }}">
+				<div class="container swiper-content" style="color: {{ block.settings.text_color }};">
+					{% if block.settings.note != blank %}
+						<span class="note">{{ block.settings.note | escape }}</span>
+					{% endif%}
+
+					{% if block.settings.title != blank %}
+						<h1 class="title h1 {% if section.settings.title_underline %} h1--underline {% endif%}"
+						style="margin-bottom: 0">{{ block.settings.title }}</h1>
+					{% endif%}
+					{% if block.settings.time != blank %}
+						<span class="time">{{ block.settings.time | escape }}</span>
+					{% endif%}
+
+					{% if block.settings.sub_title != blank %}
+						<p class="sub-title">{{ block.settings.sub_title | escape }}</p>
+					{% endif%}
+
+					{% if block.settings.description != blank %}
+						<p class="desc">{{ block.settings.description | escape }}</p>
+					{% endif%}
+
+          {% if block.settings.link != blank %}
+            <a href="{{ block.settings.link }}" class="mt--25 button button--black button--primary">{{ block.settings.linktext }}</a>
+          {% endif%}
+				</div>
+      </div>
+    {% endfor%}
+  </div>
+  <!-- Add Pagination -->
+  {% if section.settings.pagination %}
+  <div class="swiper-controler">
+    <div class="swiper-button-prev" data-swiper__prev>{% include 'icon' with 'arrow-left' %}</div>
+    <div class="swiper-pagination" data-swiper__pagination></div>
+    <div class="swiper-button-next" data-swiper__next>{% include 'icon' with 'arrow-right' %}</div>
+  </div>
+  {% endif %}
+</div>
+
+<style>
+  .swiper-{{ section.id }} .swiper-content{
+    align-items: {{ section.settings.content_position }};
+  }
+</style>

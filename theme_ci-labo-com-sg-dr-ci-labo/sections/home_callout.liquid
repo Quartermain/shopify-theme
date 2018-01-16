@@ -1,0 +1,55 @@
+<div id="section-callout" class="home__callout" style="background-image:url('{{ section.settings.bg_image  | img_url:
+'master' }}')">
+  <div class="container">
+    <h2 class="home__callout-title h1">{{ section.settings.title | escape }}</h2>
+    <p>{{ section.settings.description }}</p>
+    <a href="{{ section.settings.link }}" class="home__callout-button button--white">{{ section.settings.linktext }}</a>
+  </div>
+</div>
+{% schema %}
+{
+  "name": "Callout",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "Your title"
+    },
+    {
+      "type": "text",
+      "id": "description",
+      "label": "Description",
+      "default": "Description"
+    },
+    {
+      "id": "link",
+      "type": "url",
+      "label": "Button link"
+    },
+    {
+      "id": "bg_image",
+      "type": "image_picker",
+      "label": "Background image"
+    },
+    {
+      "id": "linktext",
+      "type": "text",
+      "label": "Button text",
+      "default": "Click here"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Callout",
+      "category": "Callout"
+    }
+  ]
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}
